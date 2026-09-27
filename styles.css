@@ -21,6 +21,11 @@ a { color: inherit; }
 .page-shell { max-width: 1440px; min-height: 100vh; margin: 0 auto; padding: 0 6.25%; }
 .site-header, .site-footer { display: flex; align-items: center; justify-content: space-between; }
 .site-header { height: 104px; border-bottom: 1px solid #20252b; }
+.header-right { display: flex; align-items: center; gap: 28px; }
+.language-switch { display: flex; align-items: center; gap: 12px; color: #87919d; font-size: 12px; font-weight: 700; letter-spacing: .06em; }
+.language-switch span[aria-current="page"] { color: var(--text); }
+.language-switch a { text-decoration: none; }
+.language-switch a:hover { color: var(--text); }
 .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-size: 17px; font-weight: 650; letter-spacing: -.025em; }
 .brand-mark { width: 27px; height: 26px; display: flex; gap: 3px; align-items: end; transform: skewX(-13deg); }
 .brand-mark span { display: block; width: 7px; background: var(--accent); border-radius: 2px; }
@@ -45,6 +50,7 @@ h1 span { color: #b9c7d8; }
 .button-secondary { border: 1px solid #303843; color: #d3d8df; }
 .button-secondary:hover { border-color: #667383; background: #141a20; }
 .release-note { margin: 17px 0 0; color: #788390; font-size: 12px; }
+.build-meta { margin: 8px 0 0; color: #9ca5b1; font-size: 12px; }
 .app-preview { height: 440px; overflow: hidden; border: 1px solid #303844; border-radius: 14px; background: #101419; box-shadow: 0 32px 90px #0009, 0 0 75px #5f86cc10; }
 .preview-chrome { height: 47px; display: flex; align-items: center; gap: 6px; padding: 0 17px; border-bottom: 1px solid #262d35; background: #171c22; }
 .preview-chrome span { width: 8px; height: 8px; border: 1px solid #49525e; border-radius: 50%; }

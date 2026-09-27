@@ -8,6 +8,8 @@
     <meta property="og:title" content="AgentRelay для macOS" />
     <meta property="og:description" content="Ваши CLI-агенты в одном рабочем пространстве." />
     <meta property="og:type" content="website" />
+    <link rel="alternate" hreflang="en" href="./en/" />
+    <link rel="alternate" hreflang="ru" href="./" />
     <title>AgentRelay — рабочее пространство для AI-агентов</title>
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="stylesheet" href="./styles.css" />
@@ -19,7 +21,13 @@
           <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
           <span>AgentRelay</span>
         </a>
-        <span class="header-label">Нативное приложение для macOS</span>
+        <div class="header-right">
+          <span class="header-label">Нативное приложение для macOS</span>
+          <nav class="language-switch" aria-label="Язык страницы">
+            <span aria-current="page">RU</span>
+            <a href="./en/" lang="en">EN</a>
+          </nav>
+        </div>
       </header>
 
       <main id="top">
@@ -36,6 +44,9 @@
               <a class="button button-secondary" href="#install">Как установить <span aria-hidden="true">↗</span></a>
             </div>
             <p class="release-note">macOS 14 и новее · Apple Silicon и Intel · бесплатная загрузка</p>
+            <!-- RELEASE_META_START -->
+            <p class="build-meta">Версия 1.0.1 · сборка 2 · опубликовано <time datetime="2026-09-27T23:47:18+02:00">27 сентября 2026, 23:47:18 CEST</time></p>
+            <!-- RELEASE_META_END -->
           </div>
 
           <div class="app-preview" aria-label="Иллюстрация рабочего пространства AgentRelay">
@@ -60,7 +71,7 @@
           </div>
           <div class="detail-copy">
             <p>Распакуйте архив и перенесите AgentRelay в «Программы». Выберите папку проекта и запустите нужного агента.</p>
-            <p>Для постоянных агентских сессий установите <code>tmux</code> через Homebrew: <code>brew install tmux</code>. Codex, Claude Code и другие CLI устанавливаются отдельно.</p>
+            <p><code>tmux</code> уже включён в AgentRelay. Codex, Claude Code и другие CLI-агенты устанавливаются отдельно.</p>
           </div>
         </section>
       </main>
