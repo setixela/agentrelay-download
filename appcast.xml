@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="yes"?><!-- sparkle-sign-warning:
+IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>AgentRelay</title>
+        <item>
+            <title>1.0.3</title>
+            <pubDate>Mon, 28 Sep 2026 14:47:13 +0200</pubDate>
+            <sparkle:version>4</sparkle:version>
+            <sparkle:shortVersionString>1.0.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/setixela/agentrelay-download/releases/download/v1.0.3/AgentRelay-macOS.zip" length="28959494" type="application/octet-stream" sparkle:edSignature="vHzih4jr6ab6mTGvWrwuldpTQOJLrX4ROyjxYT//7e9fGy4lQevjfd+zDC57fejxYw61rxZOGJOXHl5/GRU1Cg=="></enclosure>
+        </item>
+    </channel>
+</rss><!-- sparkle-signatures:
+edSignature: q3eIPK2xzRUrpFVqVOa1/C597Zl6uxOtNoxaCkzslrjVuwZxPA6aICKnJOnK4TPiXMzBBs3tqtVMWux8qDAVAw==
+length: 1057
+-->
