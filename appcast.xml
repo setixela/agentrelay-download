@@ -4,15 +4,15 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>AgentRelay</title>
         <item>
-            <title>1.0.10</title>
-            <pubDate>Tue, 29 Sep 2026 13:20:28 +0200</pubDate>
-            <sparkle:version>11</sparkle:version>
-            <sparkle:shortVersionString>1.0.10</sparkle:shortVersionString>
+            <title>1.0.11</title>
+            <pubDate>Tue, 29 Sep 2026 14:40:00 +0200</pubDate>
+            <sparkle:version>12</sparkle:version>
+            <sparkle:shortVersionString>1.0.11</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/setixela/agentrelay-download/releases/download/v1.0.10/AgentRelay-macOS.zip" length="29554014" type="application/octet-stream" sparkle:edSignature="UjZHVs4TE5lF4RCw9vgdsr3oUNDg+3aYIrwcdUUeNljVY8y5j9rIsO4QoPAE2hOeUCuLTVf5s9mnoJc/7DG2AA=="></enclosure>
+            <enclosure url="https://github.com/setixela/agentrelay-download/releases/download/v1.0.11/AgentRelay-macOS.zip" length="30597438" type="application/octet-stream" sparkle:edSignature="zpqb32uVW6lu+Tcq97qlAa9QEiMRcVrBGaXY/jVNPIHFHfhGj8zMDrv6dFHf+qxy+3C2DHxYVY97fM6/iuSLAw=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: nhA/XW47xDUJsBNcCrcjNRrSn3ZyGfmS8kXV2crB6NOhQPzRwpVXJ3X6CdOH3P/xNv5JTbn/Vt2X6mJljqxvBw==
+edSignature: +ExlxtKQP9IGTU2qBHzTNykKjrX9ZF0TvFCOT6AESUTP7+qYdb+gE0BhwqVp9JIXOLRgsQCbrU6KMc0W6zfcBw==
 length: 1061
 -->
