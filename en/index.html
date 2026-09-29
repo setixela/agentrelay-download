@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0d1017" />
-    <title>AgentRelay — every CLI agent on one macOS canvas</title>
-    <meta name="description" content="AgentRelay is a native macOS app that runs Codex, Claude Code, GitHub Copilot CLI and other agents in real terminals on one canvas. Send one message to several agents at once." />
+    <title>AgentRelay — a terminal for CLI agents on macOS</title>
+    <meta name="description" content="AgentRelay is a native macOS app for Codex, Claude Code, GitHub Copilot CLI and other agents in real terminals on one canvas: a status for every agent, clickable paths, sessions that survive a restart." />
     <meta property="og:title" content="AgentRelay for macOS" />
-    <meta property="og:description" content="Every CLI agent on one canvas. One message to all of them." />
+    <meta property="og:description" content="Every CLI agent in one window. See who’s done; paths open in the editor; sessions live in tmux." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://setixela.github.io/agentrelay-download/en/" />
     <meta property="og:image" content="https://setixela.github.io/agentrelay-download/en/og.png" />
@@ -18,8 +18,8 @@
     <link rel="apple-touch-icon" href="../app-icon-256.png" />
     <link rel="preload" href="../fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="../fonts/geologica-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="../styles.css?v=64926ee7" />
-    <script src="../site.js?v=3836cf71" defer></script>
+    <link rel="stylesheet" href="../styles.css?v=73194ae8" />
+    <script src="../site.js?v=6fc71216" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -31,7 +31,7 @@
           <span>AgentRelay</span>
         </a>
         <nav class="header-nav" aria-label="Main">
-          <a class="nav-link" href="#layouts">Features</a>
+          <a class="nav-link" href="#terminal">Features</a>
           <a class="nav-link" href="#install">Install</a>
           <div class="language-switch" role="group" aria-label="Page language">
             <a href="../" lang="ru" hreflang="ru">RU</a>
@@ -49,8 +49,8 @@
       <section class="hero" id="top" aria-labelledby="hero-title">
         <div class="wrap">
           <div class="hero-copy">
-            <h1 id="hero-title">Every agent,<span class="line-2">one canvas.</span></h1>
-            <p class="hero-lead">AgentRelay runs Codex, Claude Code, GitHub Copilot CLI and other CLI agents in real terminals, side by side in one native macOS window. Send one message to several agents at once. Quit the app, and they keep working.</p>
+            <h1 id="hero-title">Every CLI agent,<span class="line-2">in one window.</span></h1>
+            <p class="hero-lead">AgentRelay is a native macOS terminal where Codex, Claude Code, GitHub Copilot CLI and other agents work side by side, each in its own window on a shared canvas. See who’s still thinking and who’s done, open paths from the output in the editor, and quit the app while the agents keep working.</p>
             <div class="hero-actions">
               <a class="button button-primary" href="https://github.com/setixela/agentrelay-download/releases/latest/download/AgentRelay-macOS.zip">
                 Download for macOS
@@ -66,76 +66,86 @@
           </div>
 
           <figure class="showcase">
-            <div class="replica" data-scale-width="1120" data-compact-width="620" data-relay-demo data-message="Run the tests and fix whatever fails" role="img" aria-label="The AgentRelay workspace: three agents — Codex, Claude Code and Hermes — in windows on a shared canvas. One message from the Message button reaches all three, and each starts working.">
+            <div class="replica" data-scale-width="1120" data-compact-width="620" data-work-demo role="img" aria-label="The AgentRelay workspace: Codex and Claude Code work in their own windows next to a plain terminal running a dev server. The window status changes from Working to Done, and clicking the path src/nav.tsx:42 in Claude's output opens the file in the built-in editor at line 42.">
               <div class="replica-stage" aria-hidden="true">
                 <div class="rp-chrome"><span class="rp-light"></span><span class="rp-light"></span><span class="rp-light"></span><span class="rp-title">AgentRelay</span></div>
                 <div class="rp-bar">
-                  <span class="rp-tab is-target" style="--c: var(--codex)"><i></i><b>#1</b> codex<span class="rp-tab-more"> · agentrelay · main</span></span>
-                  <span class="rp-tab is-target" style="--c: var(--claude)"><i></i><b>#2</b> claude<span class="rp-tab-more"> · site · design</span></span>
-                  <span class="rp-tab is-target" style="--c: var(--hermes)"><i></i><b>#3</b> hermes<span class="rp-tab-more"> · docs · main</span></span>
-                  <span class="rp-tab rp-tab-extra" style="--c: oklch(0.6 0.02 266)"><i></i><b>#4</b> editor · README.md</span>
+                  <span class="rp-tab" data-tab="codex" style="--c: var(--codex)"><i></i><b>#1</b> codex<span class="rp-tab-more"> · agentrelay · main</span></span>
+                  <span class="rp-tab" data-tab="claude" style="--c: var(--claude)"><i></i><b>#2</b> claude<span class="rp-tab-more"> · site · nav</span></span>
+                  <span class="rp-tab" style="--c: var(--ink-3)"><i></i><b>#3</b> zsh<span class="rp-tab-more"> · site</span></span>
+                  <span class="rp-tab rp-tab-editor is-active" style="--c: var(--ink-2)"><i></i><b>#4</b> nav.tsx<span class="rp-tab-more"> · site</span></span>
                   <span class="rp-bar-spacer"></span>
-                  <span class="rp-status" data-sent="Queued for 3 agents.">Queued for 3 agents.</span>
-                  <span class="rp-msg"><svg viewBox="0 0 16 16" fill="none"><path d="M2.5 8h9m0 0-3.5-3.5M11.5 8 8 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Message <span class="rp-count">3</span></span>
+                  <span class="rp-tool">⌘P</span>
+                  <span class="rp-msg"><svg viewBox="0 0 16 16" fill="none"><path d="M2.5 8h9m0 0-3.5-3.5M11.5 8 8 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Message</span>
                 </div>
                 <div class="rp-canvas">
-                  <svg class="rp-wires"></svg>
-                  <div class="rp-composer">
-                    <div class="rp-field"><span class="rp-typed">Run the tests and fix whatever fails</span><span class="rp-caret"></span></div>
-                    <div class="rp-composer-foot">⌘↩<span class="rp-send"><svg viewBox="0 0 12 12" fill="none"><path d="M6 10V2.5m0 0L2.8 5.7M6 2.5l3.2 3.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Send</span></div>
-                  </div>
-
                   <article class="rp-card" data-agent="codex" style="--c: var(--codex)">
-                    <header><i></i><b>#1 codex</b> agentrelay · main<span class="rp-ctrl"><span></span><span></span></span></header>
+                    <header><i></i><b>#1 codex</b> agentrelay · main<span class="rp-chip" data-state="done">Done</span><span class="rp-ctrl"><span></span><span></span></span></header>
                     <div class="rp-term">
                       <p class="dim">╭─ codex · ~/dev/agentrelay</p>
-                      <p>› Snap neighbouring cards when a shared edge is resized</p>
+                      <p class="rp-in">› Snap neighbouring cards when a shared edge is resized</p>
                       <p><span class="hl">•</span> Reading AgentRelayCore/Layout/LayoutEngine.swift</p>
                       <p><span class="hl">•</span> Reading AgentRelayCore/Layout/SnapResolver.swift</p>
                       <p class="dim">  Shared edges move both cards; outer edges stay put.</p>
-                      <p><span class="hl">•</span> Planning 2 edits</p>
                       <p><span class="ok">✓</span> Edited LayoutEngine.swift <span class="dim">+42 −9</span></p>
                       <p><span class="ok">✓</span> Edited SnapResolver.swift <span class="dim">+18 −4</span></p>
-                      <p class="dim">  Ready for the next task.</p>
-                      <p class="rp-in rp-reveal">› Run the tests and fix whatever fails</p>
-                      <p class="rp-reveal"><span class="hl">•</span> Running swift test</p>
-                      <p class="rp-reveal warn">  Executed 214 tests, with 1 failure</p>
-                      <p class="rp-reveal"><span class="hl">•</span> Fixing SnapResolverTests.swift:88</p>
-                      <p class="rp-reveal"><span class="hl">•</span> Re-running swift test</p>
-                      <p class="rp-reveal"><span class="ok">✓ Executed 214 tests, with 0 failures</span></p>
-                      <p class="rp-reveal"><span class="rp-cursor"></span></p>
+                      <p class="rp-reveal" data-lane="codex"><span class="hl">•</span> Running swift test</p>
+                      <p class="rp-reveal warn" data-lane="codex">  Executed 214 tests, with 1 failure</p>
+                      <p class="rp-reveal" data-lane="codex"><span class="hl">•</span> Fixing SnapResolverTests.swift:88</p>
+                      <p class="rp-reveal" data-lane="codex"><span class="hl">•</span> Re-running swift test</p>
+                      <p class="rp-reveal" data-lane="codex"><span class="ok">✓ Executed 214 tests, with 0 failures</span></p>
+                      <p class="rp-reveal dim" data-lane="codex">  Ready for the next task.</p>
+                      <p class="rp-reveal" data-lane="codex">› <span class="rp-cursor"></span></p>
                     </div>
+                    <footer class="rp-path">~/dev/agentrelay<span class="rp-path-icons"><span></span><span></span></span></footer>
                   </article>
 
                   <article class="rp-card" data-agent="claude" style="--c: var(--claude)">
-                    <header><i></i><b>#2 claude</b> site · design<span class="rp-ctrl"><span></span><span></span></span></header>
+                    <header><i></i><b>#2 claude</b> site · nav<span class="rp-chip" data-state="done">Done</span><span class="rp-ctrl"><span></span><span></span></span></header>
                     <div class="rp-term">
-                      <p class="dim">✻ cwd: ~/dev/site</p>
-                      <p class="rp-in rp-reveal">› Run the tests and fix whatever fails</p>
-                      <p class="rp-reveal"><span class="hl">⏺</span> Bash(npm test)</p>
-                      <p class="rp-reveal warn">  ⎿ 38 passed, 2 failed</p>
-                      <p class="rp-reveal"><span class="hl">⏺</span> Update(src/nav.tsx)</p>
-                      <p class="rp-reveal"><span class="ok">  ⎿ 40 passed</span></p>
+                      <p class="rp-in">› Make the menu sticky on mobile</p>
+                      <p class="rp-reveal" data-lane="claude"><span class="hl">⏺</span> Read(src/nav.tsx)</p>
+                      <p class="rp-reveal" data-lane="claude"><span class="hl">⏺</span> Update(src/nav.tsx)</p>
+                      <p class="rp-reveal" data-lane="claude">  ⎿ Updated <span class="rp-link">src/nav.tsx:42</span> <span class="dim">+6 −1</span></p>
+                      <p class="rp-reveal" data-lane="claude"><span class="hl">⏺</span> Bash(npm test)</p>
+                      <p class="rp-reveal" data-lane="claude"><span class="ok">  ⎿ 40 passed</span></p>
                     </div>
+                    <footer class="rp-path">~/dev/site<span class="rp-path-icons"><span></span><span></span></span></footer>
                   </article>
 
-                  <article class="rp-card" data-agent="hermes" style="--c: var(--hermes)">
-                    <header><i></i><b>#3 hermes</b> docs · main<span class="rp-ctrl"><span></span><span></span></span></header>
+                  <article class="rp-card" data-agent="zsh" style="--c: var(--ink-3)">
+                    <header><i></i><b>#3 zsh</b> site<span class="rp-chip" data-state="running">Running</span><span class="rp-ctrl"><span></span><span></span></span></header>
                     <div class="rp-term">
-                      <p class="dim">hermes ▸ ~/dev/docs</p>
-                      <p class="rp-in rp-reveal">› Run the tests and fix whatever fails</p>
-                      <p class="rp-reveal"><span class="hl">→</span> pytest -q</p>
-                      <p class="rp-reveal warn">  ........F.  1 failed</p>
-                      <p class="rp-reveal"><span class="hl">→</span> patched build/links.py</p>
-                      <p class="rp-reveal"><span class="ok">✓ 10 passed</span></p>
+                      <p><span class="ok">~/dev/site</span> ❯ npm run dev</p>
+                      <p class="dim">  VITE v5.4.8  ready in 312 ms</p>
+                      <p>  ➜  Local:   <span class="rp-url">http://localhost:5173/</span></p>
+                      <p class="rp-reveal dim" data-lane="zsh">  12:04:31 [vite] hmr update /src/nav.tsx</p>
                     </div>
+                    <footer class="rp-path">~/dev/site<span class="rp-path-icons"><span></span><span></span></span></footer>
                   </article>
+
+                  <article class="rp-card rp-editor" data-agent="editor" style="--c: var(--ink-2)">
+                    <header><i></i><b>#4 nav.tsx</b> site<span class="rp-ctrl"><span></span><span></span></span></header>
+                    <div class="rp-code">
+                      <p><em>39</em>  <span class="k">const</span> [open, setOpen] = <span class="f">useState</span>(<span class="k">false</span>);</p>
+                      <p><em>40</em></p>
+                      <p><em>41</em>  <span class="k">return</span> (</p>
+                      <p class="is-line"><em>42</em>    &lt;<span class="t">nav</span> <span class="a">className</span>=<span class="s">"nav nav--sticky"</span>&gt;</p>
+                      <p><em>43</em>      &lt;<span class="t">button</span> <span class="a">onClick</span>={() =&gt; <span class="f">setOpen</span>(!open)}&gt;Menu&lt;/<span class="t">button</span>&gt;</p>
+                      <p><em>44</em>      &lt;<span class="t">ul</span> <span class="a">className</span>=<span class="s">"nav-list"</span>&gt;</p>
+                      <p><em>45</em>        {items.<span class="f">map</span>((item) =&gt; &lt;<span class="t">NavLink</span> {...item} /&gt;)}</p>
+                      <p><em>46</em>      &lt;/<span class="t">ul</span>&gt;</p>
+                    </div>
+                    <footer class="rp-path">~/dev/site/src/nav.tsx<span class="rp-path-icons"><span></span></span></footer>
+                  </article>
+
+                  <svg class="rp-pointer" viewBox="0 0 20 24" aria-hidden="true"><path d="M2 1.5v18.2l4.9-4.6 3.1 7 3.2-1.4-3-6.9h6.8L2 1.5Z" fill="white" stroke="oklch(0.2 0.02 266)" stroke-width="1.3" stroke-linejoin="round"/></svg>
                 </div>
               </div>
             </div>
             <figcaption class="showcase-caption">
-              <p>Pick targets in the window bar, write the task and press <b>⌘↩</b>. Each agent receives it in its own terminal.</p>
-              <button class="play-toggle" type="button" aria-pressed="false" data-relay-toggle>
+              <p>The window status shows which agents are still working and which are done. Click a path in the output to open the file in the built-in editor at that line.</p>
+              <button class="play-toggle" type="button" aria-pressed="false" data-demo-toggle>
                 <svg class="icon-pause" viewBox="0 0 12 12" aria-hidden="true"><rect x="2" y="1.5" width="2.6" height="9" rx=".8" fill="currentColor"/><rect x="7.4" y="1.5" width="2.6" height="9" rx=".8" fill="currentColor"/></svg>
                 <svg class="icon-play" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.8v8.4a.6.6 0 0 0 .9.5l7-4.2a.6.6 0 0 0 0-1L3.9 1.3a.6.6 0 0 0-.9.5Z" fill="currentColor"/></svg>
                 Pause animation
@@ -157,36 +167,60 @@
         </div>
       </section>
 
-      <section class="band" id="layouts" aria-labelledby="layouts-title">
+      <section class="band" id="terminal" aria-labelledby="terminal-title">
         <div class="wrap">
           <div class="section-head">
-            <h2 id="layouts-title">A tidy canvas in one click.</h2>
-            <p>Windows snap to the canvas edges and to each other, and a shared edge resizes both neighbours at once. When you want the whole canvas in order, the toolbar has five arrangements.</p>
+            <h2 id="terminal-title">A terminal built for agents.</h2>
+            <p>Every window is a real terminal with true color and your font. Around it is everything you miss when agents live in Terminal or iTerm tabs.</p>
           </div>
-          <div class="arranger" data-arranger>
-            <div class="arranger-stage" role="img" aria-label="Four agent windows on a canvas; the arrangement follows the selected button">
-              <div class="mini" style="--c: var(--codex)"><header><i></i>#1 codex · agentrelay</header><div class="mini-lines"><span></span><span></span><span></span><span></span></div></div>
-              <div class="mini" style="--c: var(--claude)"><header><i></i>#2 claude · site</header><div class="mini-lines"><span></span><span></span><span></span><span></span></div></div>
-              <div class="mini" style="--c: var(--hermes)"><header><i></i>#3 hermes · docs</header><div class="mini-lines"><span></span><span></span><span></span><span></span></div></div>
-              <div class="mini" style="--c: var(--copilot)"><header><i></i>#4 copilot · api</header><div class="mini-lines"><span></span><span></span><span></span><span></span></div></div>
-            </div>
-            <ul class="arranger-controls" aria-label="Arrangements">
-              <li><button class="arrange-btn" type="button" data-arrangement="tile" aria-pressed="true">
-                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="1" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="13" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="13" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
-                <b>Tile</b><small>An even grid of every visible window.</small></button></li>
-              <li><button class="arrange-btn" type="button" data-arrangement="columns" aria-pressed="false">
-                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="6.5" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="9.5" y="1" width="6.5" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="1" width="6.5" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="26.5" y="1" width="6.5" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
-                <b>Columns</b><small>Full-height vertical lanes.</small></button></li>
-              <li><button class="arrange-btn" type="button" data-arrangement="rows" aria-pressed="false">
-                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="32" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="7" width="32" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="13" width="32" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="19" width="32" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
-                <b>Rows</b><small>Windows stacked top to bottom.</small></button></li>
-              <li><button class="arrange-btn" type="button" data-arrangement="cascade" aria-pressed="false">
-                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="8" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="var(--bg-raise)"/><rect x="15" y="11" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="var(--bg-raise)"/></svg>
-                <b>Cascade</b><small>Staggered, so every title stays visible.</small></button></li>
-              <li><button class="arrange-btn" type="button" data-arrangement="golden" aria-pressed="false">
-                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="19" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="22" y="1" width="11" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="22" y="16" width="4.5" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="28.5" y="16" width="4.5" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
-                <b>Golden ratio</b><small>The first window gets 61.8%; the rest spiral inward.</small></button></li>
-            </ul>
+          <div class="tf-grid">
+            <article class="tf tf-wide">
+              <div class="tf-vis tf-status" aria-hidden="true">
+                <div class="tf-head" style="--c: var(--codex)"><i></i><b>#1 codex</b> agentrelay<span class="rp-chip" data-state="working">Working</span></div>
+                <div class="tf-head" style="--c: var(--claude)"><i></i><b>#2 claude</b> site<span class="rp-chip" data-state="done">Done</span></div>
+                <div class="tf-head" style="--c: var(--hermes)"><i></i><b>#3 hermes</b> docs<span class="rp-chip" data-state="idle">Idle</span></div>
+              </div>
+              <h3>See who’s done</h3>
+              <p>AgentRelay watches each agent’s screen and labels its window: <b>Working</b> while it thinks or runs commands, <b>Done</b> when it has finished and is waiting for you. No more checking every terminal in turn.</p>
+            </article>
+            <article class="tf tf-wide">
+              <div class="tf-vis tf-link" aria-hidden="true">
+                <p class="tf-line">⎿ Updated <span class="rp-link is-hover">src/nav.tsx:42</span> <span class="dim">+6 −1</span></p>
+                <svg class="tf-arrow" viewBox="0 0 40 16" fill="none"><path d="M2 8h34m0 0-6-5m6 5-6 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <p class="tf-code"><em>42</em>&lt;<span class="t">nav</span> <span class="a">className</span>=<span class="s">"nav--sticky"</span>&gt;</p>
+              </div>
+              <h3>Paths in the output are clickable</h3>
+              <p>Click a path, a <code>file://</code> link or an OSC 8 link to open the file in the built-in editor at the exact line and column. The editor window lands on the same canvas, next to the agent. Other files open in their default app.</p>
+            </article>
+            <article class="tf">
+              <div class="tf-vis tf-drop" aria-hidden="true">
+                <span class="tf-file"><svg viewBox="0 0 16 16" fill="none"><rect x="2.5" y="2.5" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="m4 11 3-3 2 2 1.5-1.5L12 10" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>Screen 12.04.png</span>
+                <p class="tf-line">› look at <span class="s">'/Users/me/Screen 12.04.png'</span></p>
+              </div>
+              <h3>Drop files in</h3>
+              <p>Drop a screenshot or several files from Finder and they become quoted paths. Spaces in names don’t break anything.</p>
+            </article>
+            <article class="tf">
+              <div class="tf-vis tf-pathbar" aria-hidden="true">
+                <p class="dim">❯ git status</p>
+                <p>On branch <span class="s">nav-sticky</span></p>
+                <p class="dim">nothing to commit, working tree clean</p>
+                <span class="tf-pathline">~/dev/site<span class="tf-copied">✓ Copied</span><span class="tf-icons"><svg viewBox="0 0 16 16" fill="none"><path d="M4.5 2.5h5l2.5 2.5v8.5h-7.5v-11Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M6.5 8h3.5M6.5 10.5h3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><svg viewBox="0 0 16 16" fill="none"><rect x="2.5" y="5" width="8" height="8.5" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M5.5 2.5h6.5a1.5 1.5 0 0 1 1.5 1.5v7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span></span>
+              </div>
+              <h3>A path bar under every window</h3>
+              <p>Click to copy the working folder, double-click to open a new terminal there. Next to it: copy all terminal text or open it in the editor. For Codex and Claude Code that’s the whole chat from their logs, not just the visible screen.</p>
+            </article>
+            <article class="tf">
+              <div class="tf-vis tf-palette" aria-hidden="true">
+                <span style="--c: oklch(0.64 0.19 262)">AgentRelay</span>
+                <span style="--c: oklch(0.7 0.01 266)">Graphite</span>
+                <span style="--c: oklch(0.6 0.15 280)">Midnight</span>
+                <span style="--c: oklch(0.7 0.13 150)">Forest</span>
+                <span style="--c: oklch(0.72 0.15 45)">Ember</span>
+              </div>
+              <h3>Your font, your colors</h3>
+              <p>Any monospaced font; <kbd>⌘+</kbd> and <kbd>⌘−</kbd> resize text in every window at once. Five palette presets, and every color is editable.</p>
+            </article>
           </div>
         </div>
       </section>
@@ -232,42 +266,76 @@
         </div>
       </section>
 
+      <section class="band" id="layouts" aria-labelledby="layouts-title">
+        <div class="wrap">
+          <div class="section-head">
+            <h2 id="layouts-title">A tidy canvas in one click.</h2>
+            <p>Windows snap to the canvas edges and to each other, and a shared edge resizes both neighbours at once. When you want the whole canvas in order, the toolbar has five arrangements.</p>
+          </div>
+          <div class="arranger" data-arranger>
+            <div class="arranger-stage" role="img" aria-label="Four agent windows on a canvas; the arrangement follows the selected button">
+              <div class="mini" style="--c: var(--codex)"><header><i></i>#1 codex · agentrelay</header><div class="mini-lines"><span></span><span></span><span></span><span></span></div></div>
+              <div class="mini" style="--c: var(--claude)"><header><i></i>#2 claude · site</header><div class="mini-lines"><span></span><span></span><span></span><span></span></div></div>
+              <div class="mini" style="--c: var(--hermes)"><header><i></i>#3 hermes · docs</header><div class="mini-lines"><span></span><span></span><span></span><span></span></div></div>
+              <div class="mini" style="--c: var(--copilot)"><header><i></i>#4 copilot · api</header><div class="mini-lines"><span></span><span></span><span></span><span></span></div></div>
+            </div>
+            <ul class="arranger-controls" aria-label="Arrangements">
+              <li><button class="arrange-btn" type="button" data-arrangement="tile" aria-pressed="true">
+                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="1" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="13" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="13" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
+                <b>Tile</b><small>An even grid of every visible window.</small></button></li>
+              <li><button class="arrange-btn" type="button" data-arrangement="columns" aria-pressed="false">
+                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="6.5" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="9.5" y="1" width="6.5" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="1" width="6.5" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="26.5" y="1" width="6.5" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
+                <b>Columns</b><small>Full-height vertical lanes.</small></button></li>
+              <li><button class="arrange-btn" type="button" data-arrangement="rows" aria-pressed="false">
+                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="32" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="7" width="32" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="13" width="32" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="19" width="32" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                <b>Rows</b><small>Windows stacked top to bottom.</small></button></li>
+              <li><button class="arrange-btn" type="button" data-arrangement="cascade" aria-pressed="false">
+                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="8" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="var(--bg-raise)"/><rect x="15" y="11" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="var(--bg-raise)"/></svg>
+                <b>Cascade</b><small>Staggered, so every title stays visible.</small></button></li>
+              <li><button class="arrange-btn" type="button" data-arrangement="golden" aria-pressed="false">
+                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="19" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="22" y="1" width="11" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="22" y="16" width="4.5" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="28.5" y="16" width="4.5" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                <b>Golden ratio</b><small>The first window gets 61.8%; the rest spiral inward.</small></button></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section class="band" aria-labelledby="details-title">
         <div class="wrap">
           <div class="section-head">
-            <h2 id="details-title">Built for long, parallel sessions.</h2>
-            <p>With five agents on three branches, you need to see at a glance who is working where, and where the next message will go.</p>
+            <h2 id="details-title">Small things that save time.</h2>
+            <p>With five agents on three branches, you need to find the right window fast and never lose context.</p>
           </div>
           <dl class="details-grid">
             <div class="detail">
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 13h8M3 17h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              <dt>A bar for every window</dt>
-              <dd>Every session, terminal and editor gets a button labelled <code>#number client project branch</code>. Click it to bring the window forward, even if it was minimized.</dd>
+              <dt>A bar with every window</dt>
+              <dd>Every session, terminal and editor gets a button: <code>#number client project branch</code>. Click it to bring the window forward, even if it’s minimized.</dd>
             </div>
             <div class="detail">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="6" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M12 8.5v3m0 0-6 5m6-5 6 5m-6-5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="18.5" r="2" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="18.5" r="2" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="18.5" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
-              <dt>Precise targeting</dt>
-              <dd><kbd>⌘</kbd>-click adds an agent to the message targets, and every targeted window lights up on the canvas. Terminals and editors never receive shared messages.</dd>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 10h1M9.5 10h1M13 10h1M16.5 10h1M8 14h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <dt>Keyboard first</dt>
+              <dd><kbd>⌃Tab</kbd> switches windows, <kbd>⌘N</kbd> starts a session, <kbd>⌘P</kbd> finds a file in the project, <kbd>⌃⌥1</kbd>–<kbd>5</kbd> arrange the canvas.</dd>
             </div>
             <div class="detail">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <dt>Expand and restore</dt>
-              <dd>The title-bar control fills the canvas with one window; a second click restores it. Double-click the title to grow each edge to the nearest neighbour.</dd>
-            </div>
-            <div class="detail">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 12h5M10 15.5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              <dt>An editor next to the agent</dt>
-              <dd>Files open in editor windows on the same canvas, right beside the terminal that is changing them.</dd>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.5v17m0-17-3 3m3-3 3 3m-3 14-3-3m3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <dt>Scrolling and selection</dt>
+              <dd>The wheel and trackpad scroll history, not prompt commands. Selection auto-scrolls past the edge and copies exactly what you selected, even in Codex inside tmux.</dd>
             </div>
             <div class="detail">
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 8 4 4-4 4M11 16h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               <dt>Any CLI</dt>
-              <dd>Add your own agent with a name, executable and arguments. AgentRelay finds CLIs installed with Homebrew, npm, Bun, Cargo, Volta and asdf, and you can point it at any other path.</dd>
+              <dd>A name, an executable, arguments and environment variables. AgentRelay finds CLIs installed with Homebrew, npm, Bun, Cargo, Volta and asdf, and asks for the path if it can’t.</dd>
             </div>
             <div class="detail">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.5 7.5a2 2 0 0 1 2-2h4l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2v-10Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-              <dt>A folder for every session</dt>
-              <dd>Projects live in a local catalog, so a new session opens in the right folder in a couple of clicks.</dd>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="7.5" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M9.5 4.5h8a2 2 0 0 1 2 2v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <dt>Switch CLI or duplicate</dt>
+              <dd>Restart a window with another agent or in another folder without losing its place on the canvas. Duplicate opens a new session of the same CLI in the same project.</dd>
+            </div>
+            <div class="detail">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="6" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M12 8.5v3m0 0-6 5m6-5 6 5m-6-5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="18.5" r="2" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="18.5" r="2" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="18.5" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
+              <dt>One prompt, several agents</dt>
+              <dd><kbd>⌘</kbd>-click window buttons to pick agents, and <b>Message</b> sends them the same text.</dd>
             </div>
           </dl>
         </div>
