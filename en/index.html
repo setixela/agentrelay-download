@@ -3,83 +3,315 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0b0d10" />
-    <meta name="description" content="AgentRelay — a native macOS workspace for CLI agents." />
+    <meta name="theme-color" content="#0d1017" />
+    <title>AgentRelay — every CLI agent on one macOS canvas</title>
+    <meta name="description" content="AgentRelay is a native macOS app that runs Codex, Claude Code, GitHub Copilot CLI and other agents in real terminals on one canvas. Send one message to several agents at once." />
     <meta property="og:title" content="AgentRelay for macOS" />
-    <meta property="og:description" content="Your CLI agents in one workspace." />
+    <meta property="og:description" content="Every CLI agent on one canvas. One message to all of them." />
     <meta property="og:type" content="website" />
-    <link rel="alternate" hreflang="en" href="./" />
-    <link rel="alternate" hreflang="ru" href="../" />
-    <title>AgentRelay — a workspace for AI agents</title>
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+    <meta property="og:url" content="https://setixela.github.io/agentrelay-download/en/" />
+    <meta property="og:image" content="https://setixela.github.io/agentrelay-download/en/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="alternate" hreflang="ru" href="https://setixela.github.io/agentrelay-download/" />
+    <link rel="alternate" hreflang="en" href="https://setixela.github.io/agentrelay-download/en/" />
+    <link rel="icon" type="image/png" href="../app-icon-64.png" />
+    <link rel="apple-touch-icon" href="../app-icon-256.png" />
+    <link rel="preload" href="../fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="../fonts/geologica-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="../styles.css" />
+    <script src="../site.js" defer></script>
   </head>
   <body>
-    <div class="page-shell">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="wrap">
       <header class="site-header">
         <a class="brand" href="#top" aria-label="AgentRelay, back to top">
-          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <img src="../app-icon-64.png" width="32" height="32" alt="" />
           <span>AgentRelay</span>
         </a>
-        <div class="header-right">
-          <span class="header-label">Native macOS app</span>
-          <nav class="language-switch" aria-label="Page language">
-            <a href="../" lang="ru">RU</a>
+        <nav class="header-nav" aria-label="Main">
+          <a class="nav-link" href="#layouts">Features</a>
+          <a class="nav-link" href="#install">Install</a>
+          <div class="language-switch" role="group" aria-label="Page language">
+            <a href="../" lang="ru" hreflang="ru">RU</a>
             <span aria-current="page">EN</span>
-          </nav>
-        </div>
+          </div>
+          <a class="button button-ghost button-small" href="https://github.com/setixela/agentrelay-download/releases/latest/download/AgentRelay-macOS.zip">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3.5v9m0 0 3.5-3.5M10 12.5 6.5 9M4 15.5h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            <span>Download</span>
+          </a>
+        </nav>
       </header>
+    </div>
 
-      <main id="top">
-        <section class="hero" aria-labelledby="hero-title">
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="wrap">
           <div class="hero-copy">
-            <p class="eyebrow"><span class="status-dot"></span> A workspace for CLI agents</p>
-            <h1 id="hero-title">Your agents.<br /><span>One workspace.</span></h1>
-            <p class="hero-description">Run Codex, Claude Code, and other CLI agents in separate terminal windows. Keep projects, sessions, and tools close at hand.</p>
+            <h1 id="hero-title">Every agent,<span class="line-2">one canvas.</span></h1>
+            <p class="hero-lead">AgentRelay runs Codex, Claude Code, GitHub Copilot CLI and other CLI agents in real terminals, side by side in one native macOS window. Send one message to several agents at once. Quit the app, and they keep working.</p>
             <div class="hero-actions">
               <a class="button button-primary" href="https://github.com/setixela/agentrelay-download/releases/latest/download/AgentRelay-macOS.zip">
                 Download for macOS
                 <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3.5v9m0 0 3.5-3.5M10 12.5 6.5 9M4 15.5h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
               </a>
-              <a class="button button-secondary" href="#install">How to install <span aria-hidden="true">↗</span></a>
-            </div>
-            <p class="release-note">macOS 14 or later · Apple Silicon and Intel · free download</p>
-            <!-- RELEASE_META_START -->
+              <div class="hero-meta">
+                <p>macOS 14 or later · Apple Silicon and Intel · free</p>
+                <!-- RELEASE_META_START -->
             <p class="build-meta">Version 1.0.8 · build 9 · published <time datetime="2026-09-29T01:40:49+02:00">29 September 2026, 01:40:49 CEST</time></p>
             <!-- RELEASE_META_END -->
-          </div>
-
-          <div class="app-preview" aria-label="Illustration of the AgentRelay workspace">
-            <div class="preview-chrome"><span></span><span></span><span></span><b>AgentRelay</b></div>
-            <div class="preview-canvas">
-              <div class="preview-card preview-card-back">
-                <div class="card-title"><span class="card-led violet"></span><span>Claude Code</span><span class="card-project">design</span></div>
-                <div class="terminal-lines muted"><span>❯ claude</span><span>Ready to work.</span><span class="short-line"></span></div>
-              </div>
-              <div class="preview-card preview-card-front">
-                <div class="card-title"><span class="card-led blue"></span><span>Codex</span><span class="card-project">agentrelay</span></div>
-                <div class="terminal-lines"><span class="prompt">❯ codex</span><span>Workspace ready.</span><span class="cursor-line"><i></i></span></div>
               </div>
             </div>
           </div>
-        </section>
 
-        <section class="details" id="install" aria-labelledby="install-title">
-          <div>
-            <p class="section-label">Get started</p>
-            <h2 id="install-title">Install and open.</h2>
-          </div>
-          <div class="detail-copy">
-            <p>Unzip the download and move AgentRelay to Applications. Choose a project folder, then start an agent.</p>
-            <p><code>tmux</code> is included with AgentRelay. Install Codex, Claude Code, and other CLI agents separately.</p>
-          </div>
-        </section>
-      </main>
+          <figure class="showcase">
+            <div class="replica" data-scale-width="1120" data-compact-width="620" data-relay-demo data-message="Run the tests and fix whatever fails" role="img" aria-label="The AgentRelay workspace: three agents — Codex, Claude Code and Hermes — in windows on a shared canvas. One message from the Message button reaches all three, and each starts working.">
+              <div class="replica-stage" aria-hidden="true">
+                <div class="rp-chrome"><span class="rp-light"></span><span class="rp-light"></span><span class="rp-light"></span><span class="rp-title">AgentRelay</span></div>
+                <div class="rp-bar">
+                  <span class="rp-tab is-target" style="--c: var(--codex)"><i></i><b>#1</b> codex<span class="rp-tab-more"> · agentrelay · main</span></span>
+                  <span class="rp-tab is-target" style="--c: var(--claude)"><i></i><b>#2</b> claude<span class="rp-tab-more"> · site · design</span></span>
+                  <span class="rp-tab is-target" style="--c: var(--hermes)"><i></i><b>#3</b> hermes<span class="rp-tab-more"> · docs · main</span></span>
+                  <span class="rp-tab rp-tab-extra" style="--c: oklch(0.6 0.02 266)"><i></i><b>#4</b> editor · README.md</span>
+                  <span class="rp-bar-spacer"></span>
+                  <span class="rp-status" data-sent="Queued for 3 agents.">Queued for 3 agents.</span>
+                  <span class="rp-msg"><svg viewBox="0 0 16 16" fill="none"><path d="M2.5 8h9m0 0-3.5-3.5M11.5 8 8 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Message <span class="rp-count">3</span></span>
+                </div>
+                <div class="rp-canvas">
+                  <svg class="rp-wires"></svg>
+                  <div class="rp-composer">
+                    <div class="rp-field"><span class="rp-typed">Run the tests and fix whatever fails</span><span class="rp-caret"></span></div>
+                    <div class="rp-composer-foot">⌘↩<span class="rp-send"><svg viewBox="0 0 12 12" fill="none"><path d="M6 10V2.5m0 0L2.8 5.7M6 2.5l3.2 3.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Send</span></div>
+                  </div>
 
-      <footer class="site-footer">
+                  <article class="rp-card" data-agent="codex" style="--c: var(--codex)">
+                    <header><i></i><b>#1 codex</b> agentrelay · main<span class="rp-ctrl"><span></span><span></span></span></header>
+                    <div class="rp-term">
+                      <p class="dim">╭─ codex · ~/dev/agentrelay</p>
+                      <p>› Snap neighbouring cards when a shared edge is resized</p>
+                      <p><span class="hl">•</span> Reading AgentRelayCore/Layout/LayoutEngine.swift</p>
+                      <p><span class="hl">•</span> Reading AgentRelayCore/Layout/SnapResolver.swift</p>
+                      <p class="dim">  Shared edges move both cards; outer edges stay put.</p>
+                      <p><span class="hl">•</span> Planning 2 edits</p>
+                      <p><span class="ok">✓</span> Edited LayoutEngine.swift <span class="dim">+42 −9</span></p>
+                      <p><span class="ok">✓</span> Edited SnapResolver.swift <span class="dim">+18 −4</span></p>
+                      <p class="dim">  Ready for the next task.</p>
+                      <p class="rp-in rp-reveal">› Run the tests and fix whatever fails</p>
+                      <p class="rp-reveal"><span class="hl">•</span> Running swift test</p>
+                      <p class="rp-reveal warn">  Executed 214 tests, with 1 failure</p>
+                      <p class="rp-reveal"><span class="hl">•</span> Fixing SnapResolverTests.swift:88</p>
+                      <p class="rp-reveal"><span class="hl">•</span> Re-running swift test</p>
+                      <p class="rp-reveal"><span class="ok">✓ Executed 214 tests, with 0 failures</span></p>
+                      <p class="rp-reveal"><span class="rp-cursor"></span></p>
+                    </div>
+                  </article>
+
+                  <article class="rp-card" data-agent="claude" style="--c: var(--claude)">
+                    <header><i></i><b>#2 claude</b> site · design<span class="rp-ctrl"><span></span><span></span></span></header>
+                    <div class="rp-term">
+                      <p class="dim">✻ cwd: ~/dev/site</p>
+                      <p class="rp-in rp-reveal">› Run the tests and fix whatever fails</p>
+                      <p class="rp-reveal"><span class="hl">⏺</span> Bash(npm test)</p>
+                      <p class="rp-reveal warn">  ⎿ 38 passed, 2 failed</p>
+                      <p class="rp-reveal"><span class="hl">⏺</span> Update(src/nav.tsx)</p>
+                      <p class="rp-reveal"><span class="ok">  ⎿ 40 passed</span></p>
+                    </div>
+                  </article>
+
+                  <article class="rp-card" data-agent="hermes" style="--c: var(--hermes)">
+                    <header><i></i><b>#3 hermes</b> docs · main<span class="rp-ctrl"><span></span><span></span></span></header>
+                    <div class="rp-term">
+                      <p class="dim">hermes ▸ ~/dev/docs</p>
+                      <p class="rp-in rp-reveal">› Run the tests and fix whatever fails</p>
+                      <p class="rp-reveal"><span class="hl">→</span> pytest -q</p>
+                      <p class="rp-reveal warn">  ........F.  1 failed</p>
+                      <p class="rp-reveal"><span class="hl">→</span> patched build/links.py</p>
+                      <p class="rp-reveal"><span class="ok">✓ 10 passed</span></p>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+            <figcaption class="showcase-caption">
+              <p>Pick targets in the window bar, write the task and press <b>⌘↩</b>. Each agent receives it in its own terminal.</p>
+              <button class="play-toggle" type="button" aria-pressed="false" data-relay-toggle>
+                <svg class="icon-pause" viewBox="0 0 12 12" aria-hidden="true"><rect x="2" y="1.5" width="2.6" height="9" rx=".8" fill="currentColor"/><rect x="7.4" y="1.5" width="2.6" height="9" rx=".8" fill="currentColor"/></svg>
+                <svg class="icon-play" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.8v8.4a.6.6 0 0 0 .9.5l7-4.2a.6.6 0 0 0 0-1L3.9 1.3a.6.6 0 0 0-.9.5Z" fill="currentColor"/></svg>
+                Pause animation
+              </button>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="providers" aria-label="Supported agents">
+        <div class="wrap">
+          <span class="providers-label">Ready out of the box</span>
+          <span class="provider" style="--c: var(--codex)">Codex</span>
+          <span class="provider" style="--c: var(--claude)">Claude Code</span>
+          <span class="provider" style="--c: var(--copilot)">GitHub Copilot CLI</span>
+          <span class="provider" style="--c: var(--hermes)">Hermes</span>
+          <span class="provider" style="--c: var(--pi)">Pi</span>
+          <span class="provider is-custom">and your own CLI</span>
+        </div>
+      </section>
+
+      <section class="band" id="layouts" aria-labelledby="layouts-title">
+        <div class="wrap">
+          <div class="section-head">
+            <h2 id="layouts-title">A tidy canvas in one click.</h2>
+            <p>Windows snap to the canvas edges and to each other, and a shared edge resizes both neighbours at once. When you want the whole canvas in order, the toolbar has five arrangements.</p>
+          </div>
+          <div class="arranger" data-arranger>
+            <div class="arranger-stage" role="img" aria-label="Four agent windows on a canvas; the arrangement follows the selected button">
+              <div class="mini" style="--c: var(--codex)"><header><i></i>#1 codex · agentrelay</header><div class="mini-lines"><span></span><span></span><span></span><span></span></div></div>
+              <div class="mini" style="--c: var(--claude)"><header><i></i>#2 claude · site</header><div class="mini-lines"><span></span><span></span><span></span><span></span></div></div>
+              <div class="mini" style="--c: var(--hermes)"><header><i></i>#3 hermes · docs</header><div class="mini-lines"><span></span><span></span><span></span><span></span></div></div>
+              <div class="mini" style="--c: var(--copilot)"><header><i></i>#4 copilot · api</header><div class="mini-lines"><span></span><span></span><span></span><span></span></div></div>
+            </div>
+            <ul class="arranger-controls" aria-label="Arrangements">
+              <li><button class="arrange-btn" type="button" data-arrangement="tile" aria-pressed="true">
+                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="1" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="13" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="13" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
+                <b>Tile</b><small>An even grid of every visible window.</small></button></li>
+              <li><button class="arrange-btn" type="button" data-arrangement="columns" aria-pressed="false">
+                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="6.5" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="9.5" y="1" width="6.5" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="1" width="6.5" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="26.5" y="1" width="6.5" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
+                <b>Columns</b><small>Full-height vertical lanes.</small></button></li>
+              <li><button class="arrange-btn" type="button" data-arrangement="rows" aria-pressed="false">
+                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="32" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="7" width="32" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="13" width="32" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="19" width="32" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                <b>Rows</b><small>Windows stacked top to bottom.</small></button></li>
+              <li><button class="arrange-btn" type="button" data-arrangement="cascade" aria-pressed="false">
+                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="8" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="var(--bg-raise)"/><rect x="15" y="11" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="var(--bg-raise)"/></svg>
+                <b>Cascade</b><small>Staggered, so every title stays visible.</small></button></li>
+              <li><button class="arrange-btn" type="button" data-arrangement="golden" aria-pressed="false">
+                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="19" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="22" y="1" width="11" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="22" y="16" width="4.5" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="28.5" y="16" width="4.5" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                <b>Golden ratio</b><small>The first window gets 61.8%; the rest spiral inward.</small></button></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="band persist" aria-labelledby="persist-title">
+        <div class="wrap">
+          <div class="section-head">
+            <h2 id="persist-title">Quit the app. Your agents keep working.</h2>
+            <p>Each agent lives in its own tmux session, not inside the window. AgentRelay only attaches to it, so after a restart every card returns to its place and reattaches to the same running process.</p>
+          </div>
+
+          <div class="lifeline" role="img" aria-label="Diagram: the AgentRelay window is quit and reopened while the agent processes run without interruption">
+            <div class="lane">
+              <span class="lane-label"><i style="--c: var(--accent-soft)"></i>AgentRelay</span>
+              <div class="track">
+                <span class="seg app" style="--from: 0%; --to: 38%">window open</span>
+                <span class="gap-mark" style="--at: 46%">⌘Q</span>
+                <span class="seg app" style="--from: 54%; --to: 100%">reopened</span>
+                <span class="playhead"></span>
+              </div>
+            </div>
+            <div class="lane">
+              <span class="lane-label"><i style="--c: var(--codex)"></i>codex · tmux</span>
+              <div class="track"><span class="seg proc" style="--c: var(--codex); --from: 3%; --to: 100%"></span><span class="playhead"></span></div>
+            </div>
+            <div class="lane">
+              <span class="lane-label"><i style="--c: var(--claude)"></i>claude · tmux</span>
+              <div class="track"><span class="seg proc" style="--c: var(--claude); --from: 9%; --to: 100%"></span><span class="playhead"></span></div>
+            </div>
+            <div class="lifeline-scale" aria-hidden="true">
+              <span class="scale-spacer"></span>
+              <div class="scale-track">
+                <span class="scale-note is-before" style="--at: 38%">Quit: terminals detach, processes stay</span>
+                <span class="scale-note" style="--at: 54%">Launch: the same cards reattach to the same processes</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="persist-notes">
+            <p><strong>tmux is built in.</strong> Nothing extra to install: AgentRelay ships its own universal build.</p>
+            <p><strong>The honest limits.</strong> Restarting your Mac ends agent processes; the card offers to start the CLI again. Plain terminal cards open a fresh login shell in the same folder after an app restart.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="band" aria-labelledby="details-title">
+        <div class="wrap">
+          <div class="section-head">
+            <h2 id="details-title">Built for long, parallel sessions.</h2>
+            <p>With five agents on three branches, you need to see at a glance who is working where, and where the next message will go.</p>
+          </div>
+          <dl class="details-grid">
+            <div class="detail">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 13h8M3 17h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <dt>A bar for every window</dt>
+              <dd>Every session, terminal and editor gets a button labelled <code>#number client project branch</code>. Click it to bring the window forward, even if it was minimized.</dd>
+            </div>
+            <div class="detail">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="6" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M12 8.5v3m0 0-6 5m6-5 6 5m-6-5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="18.5" r="2" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="18.5" r="2" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="18.5" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
+              <dt>Precise targeting</dt>
+              <dd><kbd>⌘</kbd>-click adds an agent to the message targets, and every targeted window lights up on the canvas. Terminals and editors never receive shared messages.</dd>
+            </div>
+            <div class="detail">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <dt>Expand and restore</dt>
+              <dd>The title-bar control fills the canvas with one window; a second click restores it. Double-click the title to grow each edge to the nearest neighbour.</dd>
+            </div>
+            <div class="detail">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 12h5M10 15.5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <dt>An editor next to the agent</dt>
+              <dd>Files open in editor windows on the same canvas, right beside the terminal that is changing them.</dd>
+            </div>
+            <div class="detail">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 8 4 4-4 4M11 16h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <dt>Any CLI</dt>
+              <dd>Add your own agent with a name, executable and arguments. AgentRelay finds CLIs installed with Homebrew, npm, Bun, Cargo, Volta and asdf, and you can point it at any other path.</dd>
+            </div>
+            <div class="detail">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.5 7.5a2 2 0 0 1 2-2h4l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2v-10Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              <dt>A folder for every session</dt>
+              <dd>Projects live in a local catalog, so a new session opens in the right folder in a couple of clicks.</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="band install" id="install" aria-labelledby="install-title">
+        <div class="wrap install-grid">
+          <div class="install-cta">
+            <img src="../app-icon-256.png" width="136" height="136" alt="The AgentRelay icon: three terminal windows linked into one network" loading="lazy" />
+            <h2 id="install-title">Three steps to your first agent.</h2>
+            <p>A free, native macOS app. Signed, notarized by Apple, and it keeps itself up to date.</p>
+            <a class="button button-primary" href="https://github.com/setixela/agentrelay-download/releases/latest/download/AgentRelay-macOS.zip">
+              Download for macOS
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3.5v9m0 0 3.5-3.5M10 12.5 6.5 9M4 15.5h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </a>
+            <p class="requirements">macOS 14 or later · Apple Silicon and Intel</p>
+          </div>
+          <ol class="steps">
+            <li>
+              <h3>Download the archive</h3>
+              <p><code>AgentRelay-macOS.zip</code> is one universal build for Apple Silicon and Intel.</p>
+            </li>
+            <li>
+              <h3>Move it to Applications</h3>
+              <p>Unzip the archive and drag AgentRelay into Applications. When a new version ships, the app offers to update itself.</p>
+            </li>
+            <li>
+              <h3>Pick a folder and start an agent</h3>
+              <p>Click <b>New session</b>, choose a project and a CLI. Install Codex, Claude Code and other agents separately; <code>tmux</code> is already included.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
         <span>© 2026 AgentRelay</span>
-        <a href="https://github.com/setixela/agentrelay-download/releases/latest">Release details <span aria-hidden="true">↗</span></a>
-      </footer>
-    </div>
+        <div class="footer-links">
+          <a href="https://github.com/setixela/agentrelay-download/releases/latest">Release details <span aria-hidden="true">↗</span></a>
+          <a href="https://github.com/setixela/agentrelay-download/releases">All releases <span aria-hidden="true">↗</span></a>
+          <a href="../" lang="ru" hreflang="ru">Русский</a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

@@ -11,3 +11,13 @@ python3 scripts/update-release-metadata.py --app /path/to/exported/AgentRelay.ap
 ```
 
 Use the app inside the verified release ZIP and the release API's `publishedAt` value. The script displays Europe/Belgrade local time with seconds and a time-zone abbreviation. Publish the page only after the download asset works without authentication.
+
+## Page structure
+
+- `index.html` (Russian) and `en/index.html` (English) are static pages. Keep exactly one `<!-- RELEASE_META_START -->…<!-- RELEASE_META_END -->` block and the `AgentRelay-macOS.zip` download link on each page. The release scripts depend on both.
+- `styles.css` holds the whole design system. `site.js` scales the workspace replica and runs the relay demo and the layout arranger. Both animations respect `prefers-reduced-motion`.
+- `fonts/` contains self-hosted Unbounded, Geologica, and JetBrains Mono (latin and cyrillic subsets, OFL).
+- `og.png` and `en/og.png` are the social previews (1200×630).
+- Never edit `appcast.xml` by hand. It is signed for Sparkle.
+
+Preview locally with `python3 -m http.server` from the repository root.
