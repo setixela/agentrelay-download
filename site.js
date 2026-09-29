@@ -19,24 +19,22 @@
     apply();
   });
 
-  setUpRelayDemo(document.querySelector("[data-relay-demo]"));
+  setUpWorkDemo(document.querySelector("[data-work-demo]"));
   setUpArranger(document.querySelector("[data-arranger]"));
 
-  function setUpRelayDemo(root) {
+  function setUpWorkDemo(root) {
     if (!root) return;
     const stage = root.querySelector(".replica-stage");
     const canvas = root.querySelector(".rp-canvas");
-    const composer = root.querySelector(".rp-composer");
-    const typed = root.querySelector(".rp-typed");
-    const messageButton = root.querySelector(".rp-msg");
-    const sendButton = root.querySelector(".rp-send");
-    const status = root.querySelector(".rp-status");
-    const wires = root.querySelector(".rp-wires");
-    const cards = [...root.querySelectorAll(".rp-card")];
-    const tabs = [...root.querySelectorAll(".rp-bar .rp-tab.is-target")];
-    const toggle = document.querySelector("[data-relay-toggle]");
-    const message = root.dataset.message || "";
-    const sentLabel = status.dataset.sent || "";
+    const pointer = root.querySelector(".rp-pointer");
+    const link = root.querySelector(".rp-link");
+    const editor = root.querySelector(".rp-editor");
+    const editorTab = root.querySelector(".rp-tab-editor");
+    const tabs = [...root.querySelectorAll(".rp-bar .rp-tab")];
+    const toggle = document.querySelector("[data-demo-toggle]");
+    const card = (name) => root.querySelector(`.rp-card[data-agent="${name}"]`);
+    const lane = (name) => [...root.querySelectorAll(`.rp-reveal[data-lane="${name}"]`)];
+    const agents = ["codex", "claude"];
 
     let run = 0;
     let visible = false;
@@ -46,87 +44,93 @@
       setTimeout(() => (id === run ? resolve() : reject(new Error("cancelled"))), ms);
     });
 
-    function reveals(card) {
-      return [...card.querySelectorAll(".rp-reveal")];
+    function setStatus(name, state, animate) {
+      const chip = card(name).querySelector(".rp-chip");
+      chip.dataset.state = state;
+      chip.textContent = state[0].toUpperCase() + state.slice(1);
+      const tab = root.querySelector(`.rp-tab[data-tab="${name}"]`);
+      if (tab) tab.dataset.state = state;
+      if (animate) {
+        chip.classList.remove("is-flip");
+        void chip.offsetWidth;
+        chip.classList.add("is-flip");
+      }
+    }
+
+    function activate(tab) {
+      tabs.forEach((item) => item.classList.toggle("is-active", item === tab));
     }
 
     function showFinalState() {
       root.classList.remove("is-armed");
-      composer.classList.remove("is-open");
-      wires.replaceChildren();
-      typed.textContent = message;
-      status.textContent = sentLabel;
-      tabs.forEach((tab) => tab.classList.add("is-target"));
-      root.classList.add("has-targets");
-      cards.forEach((card) => {
-        card.classList.remove("is-hit");
-        reveals(card).forEach((line) => line.classList.add("is-shown"));
-      });
+      agents.forEach((name) => setStatus(name, "done", false));
+      root.querySelectorAll(".rp-reveal").forEach((line) => line.classList.add("is-shown"));
+      editor.classList.add("is-open");
+      editorTab.classList.add("is-open");
+      activate(editorTab);
+      link.classList.add("is-hover");
+      pointer.classList.remove("is-shown", "is-down");
     }
 
     function reset() {
       root.classList.add("is-armed");
-      composer.classList.remove("is-open");
-      wires.replaceChildren();
-      wires.classList.remove("is-faded");
-      typed.textContent = "";
-      status.textContent = "";
-      tabs.forEach((tab) => tab.classList.remove("is-target"));
-      root.classList.remove("has-targets");
-      cards.forEach((card) => {
-        card.classList.remove("is-hit");
-        reveals(card).forEach((line) => line.classList.remove("is-shown"));
-      });
+      agents.forEach((name) => setStatus(name, "working", false));
+      root.querySelectorAll(".rp-reveal").forEach((line) => line.classList.remove("is-shown"));
+      editor.classList.remove("is-open");
+      editorTab.classList.remove("is-open");
+      activate(root.querySelector('.rp-tab[data-tab="claude"]'));
+      link.classList.remove("is-hover");
+      pointer.classList.remove("is-shown", "is-down");
+      const start = pointIn(card("zsh"), 0.62, 0.8);
+      pointer.style.left = `${start.x}px`;
+      pointer.style.top = `${start.y}px`;
     }
 
     function pointIn(element, xFraction, yFraction) {
-      const stageBox = stage.getBoundingClientRect();
+      const scale = stage.getBoundingClientRect().width / stage.offsetWidth;
       const box = element.getBoundingClientRect();
       const canvasBox = canvas.getBoundingClientRect();
-      const scale = stageBox.width / stage.offsetWidth;
       return {
         x: (box.left + box.width * xFraction - canvasBox.left) / scale,
         y: (box.top + box.height * yFraction - canvasBox.top) / scale,
       };
     }
 
-    function drawWires() {
-      const ns = "http://www.w3.org/2000/svg";
-      const origin = pointIn(messageButton, 0.5, 1);
-      origin.y = Math.max(origin.y, 0);
-      return cards.map((card, index) => {
-        const target = pointIn(card.querySelector(".rp-in"), 0, 0.5);
-        target.x += 6;
-        const color = getComputedStyle(card).getPropertyValue("--c").trim();
-        const d = `M ${origin.x} ${origin.y} C ${origin.x} ${origin.y + target.y * 0.55}, ${target.x - 90} ${target.y}, ${target.x} ${target.y}`;
-        const path = document.createElementNS(ns, "path");
-        path.setAttribute("d", d);
-        path.style.color = color;
-        path.style.stroke = color;
-        const dot = document.createElementNS(ns, "circle");
-        dot.setAttribute("r", "4");
-        dot.style.color = color;
-        dot.style.offsetPath = `path("${d}")`;
-        wires.append(path, dot);
-        const length = path.getTotalLength();
-        path.style.strokeDasharray = `${length}`;
-        path.style.strokeDashoffset = `${length}`;
-        const delay = index * 110;
-        path.animate(
-          [{ strokeDashoffset: length }, { strokeDashoffset: 0 }],
-          { duration: 820, delay, easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "forwards" }
-        );
-        dot.animate(
-          [
-            { offsetDistance: "0%", opacity: 0 },
-            { offsetDistance: "8%", opacity: 1, offset: 0.08 },
-            { offsetDistance: "96%", opacity: 1, offset: 0.96 },
-            { offsetDistance: "100%", opacity: 0 },
-          ],
-          { duration: 820, delay, easing: "cubic-bezier(0.45, 0, 0.2, 1)", fill: "forwards" }
-        );
-        return delay + 820;
-      });
+    async function streamCodex(id) {
+      await sleep(900, id);
+      for (const line of lane("codex")) {
+        line.classList.add("is-shown");
+        await sleep(820 + Math.random() * 420, id);
+      }
+      setStatus("codex", "done", true);
+    }
+
+    async function streamClaude(id) {
+      await sleep(500, id);
+      const lines = lane("claude");
+      for (const [index, line] of lines.entries()) {
+        line.classList.add("is-shown");
+        if (index === 2) setTimeout(() => id === run && lane("zsh").forEach((l) => l.classList.add("is-shown")), 700);
+        await sleep(640 + Math.random() * 320, id);
+      }
+      setStatus("claude", "done", true);
+      await sleep(700, id);
+      pointer.classList.add("is-shown");
+      await sleep(200, id);
+      const target = pointIn(link, 0.5, 0.55);
+      pointer.style.left = `${target.x - 3}px`;
+      pointer.style.top = `${target.y - 2}px`;
+      await sleep(950, id);
+      link.classList.add("is-hover");
+      await sleep(380, id);
+      pointer.classList.add("is-down");
+      await sleep(150, id);
+      pointer.classList.remove("is-down");
+      editor.classList.add("is-open");
+      editorTab.classList.add("is-open");
+      activate(editorTab);
+      await sleep(700, id);
+      pointer.classList.remove("is-shown");
     }
 
     async function play() {
@@ -134,51 +138,14 @@
       try {
         while (true) {
           reset();
-          await sleep(700, id);
-          messageButton.classList.add("is-pressed");
-          await sleep(160, id);
-          messageButton.classList.remove("is-pressed");
-          composer.classList.add("is-open");
-          await sleep(350, id);
-          for (const tab of tabs) {
-            tab.classList.add("is-target");
-            await sleep(140, id);
-          }
-          root.classList.add("has-targets");
-          await sleep(300, id);
-          for (let i = 1; i <= message.length; i++) {
-            typed.textContent = message.slice(0, i);
-            await sleep(message[i - 1] === " " ? 55 : 32 + Math.random() * 26, id);
-          }
-          await sleep(520, id);
-          sendButton.classList.add("is-pressed");
-          await sleep(180, id);
-          sendButton.classList.remove("is-pressed");
-          composer.classList.remove("is-open");
-          await sleep(160, id);
-          const arrivals = drawWires();
-          await Promise.all(cards.map(async (card, index) => {
-            await sleep(arrivals[index], id);
-            card.classList.add("is-hit");
-            const lines = reveals(card);
-            for (const line of lines) {
-              line.classList.add("is-shown");
-              await sleep(line.classList.contains("rp-in") ? 520 : 380 + Math.random() * 380, id);
-            }
-          }));
-          status.textContent = sentLabel;
+          await Promise.all([streamCodex(id), streamClaude(id)]);
+          await sleep(4800, id);
+          editor.classList.remove("is-open");
           await sleep(500, id);
-          wires.classList.add("is-faded");
-          cards.forEach((card) => card.classList.remove("is-hit"));
-          await sleep(5200, id);
         }
       } catch {
         // A newer run or a pause cancelled this loop.
       }
-    }
-
-    function stop() {
-      run++;
     }
 
     function update() {
@@ -190,7 +157,7 @@
         }
       } else {
         root.classList.remove("is-playing");
-        stop();
+        run++;
         showFinalState();
       }
     }
