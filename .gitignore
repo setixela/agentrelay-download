@@ -1,0 +1,8 @@
+.impeccable/review/
+.impeccable/mocks/
+.impeccable/concepts/
+.impeccable/questions/
+.impeccable/decisions/
+.impeccable/cache/
+__pycache__/
+.playwright-cli/

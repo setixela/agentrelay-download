@@ -1,0 +1,16 @@
+{
+  "tag": "v1.1.5",
+  "published_at": "2026-10-01T09:24:20Z",
+  "url": "https://github.com/setixela/agentrelay-download/releases/tag/v1.1.5",
+  "body": "AgentRelay 1.1.5 (build 20)\n\n## Changes\n\n- Keeps terminal and editor content live while moving workspace cards and reduces terminal reflow during swap previews.\n- Makes joined-window swaps follow the pointer and remain reliable across repeated drags.\n- Restores regular toolbar symbol sizes and individual command accessibility labels.\n- Adds inline session-name editing and persistent custom session colors.\n- Wraps editor lines by default, with a per-window toggle.\n- Adds a native Settings window and improves terminal font loading.\n- Exports complete Copilot conversation history independently of terminal scrollback and improves working/idle detection.\n- Adds an experimental Metal terminal renderer; CoreGraphics remains the default. 120 fps is not established.\n\n## Requirements\n\nmacOS 14 or later. Universal app for Apple Silicon and Intel Macs. tmux and the native MCP bridge are bundled; install the command-line tools for the AI providers you use separately.\n\nDeveloper ID signed and notarized by Apple.\n\n## Download integrity\n\nAsset: `AgentRelay-macOS.zip`\n\nSHA-256:\n\n```text\n052468d7877eeab4dc0a85d345937ed5078f7e9d25a156e3dcae048fa90b39b1\n```",
+  "changes": [
+    "Keeps terminal and editor content live while moving workspace cards and reduces terminal reflow during swap previews.",
+    "Makes joined-window swaps follow the pointer and remain reliable across repeated drags.",
+    "Restores regular toolbar symbol sizes and individual command accessibility labels.",
+    "Adds inline session-name editing and persistent custom session colors.",
+    "Wraps editor lines by default, with a per-window toggle.",
+    "Adds a native Settings window and improves terminal font loading.",
+    "Exports complete Copilot conversation history independently of terminal scrollback and improves working/idle detection.",
+    "Adds an experimental Metal terminal renderer; CoreGraphics remains the default. 120 fps is not established."
+  ]
+}

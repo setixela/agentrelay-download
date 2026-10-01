@@ -1,0 +1,317 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-01T11:40:20.256967+00:00",
+  "title": "Design System: AgentRelay review prototype",
+  "extensions": {
+    "colorMeta": {
+      "blue": {
+        "role": "primary",
+        "displayName": "Blue",
+        "tonalRamp": [
+          "oklch(15% 0.2146 266.55)",
+          "oklch(26% 0.2146 266.55)",
+          "oklch(38% 0.2146 266.55)",
+          "oklch(49% 0.2146 266.55)",
+          "oklch(61% 0.2146 266.55)",
+          "oklch(72% 0.2146 266.55)",
+          "oklch(84% 0.2146 266.55)",
+          "oklch(95% 0.2146 266.55)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0661 266.25)",
+          "oklch(26% 0.0661 266.25)",
+          "oklch(38% 0.0661 266.25)",
+          "oklch(49% 0.0661 266.25)",
+          "oklch(61% 0.0661 266.25)",
+          "oklch(72% 0.0661 266.25)",
+          "oklch(84% 0.0661 266.25)",
+          "oklch(95% 0.0661 266.25)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(15% 0.0524 263.87)",
+          "oklch(26% 0.0524 263.87)",
+          "oklch(38% 0.0524 263.87)",
+          "oklch(49% 0.0524 263.87)",
+          "oklch(61% 0.0524 263.87)",
+          "oklch(72% 0.0524 263.87)",
+          "oklch(84% 0.0524 263.87)",
+          "oklch(95% 0.0524 263.87)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "tonalRamp": [
+          "oklch(15% 0.0000 89.88)",
+          "oklch(26% 0.0000 89.88)",
+          "oklch(38% 0.0000 89.88)",
+          "oklch(49% 0.0000 89.88)",
+          "oklch(61% 0.0000 89.88)",
+          "oklch(72% 0.0000 89.88)",
+          "oklch(84% 0.0000 89.88)",
+          "oklch(95% 0.0000 89.88)"
+        ]
+      },
+      "ice": {
+        "role": "neutral",
+        "displayName": "Ice",
+        "tonalRamp": [
+          "oklch(15% 0.0115 264.51)",
+          "oklch(26% 0.0115 264.51)",
+          "oklch(38% 0.0115 264.51)",
+          "oklch(49% 0.0115 264.51)",
+          "oklch(61% 0.0115 264.51)",
+          "oklch(72% 0.0115 264.51)",
+          "oklch(84% 0.0115 264.51)",
+          "oklch(95% 0.0115 264.51)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "tonalRamp": [
+          "oklch(15% 0.0237 264.45)",
+          "oklch(26% 0.0237 264.45)",
+          "oklch(38% 0.0237 264.45)",
+          "oklch(49% 0.0237 264.45)",
+          "oklch(61% 0.0237 264.45)",
+          "oklch(72% 0.0237 264.45)",
+          "oklch(84% 0.0237 264.45)",
+          "oklch(95% 0.0237 264.45)"
+        ]
+      },
+      "lime": {
+        "role": "primary",
+        "displayName": "Lime",
+        "tonalRamp": [
+          "oklch(15% 0.1645 119.10)",
+          "oklch(26% 0.1645 119.10)",
+          "oklch(38% 0.1645 119.10)",
+          "oklch(49% 0.1645 119.10)",
+          "oklch(61% 0.1645 119.10)",
+          "oklch(72% 0.1645 119.10)",
+          "oklch(84% 0.1645 119.10)",
+          "oklch(95% 0.1645 119.10)"
+        ]
+      },
+      "ui": {
+        "role": "secondary",
+        "displayName": "Ui",
+        "tonalRamp": [
+          "oklch(15% 0.1753 301.60)",
+          "oklch(26% 0.1753 301.60)",
+          "oklch(38% 0.1753 301.60)",
+          "oklch(49% 0.1753 301.60)",
+          "oklch(61% 0.1753 301.60)",
+          "oklch(72% 0.1753 301.60)",
+          "oklch(84% 0.1753 301.60)",
+          "oklch(95% 0.1753 301.60)"
+        ]
+      },
+      "api": {
+        "role": "secondary",
+        "displayName": "Api",
+        "tonalRamp": [
+          "oklch(15% 0.0945 231.13)",
+          "oklch(26% 0.0945 231.13)",
+          "oklch(38% 0.0945 231.13)",
+          "oklch(49% 0.0945 231.13)",
+          "oklch(61% 0.0945 231.13)",
+          "oklch(72% 0.0945 231.13)",
+          "oklch(84% 0.0945 231.13)",
+          "oklch(95% 0.0945 231.13)"
+        ]
+      },
+      "action-hover": {
+        "role": "primary",
+        "displayName": "Action Hover",
+        "tonalRamp": [
+          "oklch(15% 0.1511 118.83)",
+          "oklch(26% 0.1511 118.83)",
+          "oklch(38% 0.1511 118.83)",
+          "oklch(49% 0.1511 118.83)",
+          "oklch(61% 0.1511 118.83)",
+          "oklch(72% 0.1511 118.83)",
+          "oklch(84% 0.1511 118.83)",
+          "oklch(95% 0.1511 118.83)"
+        ]
+      },
+      "row-hover": {
+        "role": "neutral",
+        "displayName": "Row Hover",
+        "tonalRamp": [
+          "oklch(15% 0.0243 267.92)",
+          "oklch(26% 0.0243 267.92)",
+          "oklch(38% 0.0243 267.92)",
+          "oklch(49% 0.0243 267.92)",
+          "oklch(61% 0.0243 267.92)",
+          "oklch(72% 0.0243 267.92)",
+          "oklch(84% 0.0243 267.92)",
+          "oklch(95% 0.0243 267.92)"
+        ]
+      },
+      "row-selected": {
+        "role": "neutral",
+        "displayName": "Row Selected",
+        "tonalRamp": [
+          "oklch(15% 0.0351 271.57)",
+          "oklch(26% 0.0351 271.57)",
+          "oklch(38% 0.0351 271.57)",
+          "oklch(49% 0.0351 271.57)",
+          "oklch(61% 0.0351 271.57)",
+          "oklch(72% 0.0351 271.57)",
+          "oklch(84% 0.0351 271.57)",
+          "oklch(95% 0.0351 271.57)"
+        ]
+      },
+      "diff-surface": {
+        "role": "neutral",
+        "displayName": "Diff Surface",
+        "tonalRamp": [
+          "oklch(15% 0.0150 260.73)",
+          "oklch(26% 0.0150 260.73)",
+          "oklch(38% 0.0150 260.73)",
+          "oklch(49% 0.0150 260.73)",
+          "oklch(61% 0.0150 260.73)",
+          "oklch(72% 0.0150 260.73)",
+          "oklch(84% 0.0150 260.73)",
+          "oklch(95% 0.0150 260.73)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline; breakpoint variants remain in source."
+      },
+      "repository": {
+        "displayName": "Repository detail",
+        "purpose": "Paths, hashes, branch references and code."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "anchor-scroll",
+        "value": "smooth",
+        "purpose": "Anchor navigation; auto under prefers-reduced-motion: reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-desktop",
+        "value": "1150px"
+      },
+      {
+        "name": "single-column",
+        "value": "850px"
+      },
+      {
+        "name": "phone",
+        "value": "520px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main download action.",
+      "html": "<a class=\"ds-action\" href=\"#download\">Download for macOS</a>",
+      "css": ".ds-action{display:inline-flex;align-items:center;justify-content:center;gap:18px;padding:17px 24px;border-radius:8px;font-weight:600;font-size:15px;text-decoration:none;line-height:1.4;min-height:54px;background:var(--lime);color:var(--ink);font-family:Geologica,sans-serif;}.ds-action:hover{background:#e6ff84}.ds-action:focus-visible{outline:3px solid var(--blue);outline-offset:5px}"
+    },
+    {
+      "name": "Small action",
+      "kind": "button",
+      "refersTo": "button-small",
+      "description": "Compact navigation action.",
+      "html": "<a class=\"ds-small\" href=\"#download\">Download</a>",
+      "css": ".ds-small{display:inline-flex;align-items:center;justify-content:center;padding:11px 17px;border-radius:8px;font-weight:600;font-size:13px;text-decoration:none;line-height:1.4;min-height:42px;background:var(--lime);color:var(--ink);font-family:Geologica,sans-serif;}.ds-small:hover{background:#e6ff84}.ds-small:focus-visible{outline:3px solid var(--blue);outline-offset:5px}"
+    },
+    {
+      "name": "View control",
+      "kind": "button",
+      "refersTo": "view-control",
+      "description": "Outlined selector with a visible pressed state.",
+      "html": "<button class=\"ds-view\" type=\"button\" aria-pressed=\"true\">Branches and merges</button>",
+      "css": ".ds-view{background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:6px;font-size:14px;padding:12px 18px;min-height:46px;cursor:pointer;font-family:Geologica,sans-serif;}.ds-view:hover{border-color:var(--blue)}.ds-view[aria-pressed=\"true\"]{background:var(--blue);color:#fff;border-color:var(--blue)}.ds-view:focus-visible{outline:3px solid var(--blue);outline-offset:5px}"
+    },
+    {
+      "name": "Inspection surface",
+      "kind": "card",
+      "refersTo": "inspection-surface",
+      "description": "Flat framed repository information.",
+      "html": "<figure class=\"ds-inspection\"><h4>Changed files</h4><code>src/checkout.tsx</code><p>Informative placeholder · illustrative data</p></figure>",
+      "css": ".ds-inspection{margin:0;padding:28px;background:var(--paper);color:var(--ink);border-radius:var(--radius);font-family:Geologica,sans-serif;}.ds-inspection h4{margin:0 0 18px;font-weight:650;font-size:19px;line-height:1.13;letter-spacing:-.03em}.ds-inspection code{font-family:\"JetBrains Mono\",monospace;font-size:11px}.ds-inspection p{margin:17px 0 0;color:var(--muted);font-size:11px;line-height:1.6}"
+    },
+    {
+      "name": "Commit inspection row",
+      "kind": "custom",
+      "refersTo": "commit-row",
+      "description": "Compact selected repository row; panel state needs the site runtime.",
+      "html": "<button class=\"ds-commit\" type=\"button\" aria-pressed=\"true\"><span>main</span><code>8d4c2f1</code><strong>Merge API and interface</strong></button>",
+      "css": ".ds-commit{display:grid;grid-template-columns:1fr auto;width:100%;text-align:left;min-height:52px;border:0;background:transparent;color:var(--ink);padding:7px 9px;border-radius:6px;line-height:1.25;cursor:pointer;font-family:Geologica,sans-serif;}.ds-commit span{font-family:\"JetBrains Mono\",monospace;font-size:11px;font-weight:650;color:var(--blue)}.ds-commit code{font-family:\"JetBrains Mono\",monospace;font-size:11px;color:var(--muted)}.ds-commit strong{font-size:11px;font-weight:500;grid-column:1/-1;margin-top:4px}.ds-commit:hover{background:#dfe6f7}.ds-commit[aria-pressed=\"true\"]{background:#dbe3fc}.ds-commit:focus-visible{outline:3px solid var(--blue);outline-offset:5px}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "description": "Compact navigation against the cobalt ground.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"#workflow\">Workflow</a><a href=\"#capabilities\">Capabilities</a><a href=\"#faq\">Questions</a></nav>",
+      "css": ".ds-nav{display:flex;gap:28px;align-items:center;padding:22px;background:var(--blue);color:#fff;font-size:14px;font-family:Geologica,sans-serif;}.ds-nav a{color:inherit;text-decoration:none}.ds-nav a:hover{color:var(--lime)}.ds-nav a:focus-visible{outline:3px solid var(--lime);outline-offset:5px}"
+    },
+    {
+      "name": "FAQ disclosure",
+      "kind": "custom",
+      "description": "Native keyboard-operable expandable information.",
+      "html": "<details class=\"ds-faq\"><summary>Do I need a subscription?<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"/></svg></summary><p>AgentRelay is a free download; CLI provider terms are separate.</p></details>",
+      "css": ".ds-faq{color:var(--ink);border-block:1px solid var(--line);font-family:Geologica,sans-serif;}.ds-faq summary{display:flex;align-items:center;justify-content:space-between;gap:24px;cursor:pointer;font-size:16px;font-weight:500;line-height:1.5;padding-block:22px;list-style:none}.ds-faq summary::-webkit-details-marker{display:none}.ds-faq summary:hover{color:var(--blue)}.ds-faq summary:focus-visible{outline:3px solid var(--blue);outline-offset:5px}.ds-faq svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.ds-faq[open]>summary svg{transform:rotate(180deg)}.ds-faq p{color:var(--muted);font-size:14px;line-height:1.65;padding-right:40px;padding-bottom:5px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Code-Review Workbench",
+    "overview": "The Code-Review Workbench uses a cobalt ground, ice-white inspection surfaces, dark blue ink and an acid-lime action. Substantial geometric text carries the human explanation; compact monospaced text identifies repository material. Broad page bands and restrained ruled lists give structured information room to breathe.\n\nThis records the implemented Russian and English review prototype, not a permanent owner-approved identity. The name and existing app icon are durable product commitments; the surface narrative and first-viewport composition remain in `.impeccable/surfaces/index-html.md`.",
+    "keyCharacteristics": [
+      "Cobalt grounds with contrasting lime actions.",
+      "Geologica explanation and JetBrains Mono repository detail.",
+      "Flat inspection surfaces, thin rules and compact selectable rows.",
+      "Shared responsive visual system for Russian and English."
+    ],
+    "rules": [
+      {
+        "name": "The Track Identity Rule",
+        "body": "Keep cobalt, violet and teal paired consistently with the same track across branch lines, dots and activity intervals.",
+        "section": "colors"
+      },
+      {
+        "name": "The Repository Type Rule",
+        "body": "Use JetBrains Mono for repository identifiers and code; keep explanatory language in Geologica.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Inspection Rule",
+        "body": "Separate inspection material by surface tone and thin rules, without adding shadows.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep the existing AgentRelay icon and name.",
+      "Do distinguish selected, hovered and keyboard-focused controls.",
+      "Do keep synthetic inspection data explicitly labeled as illustrative.",
+      "Do use the shared stylesheet for both languages and allow translated text to wrap."
+    ],
+    "donts": [
+      "Don't treat this prototype as a standing owner-approved visual identity.",
+      "Don't use branch color alone to identify a track; retain its text label.",
+      "Don't replace informative schematic content with decorative autoplay animation."
+    ]
+  }
+}
