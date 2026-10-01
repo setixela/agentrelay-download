@@ -1,0 +1,233 @@
+{
+  "lang": "en",
+  "title": "AgentRelay — vibe coding for senior engineers",
+  "description": "A native macOS workspace: AI agents write code and make commits while you follow activity, branches, merges and changes in one window.",
+  "skip": "Skip to content",
+  "top": "AgentRelay, back to top",
+  "navLabel": "Main navigation",
+  "menu": "Menu",
+  "nav": [
+    "Workflow",
+    "Capabilities",
+    "Questions",
+    "Download"
+  ],
+  "language": "Website language",
+  "otherLang": "RU",
+  "otherPath": "../",
+  "headline": [
+    "Vibe coding.",
+    "Senior mindset."
+  ],
+  "promise": [
+    "Agents do the work.",
+    "You see the whole picture."
+  ],
+  "lead": "Run AI agents side by side. Let them write code and make commits — follow their activity, branches and merges in one native workspace for macOS.",
+  "download": "Download for macOS",
+  "explore": "Explore the workflow",
+  "platform": "macOS 14+ · Apple Silicon and Intel",
+  "free": "Free download. Install AI CLIs separately.",
+  "demoTitle": "One project. Several agents.",
+  "demoLabel": "Workflow schematic · example, not a screenshot",
+  "demoProject": "Project: checkout",
+  "commitHint": "Select a commit to inspect its changes",
+  "agents": [
+    "Codex · API",
+    "Claude Code · UI",
+    "Copilot · tests"
+  ],
+  "commitTitles": [
+    "Merge API and interface",
+    "Add checkout form",
+    "Add checkout API"
+  ],
+  "commitNotes": [
+    "Two branches join main. History keeps both lines of work.",
+    "A commit on agent/ui. Open the changes to inspect the result.",
+    "A commit on agent/api. In this example, the agent made the commit itself."
+  ],
+  "files": [
+    "Changed files",
+    "Branch",
+    "Example diff"
+  ],
+  "providerLead": "Your agents. Your tools.",
+  "providerNote": "Codex, Claude Code, GitHub Copilot CLI, Hermes, Pi — or your own CLI command. AgentRelay runs installed programs with their existing authentication and permissions.",
+  "flowTitle": "Set the direction. Follow the work as it comes together.",
+  "flowLead": "Parallel tasks need shared context: who is working on what, what reached the commits and how the branches connect.",
+  "steps": [
+    [
+      "Assign the tasks",
+      "Start agents in the right folders. Send a prompt to one or several through the shared composer."
+    ],
+    [
+      "Agents write and commit",
+      "Each runs through its own CLI. Use Git worktrees when you want separate working copies."
+    ],
+    [
+      "Observe the result",
+      "Follow activity, open the history graph and inspect diffs. See where branches diverge and where they join."
+    ]
+  ],
+  "observeTitle": "From a working agent to a specific line of code.",
+  "observeLead": "Switch between three schematics of the same workflow. In the app, terminals and editors share the canvas; Git and the timeline expose history and activity.",
+  "views": [
+    "Branches and merges",
+    "Agent activity",
+    "Code and changes"
+  ],
+  "viewLabel": "Choose a schematic",
+  "previewLabel": "Informative placeholder · illustrative data",
+  "branchTitle": "Commits show how the result came together.",
+  "branchText": "History graph, branches, tags, diffs and blame. Compare changes with a saved baseline, open worktrees and inspect merges and rebases without switching Git clients.",
+  "branchNote": "Agents can run Git commands through their CLIs. AgentRelay shows the repository and provides Git tools; automatic merging depends on your workflow.",
+  "activityTitle": "Who is working. Who is waiting. What happened earlier.",
+  "activityText": "Working, Idle and Done beside each session. The timeline shows activity over time and lets you revisit the last 24 hours.",
+  "activityNote": "Status is inferred from the CLI screen. Done is an activity signal, not verification of task completion or quality.",
+  "timeline": "Activity over one hour",
+  "timelineKey": [
+    "Working",
+    "Waiting"
+  ],
+  "editorTitle": "Inspect a detail without losing the larger context.",
+  "editorText": "Open paths from terminal output directly in the editor. Find files with Quick Open, read highlighted code and inspect diffs down to individual lines.",
+  "editorNote": "A baseline shows changes since a selected moment. It does not identify which agent authored a line.",
+  "workspaceTitle": "A workspace shaped around the task.",
+  "workspaceLead": "Agents, a regular shell and files side by side. Arrange what you need and move between contexts without losing your windows.",
+  "workspaceFeatures": [
+    [
+      "Arrange your canvas",
+      "Tile, columns, rows, cascade and golden ratio. Cards join at their edges and resize together."
+    ],
+    [
+      "Context in the title",
+      "Working folder, branch, name and card color. The window toolbar brings you back to the right session."
+    ],
+    [
+      "One prompt, several agents",
+      "Select recipients and send shared text. Previous prompts are available in the composer."
+    ],
+    [
+      "Real terminals",
+      "Your CLIs, commands, fonts and palettes. Keep a regular shell beside your agents."
+    ]
+  ],
+  "canvasLabel": "Canvas schematic · illustrative layout and data",
+  "canvasNames": [
+    "API · Codex",
+    "Interface · Claude Code",
+    "Checks · zsh",
+    "File · editor"
+  ],
+  "persistTitle": "Close the app. Keep the agents working.",
+  "persistText": "Agent processes live in tmux. They keep running when you quit AgentRelay; next time you open it, the app restores the cards and reconnects to those processes.",
+  "persistNote": "tmux is bundled. Rebooting the Mac ends the processes; regular Terminal sessions open a fresh shell after an app restart.",
+  "persistDiagram": [
+    "AgentRelay closed",
+    "Agent processes keep running",
+    "AgentRelay opened again"
+  ],
+  "mcpTitle": "Want an agent to manage sessions? Use MCP.",
+  "mcpText": "An optional local bridge lets an AI client list sessions, create new ones, send input and read output through four tools.",
+  "mcpNote": "You authorize access for one project. Input and output are available only for sessions created under the current authorization. MCP is off by default.",
+  "mcpTools": [
+    [
+      "list_sessions",
+      "List sessions"
+    ],
+    [
+      "create_session",
+      "Create a session"
+    ],
+    [
+      "send_input",
+      "Send input"
+    ],
+    [
+      "read_output",
+      "Read output"
+    ]
+  ],
+  "detailsTitle": "And the details you use every day.",
+  "details": [
+    [
+      "Keep the conversation",
+      "Export Codex, Claude Code and Copilot chats. Copy terminal text or open it in the editor."
+    ],
+    [
+      "Open a file",
+      "Quick Open by name and path, terminal file links and external-change protection when saving."
+    ],
+    [
+      "Configure a CLI",
+      "Custom name, executable, arguments and environment variables for built-in and custom providers."
+    ],
+    [
+      "Work with Git",
+      "History and diffs; file, hunk and line staging; stash, branches, tags, merges, rebases and worktrees."
+    ],
+    [
+      "Pass an image",
+      "Drop an image into a terminal: AgentRelay inserts its path for the CLI."
+    ],
+    [
+      "Keep your hands on the keyboard",
+      "Shortcuts for new sessions, file search, window switching and canvas layouts."
+    ]
+  ],
+  "faqTitle": "Before your first session.",
+  "faq": [
+    [
+      "Do agents make commits and merges themselves?",
+      "CLI agents can run Git commands under your instructions and their available permissions. AgentRelay shows the graph and changes and provides Git tools. Commit, validation and merge policies remain part of your workflow."
+    ],
+    [
+      "Which agents are bundled?",
+      "Launch profiles for Codex, Claude Code, GitHub Copilot CLI, Hermes and Pi are built in. Install and authenticate the CLIs separately. You can add other local commands."
+    ],
+    [
+      "Is it free?",
+      "AgentRelay is a free download. AI providers have their own terms and pricing; their subscriptions are not included."
+    ],
+    [
+      "What survives a restart?",
+      "Agent tmux processes survive quitting and reconnecting to the app. After a Mac reboot, you need to start them again. Regular Terminal sessions open a fresh shell."
+    ],
+    [
+      "Is agent work isolated?",
+      "Sessions have separate processes and working folders, but AgentRelay does not automatically isolate files. Use Git worktrees for separate repository copies. MCP is not a sandbox either."
+    ],
+    [
+      "Which language does the app use?",
+      "The application UI is currently in English. This website is available in Russian and English."
+    ]
+  ],
+  "installTitle": "Let the agents work.\nKeep the picture in view.",
+  "installLead": "Download AgentRelay, choose a project and start your first CLI.",
+  "installSteps": [
+    [
+      "Download and extract",
+      "A universal ZIP for Apple Silicon and Intel."
+    ],
+    [
+      "Move to Applications",
+      "The app is signed and notarized. Built-in updates offer new versions."
+    ],
+    [
+      "Open your project",
+      "Choose an installed CLI with New session. Assign a task and open the Git graph."
+    ]
+  ],
+  "releases": "What’s new in this version",
+  "allReleases": "All releases",
+  "footer": "A native workspace for AI agents.",
+  "backTop": "Back to top",
+  "jsNote": "All schematics are available below. Enable JavaScript to switch between examples.",
+  "canvasTexts": [
+    "API ready: commit 4b8f603",
+    "Checkout form ready: commit c2e7a91",
+    "Checks run in a separate shell",
+    "Code open beside the agents"
+  ]
+}

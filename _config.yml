@@ -1,0 +1,11 @@
+# Keep authoring material out of the published GitHub Pages site.
+exclude:
+  - AGENTS.md
+  - PRODUCT.md
+  - DESIGN.md
+  - README.md
+  - content
+  - docs
+  - scripts
+  - .impeccable
+  - .playwright-cli

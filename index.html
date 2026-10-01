@@ -1,385 +1,136 @@
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0d1017" />
-    <title>AgentRelay — терминал для CLI-агентов на macOS</title>
-    <meta name="description" content="AgentRelay — нативное приложение для macOS: Codex, Claude Code, GitHub Copilot CLI и другие агенты в настоящих терминалах на одном холсте: статус каждого агента, кликабельные пути, сессии, которые переживают перезапуск." />
-    <meta property="og:title" content="AgentRelay для macOS" />
-    <meta property="og:description" content="Все CLI-агенты — в одном окне. Видно, кто закончил; пути открываются в редакторе; сессии живут в tmux." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://setixela.github.io/agentrelay-download/" />
-    <meta property="og:image" content="https://setixela.github.io/agentrelay-download/og.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="alternate" hreflang="ru" href="https://setixela.github.io/agentrelay-download/" />
-    <link rel="alternate" hreflang="en" href="https://setixela.github.io/agentrelay-download/en/" />
-    <link rel="icon" type="image/png" href="./app-icon-64.png" />
-    <link rel="apple-touch-icon" href="./app-icon-256.png" />
-    <link rel="preload" href="./fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="./fonts/geologica-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="./styles.css?v=73194ae8" />
-    <script src="./site.js?v=6fc71216" defer></script>
-  </head>
-  <body>
-    <a class="skip-link" href="#main">К содержимому</a>
-
-    <div class="wrap">
-      <header class="site-header">
-        <a class="brand" href="#top" aria-label="AgentRelay, наверх">
-          <img src="./app-icon-64.png" width="32" height="32" alt="" />
-          <span>AgentRelay</span>
-        </a>
-        <nav class="header-nav" aria-label="Основная навигация">
-          <a class="nav-link" href="#terminal">Возможности</a>
-          <a class="nav-link" href="#install">Установка</a>
-          <div class="language-switch" role="group" aria-label="Язык страницы">
-            <span aria-current="page">RU</span>
-            <a href="./en/" lang="en" hreflang="en">EN</a>
-          </div>
-          <a class="button button-ghost button-small" href="https://github.com/setixela/agentrelay-download/releases/latest/download/AgentRelay-macOS.zip">
-            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3.5v9m0 0 3.5-3.5M10 12.5 6.5 9M4 15.5h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
-            <span>Скачать</span>
-          </a>
-        </nav>
-      </header>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#203fc9">
+  <title>AgentRelay — вайбкодинг для сеньоров</title>
+  <meta name="description" content="Нативное рабочее пространство для macOS: AI-агенты пишут код и делают коммиты, а вы видите активность, ветки, слияния и изменения в одном окне.">
+  <meta property="og:title" content="AgentRelay — вайбкодинг для сеньоров">
+  <meta property="og:description" content="Нативное рабочее пространство для macOS: AI-агенты пишут код и делают коммиты, а вы видите активность, ветки, слияния и изменения в одном окне.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://setixela.github.io/agentrelay-download/">
+  <meta property="og:image" content="https://setixela.github.io/agentrelay-download/app-icon-256.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://setixela.github.io/agentrelay-download/">
+  <link rel="alternate" hreflang="ru" href="https://setixela.github.io/agentrelay-download/">
+  <link rel="alternate" hreflang="en" href="https://setixela.github.io/agentrelay-download/en/">
+  <link rel="icon" type="image/png" href="./app-icon-64.png">
+  <link rel="apple-touch-icon" href="./app-icon-256.png">
+  <link rel="preload" href="./fonts/geologica-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./styles.css?v=974bbe56">
+  <script src="./site.js?v=ca8410d7" defer></script>
+</head>
+<body id="top">
+<a class="skip-link" href="#main">К содержимому</a>
+<div class="hero-band">
+  <header class="site-header wrap">
+    <a class="brand" href="#top" aria-label="AgentRelay, наверх"><img src="./app-icon-64.png" width="36" height="36" alt=""><span>AgentRelay</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Меню<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav id="main-nav" aria-label="Основная навигация"><a href="#workflow">Сценарий</a><a href="#capabilities">Возможности</a><a href="#faq">Вопросы</a><div class="language-switch" aria-label="Язык сайта"><span aria-current="page">RU</span><a data-language href="./en/" lang="en" hreflang="en">EN</a></div><a class="button button-primary button-small" href="https://github.com/setixela/agentrelay-download/releases/latest/download/AgentRelay-macOS.zip">Скачать<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></nav>
+  </header>
+</div>
+<main id="main">
+  <section class="hero-band" aria-labelledby="hero-title"><div class="hero wrap">
+    <div class="hero-copy">
+      <h1 id="hero-title">Вайбкодинг<span>для сеньоров.</span></h1>
+      <p class="hero-promise">Агенты делают работу.<br>Вы видите всю картину.</p>
+      <p class="hero-lead">Запускайте AI-агентов рядом. Пусть пишут код и делают коммиты — следите за их работой, деревом веток и слияниями в одном нативном пространстве для macOS.</p>
+      <div class="hero-actions"><a class="button button-primary" href="https://github.com/setixela/agentrelay-download/releases/latest/download/AgentRelay-macOS.zip">Скачать для macOS<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><a class="text-link" href="#workflow">Посмотреть сценарий</a></div>
+      <p class="platform">macOS 14+ · Apple Silicon и Intel</p><p class="hero-fine">Бесплатно. CLI-агенты устанавливаются отдельно.</p>
+      <a class="hero-release" data-open-notes href="#release-notes">Что нового в 1.1.5<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
     </div>
-
-    <main id="main">
-      <section class="hero" id="top" aria-labelledby="hero-title">
-        <div class="wrap">
-          <div class="hero-copy">
-            <h1 id="hero-title">Все CLI-агенты —<span class="line-2">в одном окне.</span></h1>
-            <p class="hero-lead">AgentRelay — нативный терминал для macOS, в&nbsp;котором Codex, Claude Code, GitHub Copilot CLI и&nbsp;другие агенты работают рядом, каждый в&nbsp;своём окне на общем холсте. Видно, кто ещё думает, а&nbsp;кто закончил, пути из вывода открываются в&nbsp;редакторе, а&nbsp;если закрыть приложение, агенты продолжат работу.</p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="https://github.com/setixela/agentrelay-download/releases/latest/download/AgentRelay-macOS.zip">
-                Скачать для macOS
-                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3.5v9m0 0 3.5-3.5M10 12.5 6.5 9M4 15.5h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
-              </a>
-              <div class="hero-meta">
-                <p>macOS 14 и новее · Apple Silicon и Intel · бесплатно</p>
-                <!-- RELEASE_META_START -->
-            <p class="build-meta">Версия 1.1.5 · сборка 20 · опубликовано <time datetime="2026-10-01T11:24:20+02:00">1 октября 2026, 11:24:20 CEST</time></p>
-            <!-- RELEASE_META_END -->
-              </div>
-            </div>
-          </div>
-
-          <figure class="showcase">
-            <div class="replica" data-scale-width="1120" data-compact-width="620" data-work-demo role="img" aria-label="Рабочее пространство AgentRelay: Codex и Claude Code работают в своих окнах, рядом обычный терминал с dev-сервером. Статус в заголовке окна меняется с Working на Done, а щелчок по пути src/nav.tsx:42 в выводе Claude открывает файл во встроенном редакторе на строке 42.">
-              <div class="replica-stage" aria-hidden="true">
-                <div class="rp-chrome"><span class="rp-light"></span><span class="rp-light"></span><span class="rp-light"></span><span class="rp-title">AgentRelay</span></div>
-                <div class="rp-bar">
-                  <span class="rp-tab" data-tab="codex" style="--c: var(--codex)"><i></i><b>#1</b> codex<span class="rp-tab-more"> · agentrelay · main</span></span>
-                  <span class="rp-tab" data-tab="claude" style="--c: var(--claude)"><i></i><b>#2</b> claude<span class="rp-tab-more"> · site · nav</span></span>
-                  <span class="rp-tab" style="--c: var(--ink-3)"><i></i><b>#3</b> zsh<span class="rp-tab-more"> · site</span></span>
-                  <span class="rp-tab rp-tab-editor is-active" style="--c: var(--ink-2)"><i></i><b>#4</b> nav.tsx<span class="rp-tab-more"> · site</span></span>
-                  <span class="rp-bar-spacer"></span>
-                  <span class="rp-tool">⌘P</span>
-                  <span class="rp-msg"><svg viewBox="0 0 16 16" fill="none"><path d="M2.5 8h9m0 0-3.5-3.5M11.5 8 8 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Message</span>
-                </div>
-                <div class="rp-canvas">
-                  <article class="rp-card" data-agent="codex" style="--c: var(--codex)">
-                    <header><i></i><b>#1 codex</b> agentrelay · main<span class="rp-chip" data-state="done">Done</span><span class="rp-ctrl"><span></span><span></span></span></header>
-                    <div class="rp-term">
-                      <p class="dim">╭─ codex · ~/dev/agentrelay</p>
-                      <p class="rp-in">› Snap neighbouring cards when a shared edge is resized</p>
-                      <p><span class="hl">•</span> Reading AgentRelayCore/Layout/LayoutEngine.swift</p>
-                      <p><span class="hl">•</span> Reading AgentRelayCore/Layout/SnapResolver.swift</p>
-                      <p class="dim">  Shared edges move both cards; outer edges stay put.</p>
-                      <p><span class="ok">✓</span> Edited LayoutEngine.swift <span class="dim">+42 −9</span></p>
-                      <p><span class="ok">✓</span> Edited SnapResolver.swift <span class="dim">+18 −4</span></p>
-                      <p class="rp-reveal" data-lane="codex"><span class="hl">•</span> Running swift test</p>
-                      <p class="rp-reveal warn" data-lane="codex">  Executed 214 tests, with 1 failure</p>
-                      <p class="rp-reveal" data-lane="codex"><span class="hl">•</span> Fixing SnapResolverTests.swift:88</p>
-                      <p class="rp-reveal" data-lane="codex"><span class="hl">•</span> Re-running swift test</p>
-                      <p class="rp-reveal" data-lane="codex"><span class="ok">✓ Executed 214 tests, with 0 failures</span></p>
-                      <p class="rp-reveal dim" data-lane="codex">  Ready for the next task.</p>
-                      <p class="rp-reveal" data-lane="codex">› <span class="rp-cursor"></span></p>
-                    </div>
-                    <footer class="rp-path">~/dev/agentrelay<span class="rp-path-icons"><span></span><span></span></span></footer>
-                  </article>
-
-                  <article class="rp-card" data-agent="claude" style="--c: var(--claude)">
-                    <header><i></i><b>#2 claude</b> site · nav<span class="rp-chip" data-state="done">Done</span><span class="rp-ctrl"><span></span><span></span></span></header>
-                    <div class="rp-term">
-                      <p class="rp-in">› Сделай меню липким на мобильных</p>
-                      <p class="rp-reveal" data-lane="claude"><span class="hl">⏺</span> Read(src/nav.tsx)</p>
-                      <p class="rp-reveal" data-lane="claude"><span class="hl">⏺</span> Update(src/nav.tsx)</p>
-                      <p class="rp-reveal" data-lane="claude">  ⎿ Updated <span class="rp-link">src/nav.tsx:42</span> <span class="dim">+6 −1</span></p>
-                      <p class="rp-reveal" data-lane="claude"><span class="hl">⏺</span> Bash(npm test)</p>
-                      <p class="rp-reveal" data-lane="claude"><span class="ok">  ⎿ 40 passed</span></p>
-                    </div>
-                    <footer class="rp-path">~/dev/site<span class="rp-path-icons"><span></span><span></span></span></footer>
-                  </article>
-
-                  <article class="rp-card" data-agent="zsh" style="--c: var(--ink-3)">
-                    <header><i></i><b>#3 zsh</b> site<span class="rp-chip" data-state="running">Running</span><span class="rp-ctrl"><span></span><span></span></span></header>
-                    <div class="rp-term">
-                      <p><span class="ok">~/dev/site</span> ❯ npm run dev</p>
-                      <p class="dim">  VITE v5.4.8  ready in 312 ms</p>
-                      <p>  ➜  Local:   <span class="rp-url">http://localhost:5173/</span></p>
-                      <p class="rp-reveal dim" data-lane="zsh">  12:04:31 [vite] hmr update /src/nav.tsx</p>
-                    </div>
-                    <footer class="rp-path">~/dev/site<span class="rp-path-icons"><span></span><span></span></span></footer>
-                  </article>
-
-                  <article class="rp-card rp-editor" data-agent="editor" style="--c: var(--ink-2)">
-                    <header><i></i><b>#4 nav.tsx</b> site<span class="rp-ctrl"><span></span><span></span></span></header>
-                    <div class="rp-code">
-                      <p><em>39</em>  <span class="k">const</span> [open, setOpen] = <span class="f">useState</span>(<span class="k">false</span>);</p>
-                      <p><em>40</em></p>
-                      <p><em>41</em>  <span class="k">return</span> (</p>
-                      <p class="is-line"><em>42</em>    &lt;<span class="t">nav</span> <span class="a">className</span>=<span class="s">"nav nav--sticky"</span>&gt;</p>
-                      <p><em>43</em>      &lt;<span class="t">button</span> <span class="a">onClick</span>={() =&gt; <span class="f">setOpen</span>(!open)}&gt;Menu&lt;/<span class="t">button</span>&gt;</p>
-                      <p><em>44</em>      &lt;<span class="t">ul</span> <span class="a">className</span>=<span class="s">"nav-list"</span>&gt;</p>
-                      <p><em>45</em>        {items.<span class="f">map</span>((item) =&gt; &lt;<span class="t">NavLink</span> {...item} /&gt;)}</p>
-                      <p><em>46</em>      &lt;/<span class="t">ul</span>&gt;</p>
-                    </div>
-                    <footer class="rp-path">~/dev/site/src/nav.tsx<span class="rp-path-icons"><span></span></span></footer>
-                  </article>
-
-                  <svg class="rp-pointer" viewBox="0 0 20 24" aria-hidden="true"><path d="M2 1.5v18.2l4.9-4.6 3.1 7 3.2-1.4-3-6.9h6.8L2 1.5Z" fill="white" stroke="oklch(0.2 0.02 266)" stroke-width="1.3" stroke-linejoin="round"/></svg>
-                </div>
-              </div>
-            </div>
-            <figcaption class="showcase-caption">
-              <p>Статус в заголовке окна показывает, кто из агентов ещё работает, а кто закончил. Щелчок по пути в выводе открывает файл во встроенном редакторе на нужной строке.</p>
-              <button class="play-toggle" type="button" aria-pressed="false" data-demo-toggle>
-                <svg class="icon-pause" viewBox="0 0 12 12" aria-hidden="true"><rect x="2" y="1.5" width="2.6" height="9" rx=".8" fill="currentColor"/><rect x="7.4" y="1.5" width="2.6" height="9" rx=".8" fill="currentColor"/></svg>
-                <svg class="icon-play" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.8v8.4a.6.6 0 0 0 .9.5l7-4.2a.6.6 0 0 0 0-1L3.9 1.3a.6.6 0 0 0-.9.5Z" fill="currentColor"/></svg>
-                Пауза анимации
-              </button>
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="providers" aria-label="Поддерживаемые агенты">
-        <div class="wrap">
-          <span class="providers-label">Готовы из коробки</span>
-          <span class="provider" style="--c: var(--codex)">Codex</span>
-          <span class="provider" style="--c: var(--claude)">Claude Code</span>
-          <span class="provider" style="--c: var(--copilot)">GitHub Copilot CLI</span>
-          <span class="provider" style="--c: var(--hermes)">Hermes</span>
-          <span class="provider" style="--c: var(--pi)">Pi</span>
-          <span class="provider is-custom">и ваш CLI</span>
-        </div>
-      </section>
-
-      <section class="band" id="terminal" aria-labelledby="terminal-title">
-        <div class="wrap">
-          <div class="section-head">
-            <h2 id="terminal-title">Терминал для работы с&nbsp;агентами.</h2>
-            <p>Каждое окно — настоящий терминал с true color и вашим шрифтом. А вокруг — то, чего не хватает, когда агенты живут во вкладках Terminal или iTerm.</p>
-          </div>
-          <div class="tf-grid">
-            <article class="tf tf-wide">
-              <div class="tf-vis tf-status" aria-hidden="true">
-                <div class="tf-head" style="--c: var(--codex)"><i></i><b>#1 codex</b> agentrelay<span class="rp-chip" data-state="working">Working</span></div>
-                <div class="tf-head" style="--c: var(--claude)"><i></i><b>#2 claude</b> site<span class="rp-chip" data-state="done">Done</span></div>
-                <div class="tf-head" style="--c: var(--hermes)"><i></i><b>#3 hermes</b> docs<span class="rp-chip" data-state="idle">Idle</span></div>
-              </div>
-              <h3>Видно, кто закончил</h3>
-              <p>AgentRelay следит за экраном каждого агента и подписывает окно: <b>Working</b>, пока агент думает или гоняет команды, <b>Done</b>, когда он закончил и ждёт вас. Не нужно по очереди заглядывать в каждый терминал.</p>
-            </article>
-            <article class="tf tf-wide">
-              <div class="tf-vis tf-link" aria-hidden="true">
-                <p class="tf-line">⎿ Updated <span class="rp-link is-hover">src/nav.tsx:42</span> <span class="dim">+6 −1</span></p>
-                <svg class="tf-arrow" viewBox="0 0 40 16" fill="none"><path d="M2 8h34m0 0-6-5m6 5-6 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <p class="tf-code"><em>42</em>&lt;<span class="t">nav</span> <span class="a">className</span>=<span class="s">"nav--sticky"</span>&gt;</p>
-              </div>
-              <h3>Пути в выводе кликабельны</h3>
-              <p>Щелчок по пути, ссылке <code>file://</code> или OSC 8 открывает файл во встроенном редакторе прямо на нужной строке и колонке. Окно редактора встаёт на тот же холст, рядом с агентом. Остальные файлы открываются в приложении по умолчанию.</p>
-            </article>
-            <article class="tf">
-              <div class="tf-vis tf-drop" aria-hidden="true">
-                <span class="tf-file"><svg viewBox="0 0 16 16" fill="none"><rect x="2.5" y="2.5" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="m4 11 3-3 2 2 1.5-1.5L12 10" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>Screen 12.04.png</span>
-                <p class="tf-line">› глянь <span class="s">'/Users/me/Screen 12.04.png'</span></p>
-              </div>
-              <h3>Файлы — перетаскиванием</h3>
-              <p>Скриншот или несколько файлов из Finder превращаются в пути в кавычках. Пробелы в именах ничего не ломают.</p>
-            </article>
-            <article class="tf">
-              <div class="tf-vis tf-pathbar" aria-hidden="true">
-                <p class="dim">❯ git status</p>
-                <p>On branch <span class="s">nav-sticky</span></p>
-                <p class="dim">nothing to commit, working tree clean</p>
-                <span class="tf-pathline">~/dev/site<span class="tf-copied">✓ Copied</span><span class="tf-icons"><svg viewBox="0 0 16 16" fill="none"><path d="M4.5 2.5h5l2.5 2.5v8.5h-7.5v-11Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M6.5 8h3.5M6.5 10.5h3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><svg viewBox="0 0 16 16" fill="none"><rect x="2.5" y="5" width="8" height="8.5" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M5.5 2.5h6.5a1.5 1.5 0 0 1 1.5 1.5v7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span></span>
-              </div>
-              <h3>Строка пути под окном</h3>
-              <p>Щелчок копирует путь рабочей папки, двойной — открывает в ней новый терминал. Рядом кнопки: скопировать весь текст терминала или открыть его в редакторе. У Codex и Claude Code это весь чат из их логов, а не только видимый экран.</p>
-            </article>
-            <article class="tf">
-              <div class="tf-vis tf-palette" aria-hidden="true">
-                <span style="--c: oklch(0.64 0.19 262)">AgentRelay</span>
-                <span style="--c: oklch(0.7 0.01 266)">Graphite</span>
-                <span style="--c: oklch(0.6 0.15 280)">Midnight</span>
-                <span style="--c: oklch(0.7 0.13 150)">Forest</span>
-                <span style="--c: oklch(0.72 0.15 45)">Ember</span>
-              </div>
-              <h3>Ваш шрифт, ваши цвета</h3>
-              <p>Любой моноширинный шрифт; <kbd>⌘+</kbd> и <kbd>⌘−</kbd> меняют размер во всех окнах сразу. Пять готовых палитр и настройка каждого цвета.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="band persist" aria-labelledby="persist-title">
-        <div class="wrap">
-          <div class="section-head">
-            <h2 id="persist-title">Закройте приложение. Агенты продолжат работу.</h2>
-            <p>Каждый агент живёт в своей сессии tmux, а не внутри окна. AgentRelay лишь подключается к ней, поэтому после перезапуска карточки встают на свои места и снова показывают те же процессы.</p>
-          </div>
-
-          <div class="lifeline" role="img" aria-label="Схема: окно AgentRelay закрыто и открыто снова, а процессы агентов работают без перерыва">
-            <div class="lane">
-              <span class="lane-label"><i style="--c: var(--accent-soft)"></i>AgentRelay</span>
-              <div class="track">
-                <span class="seg app" style="--from: 0%; --to: 38%">окно открыто</span>
-                <span class="gap-mark" style="--at: 46%">⌘Q</span>
-                <span class="seg app" style="--from: 54%; --to: 100%">открыто снова</span>
-                <span class="playhead"></span>
-              </div>
-            </div>
-            <div class="lane">
-              <span class="lane-label"><i style="--c: var(--codex)"></i>codex · tmux</span>
-              <div class="track"><span class="seg proc" style="--c: var(--codex); --from: 3%; --to: 100%"></span><span class="playhead"></span></div>
-            </div>
-            <div class="lane">
-              <span class="lane-label"><i style="--c: var(--claude)"></i>claude · tmux</span>
-              <div class="track"><span class="seg proc" style="--c: var(--claude); --from: 9%; --to: 100%"></span><span class="playhead"></span></div>
-            </div>
-            <div class="lifeline-scale" aria-hidden="true">
-              <span class="scale-spacer"></span>
-              <div class="scale-track">
-                <span class="scale-note is-before" style="--at: 38%">Выход: терминалы отключаются, процессы остаются</span>
-                <span class="scale-note" style="--at: 54%">Запуск: те же карточки подключаются к тем же процессам</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="persist-notes">
-            <p><strong>tmux уже внутри.</strong> Ставить его отдельно не нужно: AgentRelay несёт собственную универсальную сборку.</p>
-            <p><strong>Честно о границах.</strong> Перезагрузка Mac завершает процессы агентов — карточка предложит запустить CLI заново. Обычные терминалы после перезапуска открывают свежий login shell в той же папке.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="band" id="layouts" aria-labelledby="layouts-title">
-        <div class="wrap">
-          <div class="section-head">
-            <h2 id="layouts-title">Порядок на холсте — одним щелчком.</h2>
-            <p>Окна примагничиваются к краям холста и друг к другу, а общий край тянется сразу за обоими соседями. Нужна раскладка целиком? На панели их пять.</p>
-          </div>
-          <div class="arranger" data-arranger>
-            <div class="arranger-stage" role="img" aria-label="Четыре окна агентов на холсте, раскладка меняется по выбранной кнопке">
-              <div class="mini" style="--c: var(--codex)"><header><i></i>#1 codex · agentrelay</header><div class="mini-lines"><span></span><span></span><span></span><span></span></div></div>
-              <div class="mini" style="--c: var(--claude)"><header><i></i>#2 claude · site</header><div class="mini-lines"><span></span><span></span><span></span><span></span></div></div>
-              <div class="mini" style="--c: var(--hermes)"><header><i></i>#3 hermes · docs</header><div class="mini-lines"><span></span><span></span><span></span><span></span></div></div>
-              <div class="mini" style="--c: var(--copilot)"><header><i></i>#4 copilot · api</header><div class="mini-lines"><span></span><span></span><span></span><span></span></div></div>
-            </div>
-            <ul class="arranger-controls" aria-label="Раскладки">
-              <li><button class="arrange-btn" type="button" data-arrangement="tile" aria-pressed="true">
-                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="1" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="13" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="13" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
-                <b>Плитка</b><small>Ровная сетка из всех видимых окон.</small></button></li>
-              <li><button class="arrange-btn" type="button" data-arrangement="columns" aria-pressed="false">
-                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="6.5" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="9.5" y="1" width="6.5" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="1" width="6.5" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="26.5" y="1" width="6.5" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
-                <b>Колонки</b><small>Вертикальные полосы на всю высоту.</small></button></li>
-              <li><button class="arrange-btn" type="button" data-arrangement="rows" aria-pressed="false">
-                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="32" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="7" width="32" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="13" width="32" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="19" width="32" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
-                <b>Строки</b><small>Окна одно под другим.</small></button></li>
-              <li><button class="arrange-btn" type="button" data-arrangement="cascade" aria-pressed="false">
-                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="8" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="var(--bg-raise)"/><rect x="15" y="11" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="var(--bg-raise)"/></svg>
-                <b>Каскад</b><small>Лесенкой, чтобы видеть все заголовки.</small></button></li>
-              <li><button class="arrange-btn" type="button" data-arrangement="golden" aria-pressed="false">
-                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="19" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="22" y="1" width="11" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="22" y="16" width="4.5" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="28.5" y="16" width="4.5" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
-                <b>Золотое сечение</b><small>Главному окну — 61,8&nbsp;%, остальные — по спирали внутрь.</small></button></li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="band" aria-labelledby="details-title">
-        <div class="wrap">
-          <div class="section-head">
-            <h2 id="details-title">Мелочи, которые экономят время.</h2>
-            <p>Когда агентов пять, а веток три, важно быстро находить нужное окно и не терять контекст.</p>
-          </div>
-          <dl class="details-grid">
-            <div class="detail">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 13h8M3 17h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              <dt>Панель всех окон</dt>
-              <dd>У каждой сессии, терминала и редактора своя кнопка <code>#номер клиент проект ветка</code>. Щелчок выводит окно вперёд и разворачивает свёрнутое.</dd>
-            </div>
-            <div class="detail">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 10h1M9.5 10h1M13 10h1M16.5 10h1M8 14h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              <dt>Всё с клавиатуры</dt>
-              <dd><kbd>⌃Tab</kbd> переключает окна, <kbd>⌘N</kbd> открывает новую сессию, <kbd>⌘P</kbd> ищет файл в проекте, <kbd>⌃⌥1</kbd>–<kbd>5</kbd> раскладывают холст.</dd>
-            </div>
-            <div class="detail">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.5v17m0-17-3 3m3-3 3 3m-3 14-3-3m3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <dt>Прокрутка и выделение</dt>
-              <dd>Колесо и трекпад листают историю, а не команды промпта. Выделение тянется за край окна, копируется ровно выделенное, даже в Codex внутри tmux.</dd>
-            </div>
-            <div class="detail">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 8 4 4-4 4M11 16h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <dt>Любой CLI</dt>
-              <dd>Имя, исполняемый файл, аргументы и переменные окружения. AgentRelay ищет CLI в Homebrew, npm, Bun, Cargo, Volta и asdf, а если не нашёл, предложит указать путь.</dd>
-            </div>
-            <div class="detail">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="7.5" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M9.5 4.5h8a2 2 0 0 1 2 2v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              <dt>Сменить CLI или продублировать</dt>
-              <dd>Окно можно перезапустить с другим агентом или в другой папке, не теряя места на холсте. Дубликат открывает новую сессию того же CLI в том же проекте.</dd>
-            </div>
-            <div class="detail">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="6" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M12 8.5v3m0 0-6 5m6-5 6 5m-6-5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="18.5" r="2" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="18.5" r="2" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="18.5" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
-              <dt>Одна команда нескольким агентам</dt>
-              <dd><kbd>⌘</kbd>-щелчок по кнопкам окон выбирает агентов, <b>Message</b> отправляет им один и тот же текст.</dd>
-            </div>
-          </dl>
-        </div>
-      </section>
-
-      <section class="band install" id="install" aria-labelledby="install-title">
-        <div class="wrap install-grid">
-          <div class="install-cta">
-            <img src="./app-icon-256.png" width="136" height="136" alt="Значок AgentRelay: три окна терминала, соединённые в одну сеть" loading="lazy" />
-            <h2 id="install-title">Три шага до первого агента.</h2>
-            <p>Бесплатное нативное приложение для macOS. Подписано и нотаризовано Apple, обновляется само.</p>
-            <a class="button button-primary" href="https://github.com/setixela/agentrelay-download/releases/latest/download/AgentRelay-macOS.zip">
-              Скачать для macOS
-              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3.5v9m0 0 3.5-3.5M10 12.5 6.5 9M4 15.5h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
-            </a>
-            <p class="requirements">macOS 14 и новее · Apple Silicon и Intel</p>
-          </div>
-          <ol class="steps">
-            <li>
-              <h3>Скачайте архив</h3>
-              <p><code>AgentRelay-macOS.zip</code>: универсальная сборка для Apple Silicon и Intel.</p>
-            </li>
-            <li>
-              <h3>Перенесите в «Программы»</h3>
-              <p>Распакуйте архив и перетащите AgentRelay в папку «Программы». Когда выйдет новая версия, приложение само предложит обновиться.</p>
-            </li>
-            <li>
-              <h3>Выберите папку и запустите агента</h3>
-              <p>Нажмите <b>New session</b>, выберите проект и CLI. Codex, Claude Code и другие агенты устанавливаются отдельно; <code>tmux</code> уже включён.</p>
-            </li>
-          </ol>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="wrap">
-        <span>© 2026 AgentRelay</span>
-        <div class="footer-links">
-          <a href="https://github.com/setixela/agentrelay-download/releases/latest">Сведения о сборке <span aria-hidden="true">↗</span></a>
-          <a href="https://github.com/setixela/agentrelay-download/releases">Все релизы <span aria-hidden="true">↗</span></a>
-          <a href="./en/" lang="en" hreflang="en">English</a>
-        </div>
+    <figure class="hero-diagram">
+      <div class="diagram-heading"><span>Проект: checkout</span><span>Git</span></div>
+      <h2>Один проект. Несколько агентов.</h2>
+      <div class="agent-strip"><div class="agent-strip-item agent-0"><span class="agent-dot" aria-hidden="true"></span><strong>Codex · API</strong><span class="status">Done</span></div><div class="agent-strip-item agent-1"><span class="agent-dot" aria-hidden="true"></span><strong>Claude Code · UI</strong><span class="status">Done</span></div><div class="agent-strip-item agent-2"><span class="agent-dot" aria-hidden="true"></span><strong>Copilot · тесты</strong><span class="status">Working</span></div></div>
+      <div class="git-example" data-git-example>
+      <div class="graph-hint">Выберите коммит — посмотрите изменения</div>
+      <div class="graph-list">
+        <svg class="branch-lines" viewBox="0 0 86 232" preserveAspectRatio="none" aria-hidden="true">
+          <path class="track-main" d="M18 18V214"/>
+          <path class="track-ui" d="M18 214C18 186 47 194 47 166V74C47 44 18 50 18 18"/>
+          <path class="track-api" d="M18 214C18 180 76 190 76 154V130C76 68 18 88 18 18"/>
+          <circle class="node-main" cx="18" cy="18" r="5"/><circle class="node-ui" cx="47" cy="74" r="5"/>
+          <circle class="node-api" cx="76" cy="130" r="5"/><circle class="node-base" cx="18" cy="214" r="5"/>
+        </svg>
+        <button class="commit-row" type="button" data-commit="0" aria-pressed="true" aria-controls="hero-detail"><span class="branch-ref">main</span><code>8d4c2f1</code><strong>Объединить API и интерфейс</strong></button><button class="commit-row" type="button" data-commit="1" aria-pressed="false" aria-controls="hero-detail"><span class="branch-ref">agent/ui</span><code>c2e7a91</code><strong>Добавить форму оплаты</strong></button><button class="commit-row" type="button" data-commit="2" aria-pressed="false" aria-controls="hero-detail"><span class="branch-ref">agent/api</span><code>4b8f603</code><strong>Добавить API оплаты</strong></button><div class="commit-origin"><code>main</code><span>Initial checkout</span><code>a7d301e</code></div>
       </div>
-    </footer>
-  </body>
+      <div class="commit-detail" id="hero-detail" aria-live="polite"><div data-commit-detail="0"><p class="commit-explanation">Две ветки сходятся в main. История сохраняет обе линии работы.</p><div class="file-summary"><span>Изменённые файлы</span><code>src/api.ts · src/checkout.tsx</code></div><pre class="diff"><code><span class="diff-remove">- payment.status = &#x27;pending&#x27;</span>
+<span class="diff-add">+ payment.status = &#x27;confirmed&#x27;</span></code></pre></div><div data-commit-detail="1" hidden><p class="commit-explanation">Коммит из ветки agent/ui. Можно открыть изменения и проверить результат.</p><div class="file-summary"><span>Изменённые файлы</span><code>src/checkout.tsx</code></div><pre class="diff"><code><span class="diff-remove">- button.disabled = false</span>
+<span class="diff-add">+ button.disabled = isSubmitting</span></code></pre></div><div data-commit-detail="2" hidden><p class="commit-explanation">Коммит из ветки agent/api. В примере агент сам создал этот коммит.</p><div class="file-summary"><span>Изменённые файлы</span><code>src/api.ts</code></div><pre class="diff"><code><span class="diff-remove">- return response</span>
+<span class="diff-add">+ return validate(response)</span></code></pre></div></div>
+    </div>
+      <figcaption>Схема рабочего процесса · пример, не скриншот</figcaption>
+    </figure>
+  </div></section>
+  <section class="providers wrap" aria-labelledby="provider-title">
+    <div><h2 id="provider-title">Ваши агенты. Ваши инструменты.</h2><p>Codex, Claude Code, GitHub Copilot CLI, Hermes, Pi — или собственная CLI-команда. AgentRelay запускает установленные программы с их авторизацией и разрешениями.</p></div>
+    <ul aria-label="CLI"><li>Codex</li><li>Claude Code</li><li>GitHub Copilot CLI</li><li>Hermes</li><li>Pi</li><li>Custom CLI</li></ul>
+  </section>
+  <section class="section wrap flow" id="workflow" aria-labelledby="flow-title">
+    <div class="section-heading"><h2 id="flow-title">Задайте направление. Следите за тем, как сходится работа.</h2><p>Когда задач несколько, нужен общий контекст: кто чем занят, что попало в коммиты и как связаны ветки.</p></div>
+    <ol class="flow-steps"><li><span class="step-number">1</span><h3>Раздайте задачи</h3><p>Запустите агентов в нужных папках. Отправьте запрос одному или нескольким через общий composer.</p></li><li><span class="step-number">2</span><h3>Агенты пишут и коммитят</h3><p>Каждый работает через свой CLI. Для раздельных рабочих копий можно использовать Git worktrees.</p></li><li><span class="step-number">3</span><h3>Наблюдайте за результатом</h3><p>Следите за активностью, открывайте граф истории и diff. Видно, где ветки расходятся и где объединяются.</p></li></ol>
+  </section>
+  <section class="observation section" id="capabilities" aria-labelledby="observe-title"><div class="wrap">
+    <div class="section-heading"><h2 id="observe-title">От работающего агента — до конкретной строки кода.</h2><p>Переключайте схемы: это три стороны одного рабочего процесса. В приложении терминалы и редакторы находятся на холсте, Git и таймлайн открывают историю и активность.</p></div>
+    <div class="view-switch" role="group" aria-label="Выбрать схему"><button type="button" data-view="branches" aria-pressed="true" aria-controls="workflow-branches">Ветки и слияния</button><button type="button" data-view="activity" aria-pressed="false" aria-controls="workflow-activity">Активность агентов</button><button type="button" data-view="editor" aria-pressed="false" aria-controls="workflow-editor">Код и изменения</button></div>
+    <noscript><p>Все схемы доступны ниже. Для переключения примеров включите JavaScript.</p></noscript>
+    <div class="workflow-panel" id="workflow-branches" data-panel="branches">
+      <div class="panel-copy"><h3>Коммиты рассказывают, как собран результат.</h3><p>Граф истории, ветки и теги, diff и blame. Сравнивайте изменения с сохранённым baseline, открывайте worktrees, разбирайтесь в merge и rebase — без перехода в другой Git-клиент.</p><p class="note">Агенты могут выполнять Git-команды через свои CLI. AgentRelay показывает репозиторий и даёт Git-инструменты; автоматическое слияние зависит от вашего процесса.</p></div>
+      <figure class="inspection-surface"><div class="git-example" data-git-example>
+      <div class="graph-hint">Выберите коммит — посмотрите изменения</div>
+      <div class="graph-list">
+        <svg class="branch-lines" viewBox="0 0 86 232" preserveAspectRatio="none" aria-hidden="true">
+          <path class="track-main" d="M18 18V214"/>
+          <path class="track-ui" d="M18 214C18 186 47 194 47 166V74C47 44 18 50 18 18"/>
+          <path class="track-api" d="M18 214C18 180 76 190 76 154V130C76 68 18 88 18 18"/>
+          <circle class="node-main" cx="18" cy="18" r="5"/><circle class="node-ui" cx="47" cy="74" r="5"/>
+          <circle class="node-api" cx="76" cy="130" r="5"/><circle class="node-base" cx="18" cy="214" r="5"/>
+        </svg>
+        <button class="commit-row" type="button" data-commit="0" aria-pressed="true" aria-controls="feature-detail"><span class="branch-ref">main</span><code>8d4c2f1</code><strong>Объединить API и интерфейс</strong></button><button class="commit-row" type="button" data-commit="1" aria-pressed="false" aria-controls="feature-detail"><span class="branch-ref">agent/ui</span><code>c2e7a91</code><strong>Добавить форму оплаты</strong></button><button class="commit-row" type="button" data-commit="2" aria-pressed="false" aria-controls="feature-detail"><span class="branch-ref">agent/api</span><code>4b8f603</code><strong>Добавить API оплаты</strong></button><div class="commit-origin"><code>main</code><span>Initial checkout</span><code>a7d301e</code></div>
+      </div>
+      <div class="commit-detail" id="feature-detail" aria-live="polite"><div data-commit-detail="0"><p class="commit-explanation">Две ветки сходятся в main. История сохраняет обе линии работы.</p><div class="file-summary"><span>Изменённые файлы</span><code>src/api.ts · src/checkout.tsx</code></div><pre class="diff"><code><span class="diff-remove">- payment.status = &#x27;pending&#x27;</span>
+<span class="diff-add">+ payment.status = &#x27;confirmed&#x27;</span></code></pre></div><div data-commit-detail="1" hidden><p class="commit-explanation">Коммит из ветки agent/ui. Можно открыть изменения и проверить результат.</p><div class="file-summary"><span>Изменённые файлы</span><code>src/checkout.tsx</code></div><pre class="diff"><code><span class="diff-remove">- button.disabled = false</span>
+<span class="diff-add">+ button.disabled = isSubmitting</span></code></pre></div><div data-commit-detail="2" hidden><p class="commit-explanation">Коммит из ветки agent/api. В примере агент сам создал этот коммит.</p><div class="file-summary"><span>Изменённые файлы</span><code>src/api.ts</code></div><pre class="diff"><code><span class="diff-remove">- return response</span>
+<span class="diff-add">+ return validate(response)</span></code></pre></div></div>
+    </div><figcaption>Информативный плейсхолдер · данные условные</figcaption></figure>
+    </div>
+    <div class="workflow-panel" id="workflow-activity" data-panel="activity">
+      <div class="panel-copy"><h3>Кто работает. Кто ждёт. Что происходило раньше.</h3><p>Working, Idle и Done рядом с сессиями. Таймлайн помогает увидеть активность во времени и вернуться к истории за последние 24 часа.</p><p class="note">Статус определяется по экрану CLI. Done — сигнал активности, а не подтверждение качества или завершения задачи.</p></div>
+      <figure class="inspection-surface timeline"><h4>Активность за час</h4><div class="time-axis"><span>10:00</span><span>10:30</span><span>11:00</span></div><div class="timeline-row"><span>Codex</span><div class="timeline-track" aria-label="Работа"><i class="interval interval-0"></i></div><span class="status">Done</span></div><div class="timeline-row"><span>Claude Code</span><div class="timeline-track" aria-label="Работа"><i class="interval interval-1"></i></div><span class="status">Idle</span></div><div class="timeline-row"><span>Copilot</span><div class="timeline-track" aria-label="Работа"><i class="interval interval-2"></i></div><span class="status">Working</span></div><div class="timeline-key"><span><i></i>Работа</span><span><i></i>Ожидание</span></div><figcaption>Информативный плейсхолдер · данные условные</figcaption></figure>
+    </div>
+    <div class="workflow-panel" id="workflow-editor" data-panel="editor">
+      <div class="panel-copy"><h3>Проверьте деталь, не теряя общий контекст.</h3><p>Открывайте пути из терминального вывода прямо в редакторе. Ищите файлы через Quick Open, смотрите код с подсветкой, изучайте diff и отдельные строки.</p><p class="note">Baseline показывает изменения с выбранного момента. Он не определяет, какой агент написал конкретную строку.</p></div>
+      <figure class="inspection-surface editor-example"><div class="editor-path"><code>src/checkout.tsx</code><span>UTF-8</span></div><pre><code><span class="line-number">41</span> <span class="code-keyword">const</span> submit = <span class="code-keyword">async</span> () =&gt; {
+<span class="line-number">42</span>   setSubmitting(<span class="code-keyword">true</span>);
+<span class="line-number">43</span>   <span class="code-keyword">try</span> {
+<span class="line-number">44</span>     <span class="code-keyword">await</span> createPayment();
+<span class="line-number">45</span>   } <span class="code-keyword">finally</span> {
+<span class="line-number">46</span>     setSubmitting(<span class="code-keyword">false</span>);
+<span class="line-number">47</span>   }
+<span class="line-number">48</span> };</code></pre><div class="editor-diff"><span>Пример diff</span><code><span class="diff-remove">- disabled={false}</span><span class="diff-add">+ disabled={isSubmitting}</span></code></div><figcaption>Информативный плейсхолдер · данные условные</figcaption></figure>
+    </div>
+  </div></section>
+  <section class="section wrap workspace" aria-labelledby="workspace-title">
+    <div class="workspace-intro"><h2 id="workspace-title">Свой рабочий стол для каждой задачи.</h2><p>Агенты, обычный shell и файлы рядом. Соберите нужную раскладку и переключайтесь между контекстами, не теряя окна.</p><dl class="definition-list"><div><dt>Холст под ваш процесс</dt><dd>Сетка, колонки, строки, каскад и золотое сечение. Карточки соединяются краями и меняют размер вместе.</dd></div><div><dt>Контекст в заголовке</dt><dd>Рабочая папка, ветка, имя и цвет карточки. Панель всех окон возвращает к нужной сессии.</dd></div><div><dt>Один запрос нескольким</dt><dd>Выберите получателей и отправьте общий текст. Предыдущие запросы доступны в composer.</dd></div><div><dt>Настоящие терминалы</dt><dd>Ваши CLI, команды, шрифты и палитры. Обычный shell можно держать рядом с агентами.</dd></div></dl></div>
+    <figure class="canvas-example"><div class="canvas-top"><span>AgentRelay</span><code>checkout</code></div><div class="canvas-windows"><div class="canvas-window canvas-window-0"><div class="canvas-window-title">API · Codex</div><code>agent/api</code><p>API готов: коммит 4b8f603</p></div><div class="canvas-window canvas-window-1"><div class="canvas-window-title">Интерфейс · Claude Code</div><code>agent/ui</code><p>Форма оплаты готова: коммит c2e7a91</p></div><div class="canvas-window canvas-window-2"><div class="canvas-window-title">Проверки · zsh</div><code>npm run test</code><p>Проверки выполняются в отдельном shell</p></div><div class="canvas-window canvas-window-3"><div class="canvas-window-title">Файл · редактор</div><code>src/checkout.tsx</code><p>Код открыт рядом с агентами</p></div></div><div class="composer-example"><span>Message</span><code>Codex · Claude Code</code></div><figcaption>Схема холста · раскладка и данные условные</figcaption></figure>
+  </section>
+  <section class="persistence section" aria-labelledby="persist-title"><div class="wrap persistence-layout">
+    <div><h2 id="persist-title">Закрыть окно — не остановить работу.</h2><p>Агентские процессы живут в tmux. После выхода из AgentRelay они продолжают работать; при следующем запуске приложение возвращает карточки и подключается к тем же процессам.</p><p class="note">tmux включён в приложение. Перезагрузка Mac завершает процессы; обычный Terminal после перезапуска приложения открывает новый shell.</p></div>
+    <div class="persistence-diagram"><div>AgentRelay закрыт</div><div class="process-line"><code>tmux</code><strong>Агентские процессы работают</strong></div><div>AgentRelay открыт снова</div></div>
+  </div></section>
+  <section class="section wrap mcp" aria-labelledby="mcp-title"><div><h2 id="mcp-title">Нужно, чтобы агент управлял сессиями? Есть MCP.</h2><p>Опциональный локальный мост позволяет AI-клиенту видеть список сессий, создавать новые, отправлять ввод и читать вывод через четыре инструмента.</p><p class="note">Вы включаете доступ для одного проекта. Ввод и чтение разрешены только для сессий, созданных в рамках текущего разрешения. MCP выключен по умолчанию.</p></div><div class="mcp-tools"><div><code>list_sessions</code><span>Список сессий</span></div><div><code>create_session</code><span>Создание сессии</span></div><div><code>send_input</code><span>Отправка ввода</span></div><div><code>read_output</code><span>Чтение вывода</span></div></div></section>
+  <section class="section wrap everyday" aria-labelledby="details-title"><h2 id="details-title">И детали, которые нужны каждый день.</h2><dl class="detail-grid"><div><dt>Сохранить разговор</dt><dd>Экспорт чатов Codex, Claude Code и Copilot. Текст терминала можно скопировать или открыть в редакторе.</dd></div><div><dt>Открыть файл</dt><dd>Quick Open по имени и пути, переход из терминальных ссылок, защита от внешних изменений при сохранении.</dd></div><div><dt>Настроить CLI</dt><dd>Собственное имя, executable, аргументы и переменные окружения — для встроенных и пользовательских провайдеров.</dd></div><div><dt>Работать с Git</dt><dd>История и diff, staging файлов, фрагментов и строк, stash, ветки и теги, merge, rebase и worktrees.</dd></div><div><dt>Передать изображение</dt><dd>Перетащите изображение в терминал: AgentRelay вставит путь для CLI.</dd></div><div><dt>Держать руки на клавиатуре</dt><dd>Новые сессии, поиск файлов, переключение окон и раскладки доступны через shortcuts.</dd></div></dl></section>
+  <section class="section wrap faq" id="faq" aria-labelledby="faq-title"><h2 id="faq-title">Перед первым запуском.</h2><div class="faq-items"><details><summary>Агенты сами делают коммиты и слияния?<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p>CLI-агенты могут выполнять Git-команды по вашим инструкциям и с доступными им разрешениями. AgentRelay показывает граф и изменения и предоставляет Git-инструменты. Политика коммитов, проверок и слияний остаётся частью вашего рабочего процесса.</p></details><details><summary>Какие агенты уже внутри?<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p>Встроены профили запуска Codex, Claude Code, GitHub Copilot CLI, Hermes и Pi. Сами CLI нужно установить и авторизовать отдельно. Можно добавить другие локальные команды.</p></details><details><summary>Это бесплатно?<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p>AgentRelay можно скачать бесплатно. Условия и оплата AI-провайдеров отдельные: приложение не включает их подписки.</p></details><details><summary>Что происходит после перезапуска?<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p>Агентские tmux-процессы переживают выход из приложения и повторное подключение. После перезагрузки Mac их нужно запускать снова. Обычный Terminal открывает свежий shell.</p></details><details><summary>Работа агентов изолирована?<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p>У сессий отдельные процессы и рабочие папки, но AgentRelay не создаёт изоляцию файлов автоматически. Для работы в отдельных копиях репозитория используйте Git worktrees. MCP тоже не является sandbox.</p></details><details><summary>На каком языке приложение?<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p>Интерфейс приложения сейчас на английском. Этот сайт доступен на русском и английском.</p></details></div></section>
+  <section class="install section" id="install" aria-labelledby="install-title"><div class="wrap">
+    <div class="install-layout"><div><h2 id="install-title">Пусть агенты работают.<br>Держите картину перед глазами.</h2><p>Скачайте AgentRelay, выберите проект и запустите первый CLI.</p><a class="button button-primary" href="https://github.com/setixela/agentrelay-download/releases/latest/download/AgentRelay-macOS.zip">Скачать для macOS<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><p class="platform">macOS 14+ · Apple Silicon и Intel</p></div><ol class="install-steps"><li><h3>Скачайте и распакуйте</h3><p>Универсальный ZIP для Apple Silicon и Intel.</p></li><li><h3>Перенесите в «Программы»</h3><p>Приложение подписано и нотаризовано. Новые версии предлагаются через встроенное обновление.</p></li><li><h3>Откройте проект</h3><p>Выберите установленный CLI через New session. Назначьте задачу и откройте Git-граф.</p></li></ol></div>
+    <div class="release-info"><!-- RELEASE_META_START -->
+            <p class="build-meta">Версия 1.1.5 · сборка 20 · опубликовано <time datetime="2026-10-01T11:24:20+02:00">1 октября 2026, 11:24:20 CEST</time></p>
+            <!-- RELEASE_META_END --><a href="https://github.com/setixela/agentrelay-download/releases/latest">Что нового в версии<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
+    <details class="release-notes" id="release-notes"><summary>Что нового · 1.1.5<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="release-notes-body"><ul><li>Терминал и редактор остаются живыми при перемещении карточек; уменьшена перестройка терминального текста во время предпросмотра обмена окнами.</li><li>Обмен соединённых окон следует за указателем и надёжно работает при повторных перетаскиваниях.</li><li>Восстановлены обычные размеры значков toolbar и отдельные подписи команд для accessibility.</li><li>Добавлены редактирование имени сессии прямо в заголовке и сохраняемые пользовательские цвета.</li><li>Перенос строк в редакторе включён по умолчанию; для каждого окна доступен переключатель.</li><li>Добавлено нативное окно Settings и улучшена загрузка терминальных шрифтов.</li><li>Полная история разговора Copilot экспортируется независимо от scrollback; улучшено определение Working и Idle.</li><li>Добавлен экспериментальный Metal renderer терминала. CoreGraphics остаётся стандартным; 120 fps не подтверждены.</li></ul><a href="https://github.com/setixela/agentrelay-download/releases/tag/v1.1.5">Что нового в версии<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div></details>
+  </div></section>
+</main>
+<footer class="site-footer wrap"><div><a class="brand" href="#top">AgentRelay</a><p>Нативное рабочее пространство для AI-агентов.</p></div><div class="footer-links"><a href="https://github.com/setixela/agentrelay-download/releases">Все релизы</a><a data-language href="./en/" lang="en">EN</a><a href="#top">Наверх<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div><span class="copyright">© 2026 AgentRelay</span></footer>
+</body>
 </html>
