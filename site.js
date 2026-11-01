@@ -81,7 +81,7 @@
       activate(root.querySelector('.rp-tab[data-tab="claude"]'));
       link.classList.remove("is-hover");
       pointer.classList.remove("is-shown", "is-down");
-      const start = pointIn(card("zsh"), 0.62, 0.8);
+      const start = pointIn(root.querySelector(".rp-side"), 0.5, 0.55);
       pointer.style.left = `${start.x}px`;
       pointer.style.top = `${start.y}px`;
     }
@@ -110,7 +110,7 @@
       const lines = lane("claude");
       for (const [index, line] of lines.entries()) {
         line.classList.add("is-shown");
-        if (index === 2) setTimeout(() => id === run && lane("zsh").forEach((l) => l.classList.add("is-shown")), 700);
+        if (index === lines.length - 1) setTimeout(() => id === run && lane("sup").forEach((l) => l.classList.add("is-shown")), 700);
         await sleep(640 + Math.random() * 320, id);
       }
       setStatus("claude", "done", true);
