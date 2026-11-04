@@ -2,7 +2,7 @@
 
 Public landing page and release assets for the private AgentRelay source repository.
 
-The download button points to the latest GitHub Release asset named `AgentRelay-macOS.zip`. Publish a signed, notarized universal app archive under that exact name before announcing an update.
+The download button points to the latest GitHub Release asset named `AgentRelay-macOS.zip`. Publish a signed, notarized Apple Silicon (arm64) app archive for macOS 14+ under that exact name before announcing an update.
 
 After publishing the release, update the version, build number, and exact publication time on both language pages:
 
