@@ -61,7 +61,7 @@
               <div class="hero-meta">
                 <p>macOS 14 or later · Apple Silicon (arm64) · free</p>
                 <!-- RELEASE_META_START -->
-            <p class="build-meta">Version 1.1.32 · build 57 · published <time datetime="2026-11-12T11:12:12+01:00">12 November 2026, 11:12:12 CET</time></p>
+            <p class="build-meta">Version 1.1.33 · build 58 · published <time datetime="2026-11-13T02:43:00+01:00">13 November 2026, 02:43:00 CET</time></p>
             <!-- RELEASE_META_END -->
               </div>
             </div>
@@ -517,14 +517,16 @@
           <p class="eyebrow">Experimental feature</p>
           <div class="section-head">
             <h2 id="supervisor-title">Supervisor: a plan, executors, independent review.</h2>
-            <p>Describe a goal in the Supervisor chat and it proposes a plan of stages. You approve the start, executors work in separate worktrees, and a reviewer independently checks the exact commit. On by default; turn it off in Settings → Supervisor.</p>
+            <p>Describe a goal in the Supervisor chat and it proposes a plan of stages. You approve the start, executors use the chosen execution mode, and code changes receive independent review at the exact commit. On by default; turn it off in Settings → Supervisor.</p>
           </div>
+          <p>Choose Auto, Worktree, Here, Task branches or No checkout. Task branches uses this folder with one branch per task and delivery after independent review, following the project workflow. No checkout is for read-only work without repository commits or review.</p>
+          <p>Queue follow-up stages while work is running. Panel sizes and collapsed sections restore per workspace; reply timeouts are configurable, with a 300-second idle default.</p>
           <p>If history recovery fails, Supervisor keeps your draft and offers a retry. Stop reply holds task events until Resume events; scheduling errors appear on the affected plan.</p>
           <ol class="sup-flow">
             <li><h3>Goal</h3><p>Describe the task in the chat or with the /plan command.</p></li>
             <li><h3>Plan</h3><p>Stages, criteria, roles, CLIs and dependencies are visible before anything starts.</p></li>
             <li><h3>Approval</h3><p>Nothing starts without your confirmation, and an approved plan is frozen.</p></li>
-            <li><h3>Execution</h3><p>An executor is an ordinary window on the canvas, usually in its own worktree.</p></li>
+            <li><h3>Execution</h3><p>The executor uses the approved location; its task and progress stay visible on the board.</p></li>
             <li class="is-ok"><h3>Review and Verified</h3><p>A separate reviewer checks exactly that commit. Up to three fix cycles, then it calls you.</p></li>
           </ol>
           <div class="sup-grid">
