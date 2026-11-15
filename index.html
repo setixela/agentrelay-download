@@ -1,708 +1,837 @@
 <!doctype html>
-<html lang="ru">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0d1017" />
-    <title>AgentRelay — рабочее пространство для CLI-агентов на macOS</title>
-    <meta name="description" content="AgentRelay — нативное рабочее пространство для macOS: Codex, Claude Code, GitHub Copilot CLI, Pi, Hermes и ваши CLI на одном холсте, рядом с редактором, Git-клиентом, браузером и экспериментальным Supervisor. Сессии живут в tmux и переживают перезапуск." />
-    <meta property="og:title" content="AgentRelay для macOS" />
-    <meta property="og:description" content="Все CLI-агенты — в одном окне. Редактор, Git, браузер и Supervisor рядом; сессии живут в tmux." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://setixela.github.io/agentrelay-download/" />
-    <meta property="og:image" content="https://setixela.github.io/agentrelay-download/og.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="alternate" hreflang="ru" href="https://setixela.github.io/agentrelay-download/" />
-    <link rel="alternate" hreflang="en" href="https://setixela.github.io/agentrelay-download/en/" />
-    <link rel="icon" type="image/png" href="./app-icon-64.png" />
-    <link rel="apple-touch-icon" href="./app-icon-256.png" />
-    <link rel="preload" href="./fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="./fonts/geologica-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="./styles.css?v=33c1dd50" />
-    <script src="./site.js?v=fc3422dc" defer></script>
-  </head>
-  <body>
-    <a class="skip-link" href="#main">К содержимому</a>
+<html lang="ru" data-lang="ru" data-route="ru">
+<head>
+<meta charset="utf-8">
+<meta property="og:image" content="https://vibevizor.com/og.png">
+<meta property="og:locale" content="ru_RU">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VibeVizor — рабочее пространство для CLI-агентов на macOS</title>
+<!--
+  VibeVizor website source, staged locally for publication.
+  RU by default; open with #en (or ?lang=en) for the English page.
+  Logo artwork: the existing exports in design/logo/exports/ (unchanged).
+  Palette: source-derived dark slate and blue; white PNGs are unchanged.
+  Fonts: fonts/ (copied from the current site, OFL; see fonts/README.md).
+  Content: published artifact metadata; this source is unreleased.
+-->
+<style>
+  @font-face { font-family: "Geologica"; font-style: normal; font-weight: 300 700; font-display: block; src: url("fonts/geologica-cyrillic.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "Geologica"; font-style: normal; font-weight: 300 700; font-display: block; src: url("fonts/geologica-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400 600; font-display: block; src: url("fonts/jetbrainsmono-cyrillic.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400 600; font-display: block; src: url("fonts/jetbrainsmono-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 
-    <div class="wrap">
-      <header class="site-header">
-        <a class="brand" href="#top" aria-label="AgentRelay, наверх">
-          <img src="./app-icon-64.png" width="32" height="32" alt="" />
-          <span>AgentRelay</span>
-        </a>
-        <nav class="header-nav" aria-label="Основная навигация">
-          <a class="nav-link" href="#terminal">Возможности</a>
-          <a class="nav-link" href="#git">Git</a>
-          <a class="nav-link" href="#supervisor">Supervisor</a>
-          <a class="nav-link" href="#install">Установка</a>
-          <div class="language-switch" role="group" aria-label="Язык страницы">
-            <span aria-current="page">RU</span>
-            <a href="./en/" lang="en" hreflang="en">EN</a>
-          </div>
-          <a class="button button-ghost button-small" href="https://github.com/setixela/agentrelay-download/releases/latest/download/AgentRelay-macOS.zip">
-            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3.5v9m0 0 3.5-3.5M10 12.5 6.5 9M4 15.5h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
-            <span>Скачать</span>
-          </a>
-        </nav>
-      </header>
+  .build-meta { margin: 0; font: inherit; }
+  :root {
+    --vv-canvas: #0E131C;
+    --vv-surface: #1A1F2B;
+    --vv-toolbar: #131721;
+    --vv-line: #353A44;
+    --vv-text: #DEE6F5;
+    --vv-secondary: #B4BCCB;
+    --vv-muted: #8FA1BA;
+    --vv-accent: #578CFF;
+
+    --codex: #8C6EFF;
+    --claude: #FF8F4D;
+    --hermes: #33C7A8;
+    --pi: oklch(0.67 0.17 258);
+    --copilot: oklch(0.76 0.11 250);
+
+    /* The replica shows the real app palette, which the rebrand does not recolour. */
+    --app-canvas: #0e131c; --app-canvas-2: #1A1F2B; --app-toolbar: #131721;
+    --app-title: #1F2430; --app-term: #151921; --app-line: #2a3142;
+    --app-ink: #DEE6F5; --app-dim: #8FA1BA; --app-accent: #578cff;
+    --app-ok: #4dc785; --app-warn: #FFA852;
+    --app-font: 12px/1.45 -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+
+    --font: "Geologica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --gutter: clamp(20px, 5vw, 72px);
+    --max: 1296px;
+    /* Distance from the content edge to the viewport edge, used by the bleeding replica. */
+    --bleed: calc(max(0px, (100vw - var(--max)) / 2) + var(--gutter));
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--vv-canvas); color: var(--vv-text); }
+  body { margin: 0; font: 400 18px/1.55 var(--font); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  html[data-lang="ru"] .en, html[data-lang="en"] .ru { display: none !important; }
+  a { color: inherit; }
+  code, .mono { font-family: var(--mono); font-size: .86em; }
+  code { background: var(--vv-toolbar); border: 1px solid var(--vv-line); border-radius: 6px; padding: 1px 6px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+  .skip { position: absolute; left: -999px; }
+  .skip:focus { min-height: 44px; display: inline-flex; align-items: center; left: 16px; top: 16px; background: var(--vv-accent); color: var(--vv-canvas); padding: 8px 12px; border-radius: 8px; z-index: 20; }
+  :focus-visible { outline: 2px solid var(--vv-accent); outline-offset: 2px; border-radius: 6px; }
+  .brand-mark { filter: none; }
+
+  html { scroll-padding-top: 84px; }
+
+  /* Header */
+  header.top { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--vv-canvas) 86%, transparent); backdrop-filter: blur(12px); }
+  header.top .wrap { height: 72px; display: flex; align-items: center; gap: 32px; }
+  .lockup { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .lockup .mark { height: 32px; width: auto; display: block; }
+  .lockup .word { height: 18px; width: auto; display: block; }
+  nav.main { margin-left: auto; display: flex; gap: 28px; font-size: 15px; color: var(--vv-secondary); }
+  nav.main a { text-decoration: none; }
+  nav.main a:hover { color: var(--vv-text); }
+  .lang { display: flex; border: 1px solid var(--vv-line); border-radius: 999px; padding: 3px; font: 600 12px/1 var(--font); letter-spacing: .06em; }
+  .lang button { all: unset; cursor: pointer; padding: 7px 10px; border-radius: 999px; color: var(--vv-muted); }
+  html[data-lang="ru"] .lang [data-set="ru"], html[data-lang="en"] .lang [data-set="en"] { background: var(--vv-surface); color: var(--vv-text); }
+  .btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 600 15px/1 var(--font); border-radius: 12px; padding: 13px 18px; white-space: nowrap; }
+  .btn-outline { border: 1px solid var(--vv-line); color: var(--vv-text); }
+  .btn-outline:hover { border-color: var(--vv-accent); }
+  .btn-primary { background: var(--vv-accent); color: var(--vv-canvas); padding: 18px 26px; font-size: 17px; }
+  .btn svg { width: 16px; height: 16px; }
+
+  /* Hero */
+  .hero { position: relative; padding: 40px 0 0; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 500px) minmax(0, 1fr); gap: 44px; align-items: center; }
+  .hero-grid > * { min-width: 0; }
+  .eyebrow { display: flex; align-items: center; gap: 16px; font-size: 14px; color: var(--vv-muted); margin-bottom: 26px; }
+  .eyebrow img { height: 40px; width: auto; display: block; }
+  h1 { font-weight: 350; font-size: 58px; line-height: 1.04; letter-spacing: -.025em; margin: 0 0 24px; }
+  h1 .accent { color: var(--vv-secondary); }
+  .lead { font-size: 19px; color: var(--vv-secondary); margin: 0 0 32px; max-width: 62ch; }
+  .meta { margin-top: 18px; font-size: 14px; color: var(--vv-muted); line-height: 1.7; }
+  .meta .release { font-family: var(--mono); font-size: 11.5px; border-bottom: 1px dashed var(--vv-line); }
+
+  /* The eye watching over the workspace: white PNG, tucked one third behind the replica's top edge. */
+  .stage { position: relative; margin-right: calc(16px - var(--bleed)); padding-top: 86px; }
+  .watch { position: absolute; top: 0; left: 50%; width: 440px; transform: translateX(-50%); display: block; }
+  .replica-frame { position: relative; z-index: 1; }
+  .replica-scale { transform-origin: 0 0; width: 760px; }
+  .app { width: 760px; height: 500px; border-radius: 12px; overflow: hidden; background: var(--app-canvas); border: 1px solid #000; box-shadow: 0 40px 120px -30px rgba(0, 0, 0, .75), 0 0 0 1px rgba(255,255,255,.07); font: var(--app-font); color: var(--app-ink); display: grid; grid-template-rows: 38px 1fr; }
+  .app-bar { background: var(--app-toolbar); border-bottom: 1px solid var(--app-line); display: flex; align-items: center; gap: 8px; padding: 0 10px; white-space: nowrap; }
+  .lights { display: flex; gap: 7px; margin-right: 6px; }
+  .lights i { width: 11px; height: 11px; border-radius: 50%; background: #ff5f57; display: block; }
+  .lights i:nth-child(2) { background: #febc2e; } .lights i:nth-child(3) { background: #28c840; }
+  .ws { font-weight: 600; padding: 3px 8px; border-radius: 6px; background: var(--app-title); }
+  .chip { padding: 3px 8px; border-radius: 6px; color: var(--app-dim); display: inline-flex; gap: 6px; align-items: center; }
+  .chip b { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .chip.sel { background: var(--app-title); color: var(--app-ink); }
+  .app-bar .sp { flex: 1; }
+  .tbtn { width: 26px; height: 22px; border-radius: 6px; display: grid; place-items: center; color: var(--app-dim); }
+  .tbtn.on { background: color-mix(in srgb, var(--app-accent) 28%, transparent); color: var(--app-ink); }
+  .app-body { display: grid; grid-template-columns: 1fr 252px; min-height: 0; }
+  .canvas { padding: 8px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 6px; background: var(--app-canvas); min-height: 0; }
+  .card { background: var(--app-term); border: 1px solid var(--app-line); border-radius: 8px; overflow: hidden; display: grid; grid-template-rows: 24px 1fr 20px; min-height: 0; }
+  .card.tall { grid-row: span 2; }
+  .card-h { background: var(--app-title); display: flex; align-items: center; gap: 6px; padding: 0 8px; font-size: 11px; white-space: nowrap; }
+  .card-h .n { color: var(--app-dim); }
+  .pill { margin-left: auto; font-size: 10px; padding: 1px 7px; border-radius: 99px; border: 1px solid; }
+  .pill.work { color: var(--app-warn); border-color: color-mix(in srgb, var(--app-warn) 50%, transparent); }
+  .pill.done { color: var(--app-ok); border-color: color-mix(in srgb, var(--app-ok) 50%, transparent); }
+  .pill.idle { color: var(--app-dim); border-color: var(--app-line); }
+  .term { font: 10.5px/1.6 var(--mono); padding: 6px 9px; color: #c9d1e0; overflow: hidden; white-space: pre; }
+  .term .d { color: var(--app-dim); } .term .g { color: var(--app-ok); } .term .y { color: var(--app-warn); } .term .u { color: #8fb4ff; text-decoration: underline; }
+  .path { font: 10px/20px var(--mono); color: var(--app-dim); padding: 0 8px; border-top: 1px solid var(--app-line); white-space: nowrap; overflow: hidden; }
+  .vvpanel { background: var(--app-canvas-2); border-left: 1px solid var(--app-line); display: grid; grid-template-rows: 34px 30px auto 1fr auto 40px; min-height: 0; }
+  .vv-h { display: flex; align-items: center; gap: 7px; padding: 0 10px; font-weight: 600; font-size: 13px; border-bottom: 1px solid var(--app-line); }
+  .vv-h .x { margin-left: auto; color: var(--app-dim); font-weight: 400; }
+  .tabs { display: flex; gap: 4px; padding: 5px 10px; }
+  .tabs span { padding: 2px 10px; border-radius: 6px; color: var(--app-dim); font-size: 11px; }
+  .tabs span.on { background: var(--app-title); color: var(--app-ink); }
+  .roles { margin: 2px 10px 6px; font-size: 11px; color: var(--app-dim); display: flex; justify-content: space-between; }
+  .tasks { overflow: hidden; padding: 0 6px; }
+  .task { display: flex; align-items: center; gap: 8px; padding: 5px 6px; border-radius: 6px; font-size: 11.5px; white-space: nowrap; }
+  .task:nth-child(odd) { background: rgba(255,255,255,.025); }
+  .st { margin-left: auto; font-size: 10px; padding: 0 6px; border-radius: 4px; }
+  .st.v { color: var(--app-ok); background: color-mix(in srgb, var(--app-ok) 14%, transparent); }
+  .st.c { color: #8fb4ff; background: color-mix(in srgb, var(--app-accent) 18%, transparent); }
+  .st.p { color: var(--app-dim); background: rgba(255,255,255,.06); }
+  .st.s { color: var(--app-warn); background: color-mix(in srgb, var(--app-warn) 14%, transparent); }
+  .tray { margin: 6px 8px; border: 1px solid color-mix(in srgb, var(--app-accent) 45%, transparent); background: color-mix(in srgb, var(--app-accent) 10%, transparent); border-radius: 8px; padding: 7px 9px; font-size: 11px; }
+  .tray b { display: block; margin-bottom: 4px; }
+  .tray .r { display: flex; justify-content: space-between; align-items: center; gap: 8px; color: var(--app-dim); }
+  .tray .r u, .ubtn { color: #fff; text-decoration: none; background: var(--app-accent); padding: 2px 8px; border-radius: 5px; white-space: nowrap; }
+  .composer { margin: 0 8px 8px; border: 1px solid var(--app-line); border-radius: 8px; padding: 6px 9px; color: var(--app-dim); font-size: 11.5px; }
+  .caption { margin: 22px 0 0; font-size: 13px; color: var(--vv-muted); max-width: 76ch; }
+
+  /* Product visuals in sections: crops of the same replica, app palette. */
+  .shot { background: var(--app-canvas); border: 1px solid #000; border-radius: 12px; overflow: hidden; box-shadow: 0 30px 90px -40px rgba(0, 0, 0, .75), 0 0 0 1px rgba(255,255,255,.07); font: var(--app-font); color: var(--app-ink); }
+  .shot-h { height: 32px; background: var(--app-toolbar); border-bottom: 1px solid var(--app-line); display: flex; align-items: center; gap: 8px; padding: 0 12px; color: var(--app-dim); font-size: 11.5px; white-space: nowrap; }
+  .shot-h .lights i { width: 9px; height: 9px; }
+  .shot-h strong { color: var(--app-ink); font-weight: 600; }
+  .visual { margin-top: 44px; }
+  /* 5. statuses + timeline */
+  .vis-term .cards3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 10px; }
+  .vis-term .card { grid-template-rows: 24px auto; }
+  .vis-term .term { height: 84px; }
+  .timeline { border-top: 1px solid var(--app-line); background: var(--app-canvas-2); padding: 10px 14px 14px; }
+  .tl-h { display: flex; justify-content: space-between; color: var(--app-dim); font-size: 11px; margin-bottom: 8px; }
+  .tl-h b { color: var(--app-ink); font-weight: 600; }
+  .lane { display: grid; grid-template-columns: 120px 1fr 64px; gap: 10px; align-items: center; font-size: 11px; color: var(--app-dim); padding: 3px 0; }
+  .track { position: relative; height: 10px; border-radius: 3px; background: rgba(255,255,255,.04); }
+  .track i { position: absolute; top: 0; bottom: 0; border-radius: 3px; }
+  .lane .tot { text-align: right; font-family: var(--mono); font-size: 10.5px; }
+  .ticks { display: grid; grid-template-columns: 120px 1fr 64px; gap: 10px; font: 10px/1 var(--mono); color: var(--app-dim); margin-top: 6px; }
+  .ticks span { display: flex; justify-content: space-between; }
+  /* 6. persistence */
+  .vis-persist { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start; }
+  .vis-persist .shot-h { height: 26px; }
+  .mini { padding: 8px; display: grid; gap: 6px; }
+  .mini .card { grid-template-rows: 22px auto; }
+  .mini .term { font-size: 9.5px; padding: 4px 8px; height: 46px; }
+  .tmux { padding: 12px; display: grid; gap: 8px; font: 10.5px/1.5 var(--mono); color: #c9d1e0; min-height: 141px; align-content: center; }
+  .tmux div { border: 1px dashed var(--app-line); border-radius: 6px; padding: 6px 8px; display: flex; justify-content: space-between; }
+  .tmux .g { color: var(--app-ok); }
+  .closed { opacity: .5; }
+  .vp-cap { font-size: 14px; color: var(--vv-secondary); margin-top: 12px; }
+  .vp-cap b { display: block; font: 500 12px/1 var(--mono); color: var(--vv-accent); margin-bottom: 6px; }
+  /* 7. layouts */
+  .layouts { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+  .lay { aspect-ratio: 16 / 10; width: 100%; border: 1px solid #000; box-shadow: 0 0 0 1px rgba(255,255,255,.07); border-radius: 10px; padding: 7px; display: grid; gap: 5px; background: var(--app-canvas); }
+  .lay i { background: var(--app-term); border: 1px solid var(--app-line); border-top: 6px solid var(--app-title); border-radius: 4px; display: block; }
+  .lay i.c1 { border-top-color: color-mix(in srgb, var(--codex) 70%, var(--app-title)); }
+  .lay i.c2 { border-top-color: color-mix(in srgb, var(--claude) 70%, var(--app-title)); }
+  .lay i.c3 { border-top-color: color-mix(in srgb, var(--hermes) 70%, var(--app-title)); }
+  .lay-cap { display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: var(--vv-secondary); margin-top: 12px; }
+  /* 8. git */
+  .vis-git .body { display: grid; grid-template-columns: 200px 1fr; min-height: 300px; }
+  .files { border-right: 1px solid var(--app-line); background: var(--app-canvas-2); padding: 8px 6px; font-size: 11.5px; }
+  .files .grp { color: var(--app-dim); font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; padding: 6px 6px 4px; }
+  .files .f { display: flex; gap: 8px; align-items: center; padding: 4px 6px; border-radius: 6px; white-space: nowrap; }
+  .files .f.on { background: var(--app-title); }
+  .files .f em { font-style: normal; font: 600 10px/1 var(--mono); width: 12px; }
+  .files .f .ct { margin-left: auto; font: 10px/1 var(--mono); color: var(--app-dim); }
+  .M { color: var(--app-warn); } .A { color: var(--app-ok); }
+  .diff { font: 10.5px/1.75 var(--mono); color: #c9d1e0; min-width: 0; }
+  .diff .hunk { color: var(--app-dim); background: rgba(255,255,255,.03); padding: 2px 10px; display: flex; justify-content: space-between; align-items: center; font-family: var(--app-font); font-size: 11px; }
+  .diff .ln { display: grid; grid-template-columns: 18px 30px 1fr; padding: 0 10px 0 6px; white-space: pre; overflow: hidden; }
+  .diff .ln span:nth-child(2) { color: var(--app-dim); }
+  .diff .add { background: color-mix(in srgb, var(--app-ok) 13%, transparent); }
+  .diff .del { background: color-mix(in srgb, #ff6b6b 13%, transparent); }
+  .diff .sel span:first-child::before { content: "✓"; color: var(--app-ok); }
+  /* 9. panels */
+  .vis-panels .body { display: grid; grid-template-columns: 1fr 300px; height: 230px; }
+  .vis-panels .canvas { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; }
+  .side { border-left: 1px solid var(--app-line); background: var(--app-canvas-2); display: grid; grid-template-rows: 30px 1fr; min-height: 0; }
+  .side .tabs { border-bottom: 1px solid var(--app-line); }
+  .tree { padding: 6px 8px; font-size: 11.5px; overflow: hidden; }
+  .tree div { display: flex; gap: 6px; padding: 2px 4px; white-space: nowrap; }
+  .tree .ind { padding-left: 18px; } .tree .ind2 { padding-left: 32px; }
+  .tree em { margin-left: auto; font: 600 10px/1.6 var(--mono); font-style: normal; }
+  .tree .dir { color: var(--app-dim); }
+  /* motif divider */
+  .motif { display: flex; align-items: center; gap: 28px; margin-top: 128px; }
+  .motif::before, .motif::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--vv-line)); }
+  .motif::after { background: linear-gradient(90deg, var(--vv-line), transparent); }
+  .motif img { height: 56px; width: auto; display: block; }
+  /* 10. coordinator */
+  .vis-plan { max-width: 520px; justify-self: end; width: 100%; }
+  .plan { padding: 12px; display: grid; gap: 8px; background: var(--app-canvas-2); }
+  .plan-h { display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
+  .stage-row { border: 1px solid var(--app-line); border-radius: 8px; padding: 8px 10px; display: grid; gap: 3px; background: var(--app-term); }
+  .stage-row .t { display: flex; justify-content: space-between; color: var(--app-dim); font-size: 10.5px; }
+  .stage-row .w { display: flex; gap: 6px; align-items: center; font-size: 10.5px; color: var(--app-dim); }
+  .stage-row .w b { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .plan .foot { display: flex; justify-content: space-between; align-items: center; color: var(--app-dim); font-size: 11px; padding-top: 2px; }
+  /* 11. automation */
+  .vis-code pre { margin: 0; padding: 16px 18px; font: 12px/1.7 var(--mono); color: #c9d1e0; white-space: pre; overflow: hidden; }
+  .vis-code .k { color: #8fb4ff; } .vis-code .s { color: var(--app-ok); } .vis-code .d { color: var(--app-dim); }
+
+  /* Sections */
+  section.wrap { margin-top: 128px; }
+  h2 { font-weight: 350; font-size: 44px; line-height: 1.1; letter-spacing: -.02em; margin: 0 0 18px; max-width: 22ch; }
+  .sub { color: var(--vv-secondary); max-width: 62ch; margin: 0 0 44px; }
+  .split .sub { margin-bottom: 28px; }
+  h3 { font-weight: 500; font-size: 20px; margin: 0 0 8px; letter-spacing: -.01em; }
+  .grid { display: grid; gap: 16px; }
+  .g4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tile { background: var(--vv-surface); border: 1px solid var(--vv-line); border-radius: 16px; padding: 24px; }
+  .tile p { margin: 0; color: var(--vv-secondary); font-size: 16px; }
+  .tile.exp { border-color: color-mix(in srgb, var(--vv-accent) 55%, var(--vv-line)); }
+  .badge { display: inline-block; font: 600 11px/1 var(--font); letter-spacing: .06em; text-transform: uppercase; color: var(--vv-accent); border: 1px solid var(--vv-accent); border-radius: 999px; padding: 5px 9px; vertical-align: middle; margin-left: 8px; }
+  h2 .badge { font-size: 12px; position: relative; top: -6px; }
+  .providers { margin-top: 64px; border-top: 1px solid var(--vv-line); border-bottom: 1px solid var(--vv-line); }
+  .providers .row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 26px; color: var(--vv-secondary); font-size: 16px; padding: 18px 0; }
+  .providers .row .label { color: var(--vv-muted); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; margin-right: 8px; }
+  .providers b { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; vertical-align: 1px; }
+  .steps { counter-reset: s; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 56px; }
+  .step { counter-increment: s; border-top: 2px solid var(--vv-line); padding-top: 18px; }
+  .step:last-child { border-top-color: var(--vv-accent); }
+  .step::before { content: counter(s, decimal-leading-zero); font: 500 13px/1 var(--mono); color: var(--vv-accent); display: block; margin-bottom: 14px; }
+  .step p { margin: 0; color: var(--vv-secondary); font-size: 15.5px; }
+  .note { margin-top: 28px; font-size: 14.5px; color: var(--vv-muted); max-width: 70ch; border-left: 2px solid var(--vv-line); padding-left: 16px; }
+  .split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: center; }
+  .split.even { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  ul.facts { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  ul.facts li { padding-left: 24px; position: relative; color: var(--vv-secondary); }
+  ul.facts li::before { content: ""; position: absolute; left: 0; top: .62em; width: 10px; height: 2px; background: var(--vv-accent); }
+  .kbd-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 24px; font-size: 15.5px; color: var(--vv-secondary); }
+  .kbd-list div { display: flex; justify-content: space-between; border-bottom: 1px solid var(--vv-line); padding: 10px 0; gap: 12px; }
+  kbd { font: 500 13px/1 var(--mono); color: var(--vv-text); background: var(--vv-surface); border: 1px solid var(--vv-line); border-radius: 6px; padding: 4px 7px; white-space: nowrap; }
+  .install .tile h3::before { font: 500 13px/1 var(--mono); color: var(--vv-accent); display: block; margin-bottom: 12px; }
+  .install .tile:nth-child(1) h3::before { content: "01"; } .install .tile:nth-child(2) h3::before { content: "02"; } .install .tile:nth-child(3) h3::before { content: "03"; }
+  .cta-end { margin-top: 40px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+  .cta-end .meta { margin: 0; }
+  footer { margin-top: 112px; background: var(--vv-toolbar); border-top: 1px solid var(--vv-line); padding: 48px 0 56px; font-size: 14.5px; color: var(--vv-muted); }
+  footer .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
+  footer img.sq { width: 168px; display: block; margin: -26px 0 6px -20px; }
+  footer a { text-decoration: none; color: var(--vv-secondary); display: block; margin: 6px 0; }
+  footer h4 { margin: 0 0 10px; color: var(--vv-text); font-weight: 500; font-size: 14px; }
+
+  /* Mobile */
+  @media (max-width: 860px) {
+    html { scroll-padding-top: 76px; }
+    .lockup { min-height: 44px; }
+    footer a { display: flex; align-items: center; min-height: 44px; margin: 0; }
+    nav.main, .btn-outline .t { display: none; }
+    header.top .wrap { gap: 12px; height: 64px; }
+    .lockup .word { display: none; }
+    .lang { margin-left: auto; }
+    .lang button { box-sizing: border-box; min-width: 44px; min-height: 44px; text-align: center; }
+    .btn-outline { padding: 11px 13px; min-height: 44px; }
+    .hero { padding-top: 22px; }
+    .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    .eyebrow { margin-bottom: 16px; gap: 12px; font-size: 13px; }
+    .eyebrow img { height: 32px; }
+    h1 { font-size: 38px; margin-bottom: 14px; }
+    .lead { font-size: 16px; line-height: 1.45; margin-bottom: 18px; }
+    .btn-primary { width: 100%; justify-content: center; padding: 16px 20px; }
+    .meta { margin-top: 10px; font-size: 13px; line-height: 1.55; }
+    .meta .release { font-size: 11px; }
+    /* Replica stacked to the column at 1x: toolbar, agent card, VibeVizor panel. */
+    .stage { margin-right: 0; padding-top: 0; }
+    .watch { display: none; }
+    .replica-scale { width: 100%; transform: none !important; }
+    .app { width: 100% !important; height: auto; grid-template-rows: 32px auto; }
+    .app-bar .chip:not(.sel), .app-bar .tbtn:not(.on) { display: none; }
+    .app-body { grid-template-columns: minmax(0, 1fr); }
+    .canvas { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; padding: 6px; }
+    .card.ed, .card.cl { display: none; }
+    .card.tall { grid-row: auto; grid-template-rows: 24px auto; }
+    .hero .card .term { max-height: 57px; padding-bottom: 0; }
+    .hero .card .path { display: none; }
+    .vvpanel { border-left: 0; border-top: 1px solid var(--app-line); grid-template-rows: 30px auto auto; }
+    .vvpanel .tabs, .vvpanel .roles, .vvpanel .composer { display: none; }
+    .vvpanel .task:nth-child(n+3) { display: none; }
+    .tray { margin: 4px 6px 6px; }
+    .caption { margin-top: 16px; }
+    section.wrap { margin-top: 80px; }
+    .motif { margin-top: 80px; gap: 16px; }
+    .motif img { height: 40px; }
+    h2 { font-size: 30px; }
+    .g4, .g3, .split, .split.even, .kbd-list, footer .cols, .vis-persist { grid-template-columns: minmax(0, 1fr); }
+    .split { gap: 32px; }
+    .layouts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .vis-term .cards3 { grid-template-columns: minmax(0, 1fr); }
+    .vis-term .card:nth-child(n+2) .term { display: none; }
+    .lane, .ticks { grid-template-columns: 84px 1fr 52px; }
+    .vis-git .body { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+    .files { border-right: 0; border-bottom: 1px solid var(--app-line); }
+    .vis-panels .body { grid-template-columns: minmax(0, 1fr); height: auto; }
+    .vis-panels .canvas { display: none; }
+    .side { border-left: 0; }
+    .vis-plan { justify-self: stretch; max-width: none; }
+    .vis-code pre { font-size: 10.5px; padding: 12px; white-space: pre-wrap; word-break: break-all; }
+    .steps { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: 32px; }
+    .step { padding: 16px 0 18px; }
+    .cta-end { gap: 14px; }
+    .cta-end .btn-primary { width: 100%; }
+    footer { margin-top: 80px; }
+    body { font-size: 16px; }
+  }
+
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="vv-accent" color-interpolation-filters="sRGB">
+    <feFlood flood-color="#578CFF"/>
+    <feComposite in2="SourceAlpha" operator="in"/>
+  </filter>
+</svg>
+<a class="skip" href="#main"><span class="ru">К содержимому</span><span class="en">Skip to content</span></a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="lockup" href="./" aria-label="VibeVizor">
+      <img class="mark" src="assets/vibevizor-mark-white.png" alt="">
+      <img class="word" src="assets/vibevizor-wordmark-white.png" alt="">
+    </a>
+    <nav class="main" aria-label="Sections">
+      <a href="#overview"><span class="ru">Возможности</span><span class="en">Features</span></a>
+      <a href="#git">Git</a>
+      <a href="#coordinator">VibeVizor</a>
+      <a href="#install"><span class="ru">Установка</span><span class="en">Install</span></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button data-set="ru" lang="ru">RU</button><button data-set="en" lang="en">EN</button>
     </div>
+    <a class="btn btn-outline" href="#install" aria-label="Download">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v8m0 0L4.5 6.5M8 10l3.5-3.5M2.5 13.5h11"/></svg>
+      <span class="t"><span class="ru">Скачать</span><span class="en">Download</span></span>
+    </a>
+  </div>
+</header>
 
-    <main id="main">
-      <section class="hero" id="top" aria-labelledby="hero-title">
-        <div class="wrap">
-          <div class="hero-copy">
-            <h1 id="hero-title">Все CLI-агенты —<span class="line-2">в одном окне.</span></h1>
-            <p class="hero-lead">AgentRelay — нативное рабочее пространство для macOS. Codex, Claude Code, GitHub Copilot CLI, Pi, Hermes и&nbsp;ваши CLI работают рядом на&nbsp;общем холсте, а&nbsp;редактор, Git-клиент, браузер и&nbsp;заметки — в&nbsp;том же окне. Закройте приложение — агенты продолжат работу.</p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="https://github.com/setixela/agentrelay-download/releases/latest/download/AgentRelay-macOS.zip">
-                Скачать для macOS
-                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3.5v9m0 0 3.5-3.5M10 12.5 6.5 9M4 15.5h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
-              </a>
-              <div class="hero-meta">
-                <p>macOS 14 и новее · Apple Silicon (arm64) · бесплатно</p>
-                <!-- RELEASE_META_START -->
+<main id="main">
+  <!-- 2. Hero -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">
+          <img class="brand-mark" src="assets/vibevizor-mark-white.png" alt="">
+
+        </div>
+        <h1>
+          <span class="ru">Все CLI-агенты&nbsp;—<br><span class="accent">в одном окне.</span></span>
+          <span class="en">Every CLI agent,<br><span class="accent">in one window.</span></span>
+        </h1>
+        <p class="lead">
+          <span class="ru">VibeVizor — нативное рабочее пространство для macOS. Codex, Claude Code, GitHub Copilot CLI, Pi, Hermes и ваши CLI работают рядом на общем холсте, а редактор, Git-клиент, браузер и заметки — в том же окне. CLI-агенты в tmux работают и после закрытия приложения.</span>
+          <span class="en">VibeVizor is a native macOS workspace. Codex, Claude Code, GitHub Copilot CLI, Pi, Hermes and your own CLIs run side by side on one canvas, with an editor, a Git client, a browser and notes in the same window. CLI agents in tmux keep working after you quit the app.</span>
+        </p>
+        <a class="btn btn-primary" href="#install">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v8m0 0L4.5 6.5M8 10l3.5-3.5M2.5 13.5h11"/></svg>
+          <span class="ru">Скачать для macOS</span><span class="en">Download for macOS</span>
+        </a>
+        <div class="meta">
+          <span class="ru">macOS 14 и новее · Apple Silicon (arm64) · бесплатно</span>
+          <span class="en">macOS 14 or later · Apple Silicon (arm64) · free</span><br>
+          <!-- RELEASE_META_START -->
             <p class="build-meta">Версия 1.1.33 · сборка 58 · опубликовано <time datetime="2026-11-13T02:43:00+01:00">13 ноября 2026, 02:43:00 CET</time></p>
             <!-- RELEASE_META_END -->
-              </div>
-            </div>
-          </div>
-
-          <figure class="showcase">
-            <div class="replica" data-scale-width="1120" data-compact-width="500" data-work-demo role="img" aria-label="Рабочее пространство AgentRelay с вымышленным проектом: Codex и Claude Code работают в своих окнах, справа колонка Supervisor с ролями, таймлайном задач и планом, ожидающим подтверждения. Статус в заголовке окна меняется с Working на Done, а щелчок по пути src/nav.tsx:42 в выводе Claude Code открывает файл во встроенном редакторе на строке 42.">
-              <div class="replica-stage" aria-hidden="true">
-                <div class="rp-bar">
-                  <span class="rp-lights"><span class="rp-light"></span><span class="rp-light"></span><span class="rp-light"></span></span>
-                  <span class="rp-ws">acme-web</span>
-                  <span class="rp-tab is-active" data-tab="codex" style="--c: var(--codex)"><i></i><b>#1 Codex</b><span class="rp-tab-more"> acme-web</span></span>
-                  <span class="rp-tab" data-tab="claude" style="--c: var(--claude)"><i></i><b>#2 Claude Code</b><span class="rp-tab-more"> acme-web</span></span>
-                  <span class="rp-tab rp-tab-editor" style="--c: var(--app-dim)"><i></i><b>#3 nav.tsx</b><span class="rp-tab-more"> acme-web</span></span>
-                  <span class="rp-bar-spacer"></span>
-                  <span class="rp-icons"><span class="rp-ico"></span><span class="rp-ico is-lines"></span><span class="rp-ico is-round"></span><span class="rp-ico"></span><span class="rp-ico is-on"></span><span class="rp-ico is-round"></span><span class="rp-ico"></span></span>
-                  <span class="rp-msg"><svg viewBox="0 0 16 16" fill="none"><path d="M2.5 8h9m0 0-3.5-3.5M11.5 8 8 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Message</span>
-                </div>
-                <div class="rp-activity">
-                  <div class="ra-label">Agent activity<small>15m</small></div>
-                  <div class="ra-row" style="--c: var(--codex)"><span><b>#1</b> Codex acme-web</span><div class="ra-track"><s style="left: 6%; width: 30%"></s><s style="left: 52%; width: 22%"></s><s class="is-live" style="left: 82%; width: 17%"></s></div><em>5m 12s</em></div>
-                  <div class="ra-row" style="--c: var(--claude)"><span><b>#2</b> Claude Code acme-web</span><div class="ra-track"><s style="left: 18%; width: 14%"></s><s style="left: 40%; width: 36%"></s><s class="is-live" style="left: 86%; width: 13%"></s></div><em>6m 40s</em></div>
-                </div>
-                <div class="rp-body">
-                  <div class="rp-canvas">
-                    <article class="rp-card" data-agent="codex" style="--c: var(--codex)">
-                      <header><i></i><b>#1 Codex</b> acme-web <span class="rp-br">rate-limit</span><span class="rp-chip" data-state="done">Done</span><span class="rp-ctrl"><span></span><span></span><span></span></span></header>
-                      <div class="rp-term">
-                        <p class="rp-in">› Добавь ограничение частоты запросов в /api/search</p>
-                        <p><span class="hl">•</span> Reading src/api/search.ts</p>
-                        <p><span class="hl">•</span> Reading src/lib/limiter.ts</p>
-                        <p class="dim">  Token bucket, 20 requests per minute per IP.</p>
-                        <p><span class="ok">✓</span> Edited search.ts <span class="dim">+24 −3</span></p>
-                        <p><span class="ok">✓</span> Edited limiter.ts <span class="dim">+31 −0</span></p>
-                        <p class="df-del">- export function search(req) {</p>
-                        <p class="df-add">+ export const search = limited(20, (req) =&gt; {</p>
-                        <p class="rp-reveal" data-lane="codex"><span class="hl">•</span> Running npm test</p>
-                        <p class="rp-reveal warn" data-lane="codex">  2 failed, 38 passed</p>
-                        <p class="rp-reveal" data-lane="codex"><span class="hl">•</span> Fixing limiter.test.ts:57</p>
-                        <p class="rp-reveal" data-lane="codex"><span class="hl">•</span> Re-running npm test</p>
-                        <p class="rp-reveal" data-lane="codex"><span class="ok">✓ 40 passed</span></p>
-                        <p class="rp-reveal dim" data-lane="codex">  Ready for the next task.</p>
-                        <p class="rp-reveal" data-lane="codex">› <span class="rp-cursor"></span></p>
-                      </div>
-                      <footer class="rp-path">~/dev/acme-web<span class="rp-path-icons"><span></span><span></span></span></footer>
-                    </article>
-
-                    <article class="rp-card" data-agent="claude" style="--c: var(--claude)">
-                      <header><i></i><b>#2 Claude Code</b> acme-web <span class="rp-br">sticky-nav</span><span class="rp-chip" data-state="done">Done</span><span class="rp-ctrl"><span></span><span></span><span></span></span></header>
-                      <div class="rp-term">
-                        <p class="rp-in">› Сделай меню липким на мобильных</p>
-                        <p class="rp-reveal" data-lane="claude"><span class="hl">⏺</span> Read(src/nav.tsx)</p>
-                        <p class="rp-reveal" data-lane="claude"><span class="hl">⏺</span> Update(src/nav.tsx)</p>
-                        <p class="rp-reveal" data-lane="claude">  ⎿ Updated <span class="rp-link">src/nav.tsx:42</span> <span class="dim">+6 −1</span></p>
-                        <p class="rp-reveal" data-lane="claude"><span class="hl">⏺</span> Bash(npm test)</p>
-                        <p class="rp-reveal" data-lane="claude"><span class="ok">  ⎿ 40 passed</span></p>
-                      </div>
-                      <footer class="rp-path">~/dev/acme-web-nav<span class="rp-path-icons"><span></span><span></span></span></footer>
-                    </article>
-
-                    <article class="rp-card rp-editor" data-agent="editor" style="--c: var(--app-dim)">
-                      <header><i></i><b>#3 nav.tsx</b> acme-web<span class="rp-ctrl"><span></span><span></span><span></span></span></header>
-                      <div class="rp-code">
-                        <p><em>39</em>  <span class="k">const</span> [open, setOpen] = <span class="f">useState</span>(<span class="k">false</span>);</p>
-                        <p><em>40</em></p>
-                        <p><em>41</em>  <span class="k">return</span> (</p>
-                        <p class="is-line"><em>42</em>    &lt;<span class="t">nav</span> <span class="a">className</span>=<span class="s">"nav nav--sticky"</span>&gt;</p>
-                        <p><em>43</em>      &lt;<span class="t">button</span> <span class="a">onClick</span>={() =&gt; <span class="f">setOpen</span>(!open)}&gt;Menu&lt;/<span class="t">button</span>&gt;</p>
-                        <p><em>44</em>      &lt;<span class="t">ul</span> <span class="a">className</span>=<span class="s">"nav-list"</span>&gt;</p>
-                        <p><em>45</em>        {items.<span class="f">map</span>((item) =&gt; &lt;<span class="t">NavLink</span> {...item} /&gt;)}</p>
-                        <p><em>46</em>      &lt;/<span class="t">ul</span>&gt;</p>
-                      </div>
-                      <footer class="rp-path">~/dev/acme-web-nav/src/nav.tsx<span class="rp-path-icons"><span></span></span></footer>
-                    </article>
-
-                    <svg class="rp-pointer" viewBox="0 0 20 24" aria-hidden="true"><path d="M2 1.5v18.2l4.9-4.6 3.1 7 3.2-1.4-3-6.9h6.8L2 1.5Z" fill="white" stroke="oklch(0.2 0.02 266)" stroke-width="1.3" stroke-linejoin="round"/></svg>
-                  </div>
-
-                  <aside class="rp-side">
-                    <div class="sp-head"><b>Roles</b><span>10/16 enabled · 2 working</span></div>
-                    <div class="sp-roles">
-                      <div class="sp-role" style="--c: var(--codex)"><b>Executor</b><small>Codex</small></div>
-                      <div class="sp-role" style="--c: var(--claude)"><b>Reviewer</b><small>Claude Code</small></div>
-                    </div>
-                    <div class="sp-head"><b>Timeline</b><span class="sp-spacer"></span><span class="sp-pill ok">9 Verified</span><span class="sp-pill bad">1 Stopped</span></div>
-                    <ul class="sp-rows">
-                      <li class="rp-reveal" data-lane="sup"><i class="ok"></i><span>Sticky nav on mobile</span><em>Verified</em></li>
-                      <li><i class="ok"></i><span>Paginate /orders list</span><em>Verified</em></li>
-                      <li><i class="ok"></i><span>Cache product search</span><em>Verified</em></li>
-                      <li><i class="bad"></i><span>Migrate session store</span><em>Stopped</em></li>
-                      <li><i class="ok"></i><span>Document the REST API</span><em>Verified</em></li>
-                      <li><i class="mid"></i><span>Add rate limiting</span><em>Checking</em></li>
-                      <li><i class="ok"></i><span>Rename env variables</span><em>Verified</em></li>
-                      <li><i class="ok"></i><span>Split billing module</span><em>Verified</em></li>
-                      <li><i class="ok"></i><span>Fix flaky checkout test</span><em>Verified</em></li>
-                      <li><i class="ok"></i><span>Upgrade lint config</span><em>Verified</em></li>
-                      <li><i class="ok"></i><span>Add health endpoint</span><em>Verified</em></li>
-                      <li><i class="idle"></i><span>Trim bundle size</span><em>Proposed</em></li>
-                      <li><i class="idle"></i><span>Audit unused routes</span><em>Proposed</em></li>
-                    </ul>
-                    <div class="sp-tray">
-                      <b>2 items are waiting for you</b>
-                      <div class="sp-plan"><span class="sp-pill mid">Plan v1</span><span>Checkout flow cleanup</span></div>
-                      <div class="sp-btns"><span>Details</span><span class="is-primary">Review &amp; start…</span></div>
-                    </div>
-                  </aside>
-                </div>
-              </div>
-            </div>
-            <figcaption class="showcase-caption">
-              <p>Демо на вымышленном проекте. Статус в заголовке окна показывает, кто из агентов работает, а кто закончил; щелчок по пути в выводе открывает файл в редакторе на нужной строке. Справа — экспериментальный Supervisor.</p>
-              <button class="play-toggle" type="button" aria-pressed="false" data-demo-toggle>
-                <svg class="icon-pause" viewBox="0 0 12 12" aria-hidden="true"><rect x="2" y="1.5" width="2.6" height="9" rx=".8" fill="currentColor"/><rect x="7.4" y="1.5" width="2.6" height="9" rx=".8" fill="currentColor"/></svg>
-                <svg class="icon-play" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.8v8.4a.6.6 0 0 0 .9.5l7-4.2a.6.6 0 0 0 0-1L3.9 1.3a.6.6 0 0 0-.9.5Z" fill="currentColor"/></svg>
-                Пауза анимации
-              </button>
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="providers" aria-label="Поддерживаемые агенты">
-        <div class="wrap">
-          <span class="providers-label">Готовы из коробки</span>
-          <span class="provider" style="--c: var(--codex)">Codex</span>
-          <span class="provider" style="--c: var(--claude)">Claude Code</span>
-          <span class="provider" style="--c: var(--copilot)">GitHub Copilot CLI</span>
-          <span class="provider" style="--c: var(--pi)">Pi</span>
-          <span class="provider" style="--c: var(--hermes)">Hermes</span>
-          <span class="provider is-custom">и ваш CLI</span>
-        </div>
-      </section>
-
-      <section class="band" id="overview" aria-labelledby="overview-title">
-        <div class="wrap">
-          <div class="section-head">
-            <h2 id="overview-title">Всё вокруг агентов — в одном окне.</h2>
-            <p>AgentRelay запускает настоящие CLI, а не заменяет их своим чатом, и собирает вокруг них то, чего не хватает во вкладках терминала.</p>
-          </div>
-          <ul class="glance-grid">
-            <li><a class="glance-card" href="#layouts">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="8" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="13" y="4" width="8" height="7" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="13" y="13" width="8" height="7" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
-              <h3>Холст и раскладки</h3><p>Окна двигаются и примагничиваются, пять раскладок, именованные workspaces.</p></a></li>
-            <li><a class="glance-card" href="#persist-title">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M18.5 3v4h-4M5.5 21v-4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <h3>Сессии переживают перезапуск</h3><p>Агенты работают в tmux внутри приложения и продолжают после выхода.</p></a></li>
-            <li><a class="glance-card" href="#terminal">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 8 4 4-4 4M11 16h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="2.5" y="4" width="19" height="16" rx="3" stroke="currentColor" stroke-width="1.5"/></svg>
-              <h3>Терминал для агентов</h3><p>Статусы Working и Done, таймлайн, кликабельные пути, один запрос нескольким агентам.</p></a></li>
-            <li><a class="glance-card" href="#git">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="7" cy="6" r="2.2" stroke="currentColor" stroke-width="1.5"/><circle cx="7" cy="18" r="2.2" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="10" r="2.2" stroke="currentColor" stroke-width="1.5"/><path d="M7 8.2v7.6M17 12.2c0 3-10 1-10 3.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              <h3>Редактор и Git-клиент</h3><p>Quick Open, diff, построчный staging, ветки, stash, конфликты и worktrees.</p></a></li>
-            <li><a class="glance-card" href="#panels">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M15 4v16" stroke="currentColor" stroke-width="1.5"/></svg>
-              <h3>Панели рядом</h3><p>Браузер, файлы, заметки и тикеты Notion или Jira без отдельных окон.</p></a></li>
-            <li><a class="glance-card" href="#supervisor">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v6M6 15l6-6 6 6M6 15v6m12-6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              <h3>Supervisor</h3><p>Экспериментально: план, исполнители и независимое ревью точного коммита.</p></a></li>
-            <li><a class="glance-card" href="#automation">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 3v4m6-4v4M7 7h10v4a5 5 0 0 1-10 0V7ZM12 16v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <h3>Локальный MCP</h3><p>Опциональный доступ внешних AI-клиентов к агентам одного проекта.</p></a></li>
-            <li><a class="glance-card" href="#install">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11m0 0 4-4m-4 4-4-4M5 19h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <h3>Нативная поставка</h3><p>Apple Silicon, macOS 14+, tmux внутри, подпись Apple и обновления Sparkle.</p></a></li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="band" id="terminal" aria-labelledby="terminal-title" style="padding-top: 0">
-        <div class="wrap">
-          <div class="section-head">
-            <h2 id="terminal-title">Терминал, который понимает&nbsp;агентов.</h2>
-            <p>Каждое окно — настоящий терминал с true color и вашим шрифтом. А вокруг — то, чего не хватает, когда агенты живут во вкладках Terminal или iTerm.</p>
-          </div>
-          <div class="tf-grid">
-            <article class="tf tf-wide">
-              <div class="tf-vis tf-status" aria-hidden="true">
-                <div class="tf-head" style="--c: var(--codex)"><i></i><b>#1 Codex</b> acme-web<span class="rp-chip" data-state="working">Working</span></div>
-                <div class="tf-head" style="--c: var(--claude)"><i></i><b>#2 Claude Code</b> acme-web<span class="rp-chip" data-state="done">Done</span></div>
-                <div class="tf-head" style="--c: var(--hermes)"><i></i><b>#3 Hermes</b> docs<span class="rp-chip" data-state="idle">Idle</span></div>
-              </div>
-              <h3>Видно, кто работает, а кто закончил</h3>
-              <p>AgentRelay следит за экраном каждого агента и подписывает окно: <b>Working</b>, пока агент думает или гоняет команды, <b>Idle</b> или <b>Done</b>, когда он ждёт вас. Это наблюдение за активностью, а не проверка результата.</p>
-            </article>
-            <article class="tf tf-wide">
-              <div class="tf-vis tf-time" aria-hidden="true">
-                <div class="tt-row" style="--c: var(--codex)"><span>#1 Codex</span><div class="tt-track"><s style="left: 6%; width: 28%"></s><s style="left: 48%; width: 20%"></s><s style="left: 80%; width: 18%"></s></div><em>6m 12s</em></div>
-                <div class="tt-row" style="--c: var(--claude)"><span>#2 Claude</span><div class="tt-track"><s style="left: 20%; width: 12%"></s><s style="left: 38%; width: 38%"></s></div><em>7m 05s</em></div>
-                <div class="tt-row" style="--c: var(--hermes)"><span>#3 Hermes</span><div class="tt-track"><s style="left: 60%; width: 10%"></s></div><em>1m 30s</em></div>
-                <div class="tt-axis"><div><span>−15m</span><span>−10m</span><span>−5m</span><span>сейчас</span></div></div>
-              </div>
-              <h3>Таймлайн активности</h3>
-              <p>Цветные полосы показывают, когда каждый агент работал: окна от 5 минут до 24 часов, суммарное время справа. История хранится локально и переживает перезапуск.</p>
-            </article>
-            <article class="tf">
-              <div class="tf-vis tf-link" aria-hidden="true">
-                <p class="tf-line">⎿ Updated <span class="rp-link is-hover">src/nav.tsx:42</span> <span class="dim">+6 −1</span></p>
-                <svg class="tf-arrow" viewBox="0 0 40 16" fill="none"><path d="M2 8h34m0 0-6-5m6 5-6 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <p class="tf-code"><em>42</em>&lt;<span class="t">nav</span> <span class="a">className</span>=<span class="s">"nav--sticky"</span>&gt;</p>
-              </div>
-              <h3>Пути в выводе кликабельны</h3>
-              <p>Путь, ссылка <code>file://</code> или OSC 8 открывается во встроенном редакторе на нужной строке и колонке — рядом с агентом, на том же холсте.</p>
-            </article>
-            <article class="tf">
-              <div class="tf-vis tf-composer" aria-hidden="true">
-                <div class="tf-recipients"><span class="is-on" style="--c: var(--codex)">#1 Codex</span><span class="is-on" style="--c: var(--claude)">#2 Claude Code</span><span style="--c: var(--pi)">#3 Pi</span></div>
-                <p class="tf-line">› Прогони все тесты и расскажи о падениях</p>
-                <p class="dim">Отправлено 2 агентам</p>
-              </div>
-              <h3>Один запрос — нескольким агентам</h3>
-              <p><kbd>⌘</kbd>-щелчок по кнопкам окон выбирает адресатов, <b>Message</b> отправляет всем один текст. Многострочное поле, история до 100 запросов, повтор по <kbd>↑</kbd> и <kbd>↓</kbd>.</p>
-            </article>
-            <article class="tf">
-              <div class="tf-vis tf-drop" aria-hidden="true">
-                <span class="tf-file"><svg viewBox="0 0 16 16" fill="none"><rect x="2.5" y="2.5" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="m4 11 3-3 2 2 1.5-1.5L12 10" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>Screen 12.04.png</span>
-                <p class="tf-line">› глянь <span class="s">'/Users/me/Screen 12.04.png'</span></p>
-              </div>
-              <h3>Картинки — перетаскиванием</h3>
-              <p>Скриншот или несколько изображений из Finder превращаются в пути в кавычках. Пробелы в именах ничего не ломают.</p>
-            </article>
-            <article class="tf">
-              <div class="tf-vis tf-pathbar" aria-hidden="true">
-                <p class="dim">❯ git status</p>
-                <p>On branch <span class="s">sticky-nav</span></p>
-                <p class="dim">nothing to commit, working tree clean</p>
-                <span class="tf-pathline">~/dev/acme-web<span class="tf-copied">✓ Скопировано</span><span class="tf-icons"><svg viewBox="0 0 16 16" fill="none"><path d="M4.5 2.5h5l2.5 2.5v8.5h-7.5v-11Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M6.5 8h3.5M6.5 10.5h3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><svg viewBox="0 0 16 16" fill="none"><rect x="2.5" y="5" width="8" height="8.5" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M5.5 2.5h6.5a1.5 1.5 0 0 1 1.5 1.5v7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span></span>
-              </div>
-              <h3>Строка пути и экспорт чата</h3>
-              <p>Щелчок копирует путь рабочей папки, двойной — открывает рядом новый терминал. У Codex, Claude Code и Copilot CLI можно скопировать весь чат из их журналов или открыть его в редакторе.</p>
-            </article>
-            <article class="tf">
-              <div class="tf-vis tf-modes" aria-hidden="true">
-                <span>История</span><span>tmux</span><span>Мышь CLI</span>
-              </div>
-              <h3>Прокрутка и выделение</h3>
-              <p>Колесо листает историю терминала, историю tmux или уходит самому CLI: режим задаётся для CLI и для отдельного окна. Выделение тянется за край окна и копируется точно.</p>
-            </article>
-            <article class="tf">
-              <div class="tf-vis tf-palette" aria-hidden="true">
-                <span style="--c: oklch(0.64 0.19 262)">AgentRelay</span>
-                <span style="--c: oklch(0.7 0.01 266)">Graphite</span>
-                <span style="--c: oklch(0.6 0.15 280)">Midnight</span>
-                <span style="--c: oklch(0.7 0.13 150)">Forest</span>
-                <span style="--c: oklch(0.72 0.15 45)">Ember</span>
-              </div>
-              <h3>Ваш шрифт, ваши цвета</h3>
-              <p>Встроенный Iosevka или любой моноширинный шрифт; <kbd>⌘+</kbd> и <kbd>⌘−</kbd> меняют размер везде. Пять палитр, девять настраиваемых цветов, светлая и тёмная темы, прозрачность и размытие.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="band persist" aria-labelledby="persist-title">
-        <div class="wrap">
-          <div class="section-head">
-            <h2 id="persist-title">Закройте приложение. Агенты продолжат&nbsp;работу.</h2>
-            <p>Каждый агент живёт в своей сессии tmux, а не внутри окна. AgentRelay лишь подключается к ней, поэтому после перезапуска карточки встают на свои места и снова показывают те же процессы.</p>
-          </div>
-
-          <div class="lifeline" role="img" aria-label="Схема: окно AgentRelay закрыто и открыто снова, а процессы агентов работают без перерыва">
-            <div class="lane">
-              <span class="lane-label"><i style="--c: var(--accent-soft)"></i>AgentRelay</span>
-              <div class="track">
-                <span class="seg app" style="--from: 0%; --to: 38%">окно открыто</span>
-                <span class="gap-mark" style="--at: 46%">⌘Q</span>
-                <span class="seg app" style="--from: 54%; --to: 100%">открыто снова</span>
-                <span class="playhead"></span>
-              </div>
-            </div>
-            <div class="lane">
-              <span class="lane-label"><i style="--c: var(--codex)"></i>codex · tmux</span>
-              <div class="track"><span class="seg proc" style="--c: var(--codex); --from: 3%; --to: 100%"></span><span class="playhead"></span></div>
-            </div>
-            <div class="lane">
-              <span class="lane-label"><i style="--c: var(--claude)"></i>claude · tmux</span>
-              <div class="track"><span class="seg proc" style="--c: var(--claude); --from: 9%; --to: 100%"></span><span class="playhead"></span></div>
-            </div>
-            <div class="lifeline-scale" aria-hidden="true">
-              <span class="scale-spacer"></span>
-              <div class="scale-track">
-                <span class="scale-note is-before" style="--at: 38%">Выход: терминалы отключаются, процессы остаются</span>
-                <span class="scale-note" style="--at: 54%">Запуск: те же карточки подключаются к тем же процессам</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="persist-notes">
-            <p><strong>tmux уже внутри.</strong> Ставить его отдельно не нужно: AgentRelay несёт собственную сборку для Apple Silicon.</p>
-            <p><strong>Честно о границах.</strong> Перезагрузка Mac завершает процессы агентов — карточка предложит запустить CLI заново. Обычные терминалы после перезапуска открывают свежий login shell в той же папке.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="band" id="layouts" aria-labelledby="layouts-title">
-        <div class="wrap">
-          <div class="section-head">
-            <h2 id="layouts-title">Порядок на холсте — одним щелчком.</h2>
-            <p>Окна примагничиваются к краям холста и друг к другу, а общий край тянется сразу за обоими соседями. Раскладок на панели пять; повторное нажатие переворачивает порядок. А группы окон можно держать в именованных workspaces.</p>
-          </div>
-          <div class="arranger" data-arranger>
-            <div class="arranger-stage" role="img" aria-label="Четыре окна агентов на холсте, раскладка меняется по выбранной кнопке">
-              <div class="mini" style="--c: var(--codex)"><header><i></i>#1 Codex · acme-web</header><div class="mini-lines"><span></span><span></span><span></span><span></span></div></div>
-              <div class="mini" style="--c: var(--claude)"><header><i></i>#2 Claude Code · acme-web</header><div class="mini-lines"><span></span><span></span><span></span><span></span></div></div>
-              <div class="mini" style="--c: var(--hermes)"><header><i></i>#3 Hermes · docs</header><div class="mini-lines"><span></span><span></span><span></span><span></span></div></div>
-              <div class="mini" style="--c: var(--copilot)"><header><i></i>#4 Copilot · acme-api</header><div class="mini-lines"><span></span><span></span><span></span><span></span></div></div>
-            </div>
-            <ul class="arranger-controls" aria-label="Раскладки">
-              <li><button class="arrange-btn" type="button" data-arrangement="tile" aria-pressed="true">
-                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="1" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="13" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="13" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
-                <b>Плитка</b><small>Ровная сетка из всех видимых окон.</small></button></li>
-              <li><button class="arrange-btn" type="button" data-arrangement="columns" aria-pressed="false">
-                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="6.5" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="9.5" y="1" width="6.5" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="1" width="6.5" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="26.5" y="1" width="6.5" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
-                <b>Колонки</b><small>Вертикальные полосы на всю высоту.</small></button></li>
-              <li><button class="arrange-btn" type="button" data-arrangement="rows" aria-pressed="false">
-                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="32" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="7" width="32" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="13" width="32" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="19" width="32" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
-                <b>Строки</b><small>Окна одно под другим.</small></button></li>
-              <li><button class="arrange-btn" type="button" data-arrangement="cascade" aria-pressed="false">
-                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="8" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="var(--bg-raise)"/><rect x="15" y="11" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="var(--bg-raise)"/></svg>
-                <b>Каскад</b><small>Лесенкой, чтобы видеть все заголовки.</small></button></li>
-              <li><button class="arrange-btn" type="button" data-arrangement="golden" aria-pressed="false">
-                <svg viewBox="0 0 34 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="19" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="22" y="1" width="11" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="22" y="16" width="4.5" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="28.5" y="16" width="4.5" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
-                <b>Золотое сечение</b><small>Главному окну — 61,8&nbsp;%, остальные — по спирали внутрь.</small></button></li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="band persist" id="git" aria-labelledby="git-title">
-        <div class="wrap">
-          <div class="section-head">
-            <h2 id="git-title">Редактор и Git — рядом с&nbsp;агентом.</h2>
-            <p>Проверяйте работу агента, не выходя из окна: файл открывается на том же холсте, а Git-панель показывает историю и diff проекта активного окна.</p>
-          </div>
-          <div class="git-grid">
-            <div class="git-visuals"><div class="gitpanel" role="img" aria-label="Git-панель: граф коммитов с ветками и тегами, diff с выбранной для staging строкой, счётчики staged, unstaged и untracked.">
-              <div class="gp-head"><b>Git</b> acme-web <span>develop · ↑1</span></div>
-              <svg class="gp-graph" viewBox="0 0 460 212" aria-hidden="true">
-                <g fill="none" stroke-width="2" stroke-linecap="round">
-                  <path d="M26 24V184" stroke="#578cff"/>
-                  <path d="M26 24C26 40 58 38 58 56V84" stroke="#4dc785"/>
-                  <path d="M58 84C58 100 26 98 26 116" stroke="#4dc785"/>
-                </g>
-                <g stroke="#151921" stroke-width="2.5">
-                  <circle cx="26" cy="24" r="6" fill="#578cff"/>
-                  <circle cx="58" cy="56" r="6" fill="#4dc785"/>
-                  <circle cx="58" cy="84" r="6" fill="#4dc785"/>
-                  <circle cx="26" cy="116" r="6" fill="#578cff"/>
-                  <circle cx="26" cy="150" r="6" fill="#578cff"/>
-                  <circle cx="26" cy="184" r="6" fill="#578cff"/>
-                </g>
-                <g font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="12.5" fill="#c9d0de">
-                  <text x="90" y="28">Merge branch 'rate-limit'</text>
-                  <text x="90" y="60">Cover limiter with tests</text>
-                  <text x="90" y="88">Add token-bucket limiter</text>
-                  <text x="90" y="120">Fix off-by-one in pagination</text>
-                  <text x="90" y="154">Upgrade dependencies</text>
-                  <text x="90" y="188">Initial commit</text>
-                </g>
-                <g font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="11.5" fill="#667087" text-anchor="end">
-                  <text x="448" y="28">a41f9c2</text><text x="448" y="60">7be03d1</text><text x="448" y="88">3c9a5e0</text>
-                  <text x="448" y="120">e18b74f</text><text x="448" y="154">52d0a96</text><text x="448" y="188">0f6c1b3</text>
-                </g>
-                <g font-family="Geologica, -apple-system, sans-serif" font-size="11" font-weight="600">
-                  <rect x="300" y="12" width="62" height="19" rx="5" fill="#578cff" fill-opacity=".2"/><text x="331" y="26" text-anchor="middle" fill="#9db9ff">develop</text>
-                  <rect x="262" y="140" width="50" height="19" rx="5" fill="#ffa352" fill-opacity=".2"/><text x="287" y="154" text-anchor="middle" fill="#ffc28a">v1.4.0</text>
-                </g>
-              </svg>
-              <div class="gp-diff">
-                <p class="h">@@ src/lib/limiter.ts @@</p>
-                <p class="del">-  if (count &gt; limit) return false;</p>
-                <p class="add pick">+  if (count &gt;= limit) return false;</p>
-                <p class="add">+  bucket.refill(now);</p>
-              </div>
-              <div class="gp-foot"><span class="a">1 staged</span><span class="m">2 unstaged</span><span class="u">1 untracked</span></div>
-            </div>
-            <div class="quickopen" role="img" aria-label="Quick Open: поиск «nav» показывает nav.tsx, nav.test.tsx и navigation.md.">
-              <div class="qo-input"><span>nav</span><kbd>⌘P</kbd></div>
-              <ul>
-                <li class="is-on"><b>nav.tsx</b><span>src/components</span></li>
-                <li><b>nav.test.tsx</b><span>src/components</span></li>
-                <li><b>navigation.md</b><span>docs</span></li>
-              </ul>
-            </div></div>
-
-            <dl class="details-grid list-grid">
-              <div class="detail">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <dt>Редактор и Quick Open</dt><dd>Подсветка синтаксиса, <kbd>⌘S</kbd>, поиск в файле, маркеры незакоммиченных строк. <kbd>⌘P</kbd> ищет файл по имени в проекте. С несохранённым и с изменённым снаружи файлом приложение не поступит молча.</dd>
-              </div>
-              <div class="detail">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="7" cy="6" r="2.2" stroke="currentColor" stroke-width="1.5"/><circle cx="7" cy="18" r="2.2" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="10" r="2.2" stroke="currentColor" stroke-width="1.5"/><path d="M7 8.2v7.6M17 12.2c0 3-10 1-10 3.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                <dt>История, граф и blame</dt><dd>Граф коммитов с ветками и тегами, фильтры по автору, тексту, пути и датам, история файла, blame, diff с контекстом 3, 10 или целиком.</dd>
-              </div>
-              <div class="detail">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="m16 16 2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <dt>Staging до строки</dt><dd>Файл, hunk или отдельные строки — в индекс и обратно. Коммит и amend; Git hooks выполняются, ошибки видны.</dd>
-              </div>
-              <div class="detail">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 4v10a4 4 0 0 0 4 4h8M6 4 3.5 6.5M6 4l2.5 2.5M18 18l-3-3m3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <dt>Ветки, remote, stash</dt><dd>Ветки и теги, fetch, pull (только fast-forward), push, stash, merge, rebase, cherry-pick, revert и reset — с подтверждением рискованных шагов. Force push не используется.</dd>
-              </div>
-              <div class="detail">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5h6v6H5zM13 13h6v6h-6zM11 8h3a2 2 0 0 1 2 2v3M13 16h-3a2 2 0 0 1-2-2v-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <dt>Конфликты и worktrees</dt><dd>Инспектор конфликтов показывает базу и обе стороны; разрешайте в редакторе или выбором стороны. Worktree создаётся из панели, и в нём сразу можно запустить сессию агента.</dd>
-              </div>
-              <div class="detail">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="1.5"/></svg>
-                <dt>Review вместе с агентом</dt><dd>Зафиксируйте baseline перед задачей и потом посмотрите, что изменилось. Панель готовит запрос на ревью, объяснение коммита или помощь с конфликтом: он попадает в composer, а отправляете его вы.</dd>
-              </div>
-            </dl>
-          </div>
-          <p class="fine">Pull request’ы, комментарии GitHub и CI в приложение не встроены. Это локальный Git-клиент и лёгкий редактор, а не IDE: ни автодополнения, ни отладчика нет.</p>
-        </div>
-      </section>
-
-      <section class="band" id="panels" aria-labelledby="panels-title">
-        <div class="wrap">
-          <div class="section-head">
-            <h2 id="panels-title">Браузер, файлы, заметки и тикеты — рядом.</h2>
-            <p>Боковые панели не плодят окон, а их состояние хранится вместе с workspace.</p>
-          </div>
-          <div class="pn-grid">
-            <article class="pn">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" stroke="currentColor" stroke-width="1.5"/></svg>
-              <h3>Браузер <kbd>⇧⌘B</kbd></h3>
-              <p>Вкладки, адресная строка и сохранённые входы справа от холста. Чтобы агент мог управлять вкладками, нужно отдельное разрешение; во время его работы видны баннер и кнопка Stop.</p>
-              <p class="lim">Без расширений, блокировки рекламы и менеджера паролей.</p>
-            </article>
-            <article class="pn">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.5 7.5a2 2 0 0 1 2-2H10l2 2.5h6.5a2 2 0 0 1 2 2v7.5a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2v-10Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-              <h3>Файлы <kbd>⇧⌘E</kbd></h3>
-              <p>Дерево и быстрый список папки проекта: фильтры по типам, Git-бейджи, превью и Quick Look. Строки перетаскиваются в терминал.</p>
-              <p class="lim">Только просмотр: файлы не создаются, не переименовываются и не удаляются.</p>
-            </article>
-            <article class="pn">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3.5h9l4 4v13H6v-17Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 11h7M9 14.5h7M9 18h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              <h3>Заметки <kbd>⌥⌘N</kbd></h3>
-              <p>Мини-блокнот: глобальные, workspace- и проектные заметки в обычных текстовых файлах.</p>
-              <p class="lim">Простой текст — без форматирования и поиска.</p>
-            </article>
-            <article class="pn">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="m8 9.5 1.5 1.5L12 8.5M8 15.5l1.5 1.5L12 14.5M14.5 10h3M14.5 16h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <h3>Тикеты</h3>
-              <p>База Notion или Jira Cloud: спринт и бэклог рядом с кодом, смена статуса прямо из панели.</p>
-              <p class="lim">Подключение своим токеном Notion или входом в Jira.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="band persist" id="supervisor" aria-labelledby="supervisor-title">
-        <div class="wrap">
-          <p class="eyebrow">Экспериментальная функция</p>
-          <div class="section-head">
-            <h2 id="supervisor-title">Supervisor: план, исполнители, независимое ревью.</h2>
-            <p>Опишите цель в чате Supervisor — он предложит план из этапов. Вы одобряете запуск, исполнители используют выбранный режим работы, а изменения кода проходят независимое ревью точного коммита. Включён по умолчанию, отключается в Settings → Supervisor.</p>
-          </div>
-          <p>На выбор — Auto, Worktree, Here, Task branches и No checkout. Task branches создаёт ветку каждой задачи в текущей папке и доставляет результат после независимого ревью, учитывая workflow проекта. No checkout предназначен для чтения и исследования без коммитов в репозиторий и ревью.</p>
-          <p>Следующие этапы можно поставить в очередь во время работы. Размеры и свёрнутые секции панелей восстанавливаются отдельно для workspace; таймауты ответа настраиваются, ожидание активности по умолчанию — 300 секунд.</p>
-          <p>Если восстановление истории не удалось, Supervisor сохраняет черновик и предлагает повторить загрузку. Stop reply приостанавливает события задач до Resume events; ошибки планирования показаны у соответствующего плана.</p>
-          <ol class="sup-flow">
-            <li><h3>Цель</h3><p>Опишите задачу в чате или командой /plan.</p></li>
-            <li><h3>План</h3><p>Этапы, критерии, роли, CLI и зависимости видны до запуска.</p></li>
-            <li><h3>Одобрение</h3><p>Ничего не стартует без вашего подтверждения, а одобренный план замораживается.</p></li>
-            <li><h3>Исполнение</h3><p>Исполнитель работает в одобренной папке; задача и её прогресс видны на доске.</p></li>
-            <li class="is-ok"><h3>Ревью и Verified</h3><p>Отдельный ревьюер проверяет именно этот коммит. До трёх циклов исправлений, затем зовёт вас.</p></li>
-          </ol>
-          <div class="sup-grid">
-            <div class="sup-visuals"><div class="plan" role="img" aria-label="Пример плана Supervisor: три этапа с исполнителем, ревьюером и писателем, статусы Verified, Checking и Waiting, кнопки Details и Review & start.">
-              <div class="plan-head"><span class="sp-pill mid">Plan v1</span><b>Rate limiting for the search API</b><span>3 tasks · 2 in parallel</span></div>
-              <ul class="plan-rows">
-                <li><span class="n">1</span><div><strong>Add token-bucket limiter</strong><small><span class="role-dot" style="--c: var(--codex)">Executor · Codex</span><span>worktree sup/limiter</span></small></div><span class="sp-pill ok">Verified</span></li>
-                <li><span class="n">2</span><div><strong>Review commit 3c9a5e0</strong><small><span class="role-dot" style="--c: var(--claude)">Reviewer · Claude Code</span><span>точный коммит, отдельная копия</span></small></div><span class="sp-pill mid">Checking</span></li>
-                <li><span class="n">3</span><div><strong>Document the 429 response</strong><small><span class="role-dot" style="--c: var(--hermes)">Writer · Hermes</span><span>ждёт этап 1</span></small></div><span class="sp-pill" style="color: #8e99ad; background: #8e99ad22">Waiting</span></li>
-              </ul>
-              <div class="plan-foot"><span>Details</span><span class="is-primary">Review &amp; start…</span><em>нужно ваше подтверждение</em></div>
-            </div>
-            <div class="plan waiting" role="img" aria-label="Список «Waiting for you»: план, ожидающий подтверждения, и остановленная задача.">
-              <div class="plan-head"><b>2 items are waiting for you</b></div>
-              <ul class="plan-rows">
-                <li><span class="n">!</span><div><strong>Plan v1 · Checkout flow cleanup</strong><small><span>ждёт вашего подтверждения перед запуском</span></small></div><span class="sp-pill mid">Review &amp; start…</span></li>
-                <li><span class="n">!</span><div><strong>Migrate session store</strong><small><span>остановлена после трёх циклов исправлений — решить вам</span></small></div><span class="sp-pill bad">Stopped</span></li>
-              </ul>
-            </div></div>
-            <dl class="details-grid list-grid">
-              <div class="detail">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="9" r="2.2" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5M15.5 14.2c3 0 5 1.6 5 4.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                <dt>16 фиксированных ролей</dt><dd>Исполнители (Executor, Architect, Designer, Investigator, Writer и другие) и проверяющие (Reviewer, Design reviewer, Security reviewer, Acceptance tester). Для роли можно задать свой CLI, модель и effort.</dd>
-              </div>
-              <div class="detail">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.5 4.5 6.5v5.5c0 4.5 3 7.5 7.5 8.5 4.5-1 7.5-4 7.5-8.5V6.5L12 3.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="m8.8 12 2.4 2.4 4-4.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <dt>Verified — это доказательства</dt><dd>Отчёт агента сам по себе ничего не доказывает: приложение сверяет коммит с критериями, само запускает проверочную команду и требует независимое ревью.</dd>
-              </div>
-              <div class="detail">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 17V11a6 6 0 1 1 12 0v6l1.5 2h-15L6 17ZM10 21h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <dt>Список «Waiting for you»</dt><dd>Всё, что требует вас, собрано в одном списке и счётчике; если AgentRelay не на переднем плане, придёт уведомление.</dd>
-              </div>
-              <div class="detail">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="7" cy="6" r="2.2" stroke="currentColor" stroke-width="1.5"/><circle cx="7" cy="18" r="2.2" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="12" r="2.2" stroke="currentColor" stroke-width="1.5"/><path d="M7 8.2v7.6M9 6h4a4 4 0 0 1 4 4v-.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                <dt>Передача pull request</dt><dd>Когда задача Verified и в отчёте есть ссылка на draft PR, приложение может перевести его в ready for review через <code>gh</code>. Merge оно не делает.</dd>
-              </div>
-              <div class="detail">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 3v5.5L4.5 17a2.5 2.5 0 0 0 2.2 3.5h10.6a2.5 2.5 0 0 0 2.2-3.5L15 8.5V3M8 3h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <dt>Управляемые бэкенды<span class="tag-exp">экспериментально</span></dt><dd>По выбору исполнители и ревьюеры работают не в терминале, а через протокол самого CLI: Codex App Server, Claude stream-json, Copilot SDK RPC, Pi RPC, Hermes ACP.</dd>
-              </div>
-            </dl>
-          </div>
-          <div class="warn-note"><p><strong>Честно о границах.</strong> Supervisor экспериментальный: качество разбиения на этапы зависит от модели, worktree — не песочница, а права исполнителя определяет его CLI. Автоматического merge, планов на несколько репозиториев и запуска по расписанию нет.</p></div>
-        </div>
-      </section>
-
-      <section class="band" id="automation" aria-labelledby="automation-title">
-        <div class="wrap">
-          <div class="section-head">
-            <h2 id="automation-title">Локальная автоматизация для внешних AI-клиентов.</h2>
-            <p>Выключена по умолчанию. Включите Allow MCP access в Settings → Automation, выберите один проект — и доверенный клиент сможет создавать ограниченное число агентов и вести с ними диалог.</p>
-          </div>
-          <div class="mcp-grid">
-            <div>
-              <ul class="mcp-tools">
-                <li><code>list_sessions</code><span>метаданные сессий выбранного проекта</span></li>
-                <li><code>create_session</code><span>запускает выбранный CLI в разрешённой папке; окно видно вам</span></li>
-                <li><code>send_input</code><span>текст и Enter в сессию, созданную в этой авторизации</span></li>
-                <li><code>read_output</code><span>хвост терминала, до 16 000 символов</span></li>
-              </ul>
-              <p class="fine" style="margin-top: 0">Управление браузерной панелью открывается отдельным разрешением (Allow browser control); пока агент действует, панель показывает баннер и кнопку Stop.</p>
-            </div>
-            <ul class="mcp-facts">
-              <li><strong>Только локально.</strong> Конечная точка слушает 127.0.0.1 и защищена свежим токеном. Мост <code>agentrelay-mcp</code> уже в комплекте — Python и Node не нужны.</li>
-              <li><strong>Лимиты.</strong> До 4 созданных сессий и 256 принятых вводов на одну авторизацию; повтор с тем же request_id не дублируется.</li>
-              <li><strong>Видимо и отзываемо.</strong> Созданные агенты появляются на вашем холсте, а доступ можно отозвать в любой момент.</li>
-              <li><strong>Чего нет.</strong> Остановка и закрытие окон, Git и запись в редакторе внешнему клиенту не открыты; уже запущенные окна ему видны только как метаданные.</li>
-              <li><strong>Не песочница.</strong> Лимиты MCP не ограничивают права самих CLI на файлы и сеть.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="band persist" aria-labelledby="details-title">
-        <div class="wrap">
-          <div class="section-head">
-            <h2 id="details-title">Мелочи, которые экономят время.</h2>
-            <p>Когда агентов пять, а веток три, важно быстро находить нужное окно и не терять контекст.</p>
-          </div>
-          <dl class="details-grid">
-            <div class="detail">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 13h8M3 17h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              <dt>Панель всех окон</dt><dd>У каждой сессии, терминала и редактора своя кнопка <code>#номер клиент проект ветка</code>. Щелчок выводит окно вперёд и разворачивает свёрнутое.</dd>
-            </div>
-            <div class="detail">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 8 4 4-4 4M11 16h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <dt>Любой CLI</dt><dd>Имя, исполняемый файл, аргументы и переменные окружения; встроенные CLI тоже можно переопределить. AgentRelay ищет CLI в Homebrew, npm, Bun, Cargo, Volta и asdf, а если не нашёл — предложит указать путь.</dd>
-            </div>
-            <div class="detail">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="7.5" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M9.5 4.5h8a2 2 0 0 1 2 2v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              <dt>Сменить CLI или продублировать</dt><dd>Окно можно перезапустить с другим агентом или в другой папке, не теряя места на холсте. Дубликат открывает новую сессию того же CLI в том же проекте.</dd>
-            </div>
-            <div class="detail">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="8" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="13" y="5" width="8" height="14" rx="2" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2"/></svg>
-              <dt>Именованные workspaces</dt><dd>Группы окон со своей папкой проекта: переключайтесь, не останавливая сессии, переносите окна между группами или открывайте workspace в отдельном окне macOS.</dd>
-            </div>
-            <div class="detail">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2.5 2.5"/></svg>
-              <dt>Режим без рамок</dt><dd><kbd>⇧⌘F</kbd> убирает рамки окон сессий и редакторов — остаётся чистый холст с небольшими просветами.</dd>
-            </div>
-            <div class="detail">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.5"/><path d="M12 3.5v17M12 12h8.5" stroke="currentColor" stroke-width="1.5"/></svg>
-              <dt>Внешний вид и доступность</dt><dd>Светлая и тёмная темы, метки для VoiceOver, поддержка Reduce Motion, подсказки у кнопок.</dd>
-            </div>
-          </dl>
-
-          <div class="section-head" style="margin-top: clamp(56px, 7vw, 96px)">
-            <h2 id="keys-title">Всё с клавиатуры.</h2>
-            <p>Основные сочетания. Полный список — в меню приложения.</p>
-          </div>
-          <dl class="keys-grid" aria-labelledby="keys-title">
-            <div><dt>Новая сессия</dt><dd><kbd>⌘N</kbd></dd></div>
-            <div><dt>Поиск файла (Quick Open)</dt><dd><kbd>⌘P</kbd></dd></div>
-            <div><dt>Следующее окно</dt><dd><kbd>⌃Tab</kbd></dd></div>
-            <div><dt>Окно по номеру</dt><dd><kbd>⌘1</kbd>–<kbd>9</kbd></dd></div>
-            <div><dt>Раскладки холста</dt><dd><kbd>⌃⌥1</kbd>–<kbd>5</kbd></dd></div>
-            <div><dt>Git-панель</dt><dd><kbd>⇧⌘G</kbd></dd></div>
-            <div><dt>Браузер</dt><dd><kbd>⇧⌘B</kbd></dd></div>
-            <div><dt>Файлы</dt><dd><kbd>⇧⌘E</kbd></dd></div>
-            <div><dt>Таймлайн</dt><dd><kbd>⇧⌘T</kbd></dd></div>
-            <div><dt>Заметки</dt><dd><kbd>⌥⌘N</kbd></dd></div>
-            <div><dt>Режим без рамок</dt><dd><kbd>⇧⌘F</kbd></dd></div>
-            <div><dt>Настройки</dt><dd><kbd>⌘,</kbd></dd></div>
-          </dl>
-        </div>
-      </section>
-
-      <section class="band install" id="install" aria-labelledby="install-title">
-        <div class="wrap install-grid">
-          <div class="install-cta">
-            <img src="./app-icon-256.png" width="136" height="136" alt="Значок AgentRelay: три окна терминала, соединённые в одну сеть" loading="lazy" />
-            <h2 id="install-title">Три шага до первого агента.</h2>
-            <p>Бесплатное нативное приложение для macOS. Подписано и нотаризовано Apple.</p>
-            <a class="button button-primary" href="https://github.com/setixela/agentrelay-download/releases/latest/download/AgentRelay-macOS.zip">
-              Скачать для macOS
-              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3.5v9m0 0 3.5-3.5M10 12.5 6.5 9M4 15.5h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
-            </a>
-            <p class="requirements">Системные требования</p>
-            <ul class="req-list">
-              <li>Apple Silicon (arm64)</li><li>macOS 14 и новее</li><li>tmux в комплекте</li><li>Обновления через Sparkle</li>
-            </ul>
-          </div>
-          <div>
-            <ol class="steps">
-              <li>
-                <h3>Скачайте архив</h3>
-                <p><code>AgentRelay-macOS.zip</code>: сборка для Apple Silicon (arm64).</p>
-              </li>
-              <li>
-                <h3>Перенесите в «Программы»</h3>
-                <p>Распакуйте архив и перетащите AgentRelay в папку «Программы». Когда выйдет новая версия, приложение само предложит обновиться.</p>
-              </li>
-              <li>
-                <h3>Выберите папку и запустите агента</h3>
-                <p>Нажмите <b>New session</b>, выберите проект и CLI. Codex, Claude Code и другие агенты устанавливаются отдельно; <code>tmux</code> уже включён.</p>
-              </li>
-            </ol>
-            <ul class="install-notes">
-              <li>AgentRelay не устанавливает CLI-агентов и не переносит их вход в аккаунт: каждый CLI настраивается и обновляется отдельно.</li>
-              <li>Приложение само проверяет подписанный канал Sparkle и предлагает обновиться; тихая установка по умолчанию выключена.</li>
-              <li>MCP-доступ и управление браузером со стороны агентов выключены, пока вы сами их не включите.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="wrap">
-        <span>© 2026 AgentRelay</span>
-        <div class="footer-links">
-          <a href="https://github.com/setixela/agentrelay-download/releases/latest">Сведения о сборке <span aria-hidden="true">↗</span></a>
-          <a href="https://github.com/setixela/agentrelay-download/releases">Все релизы <span aria-hidden="true">↗</span></a>
-          <a href="./en/" lang="en" hreflang="en">English</a>
         </div>
       </div>
-    </footer>
-  </body>
+
+      <div class="stage">
+        <img class="watch brand-mark" src="assets/vibevizor-mark-white.png" alt="">
+        <div class="replica-frame" id="replica-frame">
+          <div class="replica-scale" id="replica-scale">
+            <div class="app" role="img" aria-label="VibeVizor workspace: two agents, an editor and the VibeVizor coordinator panel">
+              <div class="app-bar">
+                <span class="lights"><i></i><i></i><i></i></span>
+                <span class="ws">acme-web ▾</span>
+                <span class="chip sel"><b style="background:var(--codex)"></b>#1 Codex</span>
+                <span class="chip"><b style="background:var(--claude)"></b>#2 Claude Code</span>
+                <span class="chip"><b style="background:var(--app-dim)"></b>#3 nav.tsx</span>
+                <span class="sp"></span>
+                <span class="tbtn" title="Git">⑂</span>
+                <span class="tbtn" title="Activity timeline">≡</span>
+                <span class="tbtn on" title="VibeVizor">✦</span>
+              </div>
+              <div class="app-body">
+                <div class="canvas">
+                  <div class="card tall">
+                    <div class="card-h"><span class="n">#1</span> Codex · acme-web <span class="pill work">Working</span></div>
+<div class="term"><span class="d">›</span> Add rate limiting to /api/search
+<span class="d">•</span> Reading src/api/search.ts
+<span class="g">✓</span> Edited <span class="u">search.ts</span> <span class="g">+24</span> <span class="y">−3</span>
+<span class="g">✓</span> Edited <span class="u">limiter.ts</span> <span class="g">+31</span>
+<span class="d">•</span> Running npm test
+  <span class="y">2 failed</span>, 38 passed
+<span class="d">•</span> Fixing <span class="u">limiter.test.ts:57</span>
+<span class="d">•</span> Re-running npm test
+  <span class="g">✓ 40 passed</span></div>
+                    <div class="path">~/dev/acme-web · rate-limit</div>
+                  </div>
+                  <div class="card cl">
+                    <div class="card-h"><span class="n">#2</span> Claude Code · acme-web <span class="pill done">Done</span></div>
+<div class="term"><span class="d">›</span> Make the nav sticky on mobile
+<span class="g">⏺</span> Update(<span class="u">src/nav.tsx:42</span>)
+  <span class="d">⎿</span> Updated <span class="g">+6</span> <span class="y">−1</span>
+<span class="g">⏺</span> Bash(npm test)
+  <span class="d">⎿</span> 40 passed</div>
+                    <div class="path">~/dev/acme-web-nav · sticky-nav</div>
+                  </div>
+                  <div class="card ed">
+                    <div class="card-h"><span class="n">#3</span> nav.tsx</div>
+<div class="term"><span class="d">41</span>  return (
+<span class="d">42</span>    &lt;nav className=<span class="g">"nav nav--sticky"</span>&gt;
+<span class="d">43</span>      &lt;button onClick={toggle}&gt;
+<span class="d">44</span>      &lt;ul className=<span class="g">"nav-list"</span>&gt;</div>
+                    <div class="path">~/dev/acme-web-nav/src/nav.tsx</div>
+                  </div>
+                </div>
+                <aside class="vvpanel">
+                  <div class="vv-h">✦ VibeVizor <span class="x">⌄</span></div>
+                  <div class="tabs"><span>Chat</span><span class="on">Tasks</span></div>
+                  <div class="roles"><span>Roles</span><span>10/16 enabled · 2 working</span></div>
+                  <div class="tasks">
+                    <div class="task">Sticky nav on mobile <span class="st v">Verified</span></div>
+                    <div class="task">Add rate limiting <span class="st c">Checking</span></div>
+                    <div class="task">Paginate /orders list <span class="st v">Verified</span></div>
+                    <div class="task">Cache product search <span class="st v">Verified</span></div>
+                    <div class="task">Migrate session store <span class="st s">Stopped</span></div>
+                    <div class="task">Document the REST API <span class="st v">Verified</span></div>
+                    <div class="task">Trim bundle size <span class="st p">Proposed</span></div>
+                  </div>
+                  <div class="tray"><b>2 items are waiting for you</b><div class="r"><span>Plan v1 · Checkout flow</span><u>Review &amp; start…</u></div></div>
+                  <div class="composer">Message to VibeVizor</div>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="caption">
+          <span class="ru">Демо на вымышленном проекте. Статус в заголовке окна показывает, кто работает, а кто закончил; щелчок по пути открывает файл в редакторе. Справа — экспериментальный координатор VibeVizor.</span>
+          <span class="en">A demo with a fictional project. The status in each window header shows who is working and who has finished; clicking a path opens the file in the editor. On the right is the experimental VibeVizor coordinator.</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- 3. Providers -->
+    <div class="wrap">
+      <div class="providers">
+        <div class="row">
+          <span class="label"><span class="ru">Готовы из коробки</span><span class="en">Ready out of the box</span></span>
+          <span><b style="background:var(--codex)"></b>Codex</span>
+          <span><b style="background:var(--claude)"></b>Claude Code</span>
+          <span><b style="background:var(--copilot)"></b>GitHub Copilot CLI</span>
+          <span><b style="background:var(--pi)"></b>Pi</span>
+          <span><b style="background:var(--hermes)"></b>Hermes</span>
+          <span><b style="background:var(--vv-muted)"></b><span class="ru">и ваш CLI</span><span class="en">and your own CLI</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Overview -->
+  <section id="overview" class="wrap">
+    <h2><span class="ru">Всё вокруг агентов — в одном окне.</span><span class="en">Everything around your agents, in one window.</span></h2>
+    <p class="sub"><span class="ru">VibeVizor запускает настоящие CLI, а не заменяет их своим чатом, и собирает вокруг них то, чего не хватает во вкладках терминала.</span><span class="en">VibeVizor runs the real CLIs instead of replacing them with its own chat, and builds around them what terminal tabs lack.</span></p>
+    <div class="grid g4">
+      <div class="tile"><h3><span class="ru">Холст и раскладки</span><span class="en">Canvas and layouts</span></h3><p><span class="ru">Окна двигаются и примагничиваются, пять раскладок, именованные workspaces.</span><span class="en">Windows move and snap together, five layouts, named workspaces.</span></p></div>
+      <div class="tile"><h3><span class="ru">Сессии переживают перезапуск</span><span class="en">Sessions survive a restart</span></h3><p><span class="ru">Агенты работают в tmux внутри приложения и продолжают после выхода.</span><span class="en">Agents run in tmux inside the app and carry on after you quit.</span></p></div>
+      <div class="tile"><h3><span class="ru">Терминал для агентов</span><span class="en">A terminal for agents</span></h3><p><span class="ru">Статусы Working и Done, таймлайн, кликабельные пути, один запрос нескольким агентам.</span><span class="en">Working and Done states, a timeline, clickable paths, one prompt to several agents.</span></p></div>
+      <div class="tile"><h3><span class="ru">Редактор и Git-клиент</span><span class="en">Editor and Git client</span></h3><p><span class="ru">Quick Open, diff, построчный staging, ветки, stash, конфликты и worktrees.</span><span class="en">Quick Open, diffs, line-level staging, branches, stash, conflicts and worktrees.</span></p></div>
+      <div class="tile"><h3><span class="ru">Панели рядом</span><span class="en">Panels alongside</span></h3><p><span class="ru">Браузер, файлы, заметки и тикеты Notion или Jira без отдельных окон.</span><span class="en">A browser, files, notes and Notion or Jira tickets without extra windows.</span></p></div>
+      <div class="tile exp"><h3>VibeVizor <span class="badge"><span class="ru">Эксперимент</span><span class="en">Experimental</span></span></h3><p><span class="ru">Координатор: план, исполнители и независимое ревью точного коммита.</span><span class="en">The coordinator: a plan, executors and an independent review of the exact commit.</span></p></div>
+      <div class="tile"><h3>Browser MCP</h3><p><span class="ru">Опциональное управление встроенным браузером для внешних AI-клиентов в одном проекте.</span><span class="en">Optional control of the built-in browser for outside AI clients in one project.</span></p></div>
+      <div class="tile"><h3><span class="ru">Нативная поставка</span><span class="en">Native delivery</span></h3><p><span class="ru">Apple Silicon, macOS 14+, tmux внутри, подпись Apple и обновления Sparkle.</span><span class="en">Apple Silicon, macOS 14+, bundled tmux, Apple signing and Sparkle updates.</span></p></div>
+    </div>
+  </section>
+
+  <!-- 5. Terminal -->
+  <section id="terminal" class="wrap">
+    <h2><span class="ru">Терминал, который понимает агентов.</span><span class="en">A terminal that understands agents.</span></h2>
+    <p class="sub"><span class="ru">Каждое окно — настоящий терминал с true color и вашим шрифтом.</span><span class="en">Every window is a real terminal with true color and your font.</span></p>
+    <div class="shot vis-term" role="img" aria-label="Three agent windows with Working, Done and Idle states above the activity timeline">
+      <div class="cards3">
+        <div class="card"><div class="card-h"><span class="n">#1</span> Codex · acme-web <span class="pill work">Working</span></div>
+<div class="term"><span class="d">•</span> Running npm test
+  <span class="y">2 failed</span>, 38 passed
+<span class="d">•</span> Fixing <span class="u">limiter.test.ts:57</span>
+<span class="d">•</span> Re-running npm test</div></div>
+        <div class="card"><div class="card-h"><span class="n">#2</span> Claude Code · acme-web <span class="pill done">Done</span></div>
+<div class="term"><span class="g">⏺</span> Update(<span class="u">src/nav.tsx:42</span>)
+  <span class="d">⎿</span> Updated <span class="g">+6</span> <span class="y">−1</span>
+<span class="g">⏺</span> Bash(npm test)
+  <span class="d">⎿</span> 40 passed</div></div>
+        <div class="card"><div class="card-h"><span class="n">#4</span> Pi · acme-api <span class="pill idle">Idle</span></div>
+<div class="term"><span class="d">›</span> Summarize open TODOs in src/
+  14 TODOs in 9 files, grouped
+  by owner in <span class="u">TODO.md</span>
+<span class="d">›</span> _</div></div>
+      </div>
+      <div class="timeline">
+        <div class="tl-h"><b>Timeline</b><span>1 h</span></div>
+        <div class="lane"><span>#1 Codex</span><span class="track"><i style="left:4%;width:22%;background:var(--codex)"></i><i style="left:34%;width:30%;background:var(--codex)"></i><i style="left:78%;width:22%;background:var(--codex)"></i></span><span class="tot">44 min</span></div>
+        <div class="lane"><span>#2 Claude Code</span><span class="track"><i style="left:12%;width:18%;background:var(--claude)"></i><i style="left:52%;width:24%;background:var(--claude)"></i></span><span class="tot">25 min</span></div>
+        <div class="lane"><span>#4 Pi</span><span class="track"><i style="left:66%;width:9%;background:var(--pi)"></i></span><span class="tot">5 min</span></div>
+        <div class="ticks"><span></span><span><i>−60</i><i>−45</i><i>−30</i><i>−15</i><i>now</i></span><span></span></div>
+      </div>
+    </div>
+    <div class="grid g3 visual">
+      <div class="tile"><h3><span class="ru">Кто работает, а кто закончил</span><span class="en">Who is working, who has finished</span></h3><p><span class="ru">Working, Idle или Done по экрану агента. Это наблюдение за активностью, а не проверка результата.</span><span class="en">Working, Idle or Done from the agent’s screen. It observes activity; it does not verify the result.</span></p></div>
+      <div class="tile"><h3><span class="ru">Таймлайн активности</span><span class="en">Activity timeline</span></h3><p><span class="ru">Окна от 5 минут до 24 часов, суммарное время; история локальна и переживает перезапуск.</span><span class="en">Ranges from 5 minutes to 24 hours with total time; stored locally, survives a restart.</span></p></div>
+      <div class="tile"><h3><span class="ru">Пути кликабельны</span><span class="en">Clickable paths</span></h3><p><span class="ru">Путь, <code>file://</code> или OSC 8 открывается в редакторе на нужной строке и колонке.</span><span class="en">A path, <code>file://</code> or OSC 8 link opens in the editor at the right line and column.</span></p></div>
+      <div class="tile"><h3><span class="ru">Один запрос — нескольким</span><span class="en">One prompt, several agents</span></h3><p><span class="ru">⌘-щелчок выбирает адресатов; история до 100 запросов, повтор по ↑ и ↓.</span><span class="en">⌘-click picks recipients; up to 100 prompts in history, recall with ↑ and ↓.</span></p></div>
+      <div class="tile"><h3><span class="ru">Картинки перетаскиванием</span><span class="en">Drop images in</span></h3><p><span class="ru">Изображения из Finder становятся путями в кавычках.</span><span class="en">Images from Finder become quoted paths.</span></p></div>
+      <div class="tile"><h3><span class="ru">Строка пути и экспорт чата</span><span class="en">Path bar and chat export</span></h3><p><span class="ru">Копирование пути, терминал рядом; чат Codex, Claude Code и Copilot CLI — в редактор.</span><span class="en">Copy the path, open a terminal there; Codex, Claude Code and Copilot CLI chats into the editor.</span></p></div>
+    </div>
+  </section>
+
+  <!-- 6. Persistence -->
+  <section id="persist" class="wrap">
+    <div class="split">
+      <div>
+        <h2><span class="ru">Закройте приложение. Агенты продолжат работу.</span><span class="en">Quit the app. The agents keep working.</span></h2>
+        <ul class="facts">
+          <li><span class="ru">Агентские CLI работают во встроенном tmux; при следующем запуске карточки подключаются к ним снова.</span><span class="en">Agent CLIs run in the bundled tmux; on the next launch the cards reattach to them.</span></li>
+          <li><span class="ru">Раскладка, имена, цвета и workspaces восстанавливаются.</span><span class="en">Layout, names, colours and workspaces are restored.</span></li>
+          <li><span class="ru">Обычный Terminal после перезапуска открывает новый login shell.</span><span class="en">A plain Terminal starts a new login shell after a restart.</span></li>
+        </ul>
+      </div>
+      <div class="vis-persist" role="img" aria-label="Quit, agents keep running in tmux, the cards reattach on the next launch">
+        <div>
+          <div class="shot closed"><div class="shot-h"><span class="lights"><i></i><i></i><i></i></span>acme-web — VibeVizor</div>
+            <div class="mini">
+              <div class="card"><div class="card-h">#1 Codex <span class="pill work">Working</span></div><div class="term"><span class="d">•</span> Running npm test</div></div>
+              <div class="card"><div class="card-h">#2 Claude Code <span class="pill work">Working</span></div><div class="term"><span class="g">⏺</span> Bash(npm run build)</div></div>
+            </div></div>
+          <div class="vp-cap"><b>01 · ⌘Q</b><span class="ru">Вы закрыли приложение</span><span class="en">You quit the app</span></div>
+        </div>
+        <div>
+          <div class="shot"><div class="shot-h"><strong>tmux</strong></div>
+            <div class="tmux"><div>codex <span class="g">running</span></div><div>claude <span class="g">running</span></div></div></div>
+          <div class="vp-cap"><b>02 · tmux</b><span class="ru">Агенты работают дальше</span><span class="en">The agents keep going</span></div>
+        </div>
+        <div>
+          <div class="shot"><div class="shot-h"><span class="lights"><i></i><i></i><i></i></span>acme-web — VibeVizor</div>
+            <div class="mini">
+              <div class="card"><div class="card-h">#1 Codex <span class="pill done">Done</span></div><div class="term">  <span class="g">✓ 40 passed</span></div></div>
+              <div class="card"><div class="card-h">#2 Claude Code <span class="pill work">Working</span></div><div class="term"><span class="g">⏺</span> Bash(npm run build)</div></div>
+            </div></div>
+          <div class="vp-cap"><b>03 · <span class="ru">запуск</span><span class="en">launch</span></b><span class="ru">Карточки подключились снова</span><span class="en">The cards reattach</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Layouts -->
+  <section id="layouts" class="wrap">
+    <h2><span class="ru">Порядок на холсте — одним щелчком.</span><span class="en">A tidy canvas in one click.</span></h2>
+    <p class="sub"><span class="ru">Пять раскладок для текущего холста; окна можно и дальше двигать и примагничивать вручную.</span><span class="en">Five arrangements for the current canvas; windows still move and snap by hand afterwards.</span></p>
+    <div class="layouts">
+      <div><div class="lay" style="grid-template-columns:1fr 1fr"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i></i></div><div class="lay-cap"><span><span class="ru">Сетка</span><span class="en">Tile</span></span><kbd>⌃⌥1</kbd></div></div>
+      <div><div class="lay" style="grid-template-columns:1fr 1fr 1fr"><i class="c1"></i><i class="c2"></i><i class="c3"></i></div><div class="lay-cap"><span><span class="ru">Колонки</span><span class="en">Columns</span></span><kbd>⌃⌥2</kbd></div></div>
+      <div><div class="lay" style="grid-template-rows:1fr 1fr 1fr"><i class="c1"></i><i class="c2"></i><i class="c3"></i></div><div class="lay-cap"><span><span class="ru">Строки</span><span class="en">Rows</span></span><kbd>⌃⌥3</kbd></div></div>
+      <div><div class="lay" style="grid-template-columns:1.618fr 1fr;grid-template-rows:1fr 1fr"><i class="c1" style="grid-row:span 2"></i><i class="c2"></i><i class="c3"></i></div><div class="lay-cap"><span><span class="ru">Золотое сечение</span><span class="en">Golden</span></span><kbd>⌃⌥4</kbd></div></div>
+      <div><div class="lay" style="position:relative;display:block"><i class="c1" style="position:absolute;inset:7px 34% 30% 7px"></i><i class="c2" style="position:absolute;inset:18% 20% 18% 20%"></i><i class="c3" style="position:absolute;inset:30% 7px 7px 34%"></i></div><div class="lay-cap"><span><span class="ru">Каскад</span><span class="en">Cascade</span></span><kbd>⌃⌥5</kbd></div></div>
+    </div>
+  </section>
+
+  <!-- 8. Editor & Git -->
+  <section id="git" class="wrap">
+    <div class="split">
+      <div>
+        <h2><span class="ru">Редактор и Git — рядом с&nbsp;агентом.</span><span class="en">Editor and Git, next to the agent.</span></h2>
+        <p class="sub"><span class="ru">Проверяйте изменения агента, не выходя из рабочего пространства.</span><span class="en">Review an agent’s changes without leaving the workspace.</span></p>
+        <ul class="facts">
+          <li><span class="ru">Quick Open, явное сохранение и предупреждение о внешнем изменении файла.</span><span class="en">Quick Open, explicit save and external-change detection.</span></li>
+          <li><span class="ru">История и граф, diff и blame, построчный staging, коммиты и amend.</span><span class="en">History and graph, diff and blame, line-level staging, commits and amend.</span></li>
+          <li><span class="ru">Ветки, теги, remote, stash, конфликты, worktrees и сравнение с baseline.</span><span class="en">Branches, tags, remotes, stash, conflicts, worktrees and baseline comparison.</span></li>
+        </ul>
+      </div>
+      <div class="shot vis-git" role="img" aria-label="Git panel: changed files and a diff with selected lines to stage">
+        <div class="shot-h"><span class="lights"><i></i><i></i><i></i></span><strong>Git</strong> · acme-web · rate-limit</div>
+        <div class="body">
+          <div class="files">
+            <div class="grp">Changes</div>
+            <div class="f on"><em class="M">M</em>src/api/search.ts<span class="ct">+24 −3</span></div>
+            <div class="f"><em class="A">A</em>src/lib/limiter.ts<span class="ct">+31</span></div>
+            <div class="f"><em class="M">M</em>limiter.test.ts<span class="ct">+8 −2</span></div>
+            <div class="grp">Staged</div>
+            <div class="f"><em class="M">M</em>package.json<span class="ct">+1</span></div>
+          </div>
+          <div class="diff">
+            <div class="hunk"><span>@@ -12,7 +12,12 @@ export async function search</span><span class="ubtn">Stage lines</span></div>
+            <div class="ln"><span></span><span>12</span><span>  const q = parseQuery(req)</span></div>
+            <div class="ln del"><span></span><span>13</span><span>- const results = await index.find(q)</span></div>
+            <div class="ln add sel"><span></span><span>13</span><span>+ const ip = clientAddress(req)</span></div>
+            <div class="ln add sel"><span></span><span>14</span><span>+ if (!limiter.take(ip)) {</span></div>
+            <div class="ln add sel"><span></span><span>15</span><span>+   return tooManyRequests(res)</span></div>
+            <div class="ln add sel"><span></span><span>16</span><span>+ }</span></div>
+            <div class="ln add"><span></span><span>17</span><span>+ const results = await index.find(q)</span></div>
+            <div class="ln"><span></span><span>18</span><span>  return res.json(results)</span></div>
+            <div class="hunk"><span>@@ -40,3 +45,4 @@</span><span></span></div>
+            <div class="ln"><span></span><span>45</span><span>  export const config = {</span></div>
+            <div class="ln add"><span></span><span>46</span><span>+   rateLimit: { perMinute: 20 },</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Panels -->
+  <section id="panels" class="wrap">
+    <h2><span class="ru">Браузер, файлы, заметки и тикеты — рядом.</span><span class="en">Browser, files, notes and tickets alongside.</span></h2>
+    <div class="shot vis-panels" role="img" aria-label="The canvas with a side panel showing the Files tab">
+      <div class="body">
+        <div class="canvas">
+          <div class="card"><div class="card-h"><span class="n">#1</span> Codex · acme-web <span class="pill work">Working</span></div>
+<div class="term"><span class="d">•</span> Reading <span class="u">src/api/search.ts</span>
+<span class="g">✓</span> Edited <span class="u">limiter.ts</span> <span class="g">+31</span>
+<span class="d">•</span> Running npm test</div><div class="path">~/dev/acme-web · rate-limit</div></div>
+          <div class="card"><div class="card-h"><span class="n">#2</span> Claude Code · acme-web <span class="pill done">Done</span></div>
+<div class="term"><span class="g">⏺</span> Update(<span class="u">src/nav.tsx:42</span>)
+  <span class="d">⎿</span> Updated <span class="g">+6</span> <span class="y">−1</span></div><div class="path">~/dev/acme-web-nav · sticky-nav</div></div>
+        </div>
+        <div class="side">
+          <div class="tabs"><span>Browser</span><span class="on">Files</span><span>Notes</span><span>Tickets</span></div>
+          <div class="tree">
+            <div class="dir">▾ acme-web</div>
+            <div class="ind dir">▾ src</div>
+            <div class="ind2 dir">▾ api</div>
+            <div class="ind2" style="padding-left:46px">search.ts <em class="M">M</em></div>
+            <div class="ind2 dir">▾ lib</div>
+            <div class="ind2" style="padding-left:46px">limiter.ts <em class="A">A</em></div>
+            <div class="ind2">nav.tsx</div>
+            <div class="ind">package.json <em class="M">M</em></div>
+            <div class="ind">README.md</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid g4 visual">
+      <div class="tile"><h3><span class="ru">Браузер</span><span class="en">Browser</span></h3><p><span class="ru">Вкладки, адресная строка и сохранённые входы справа от холста. Без расширений и менеджера паролей.</span><span class="en">Tabs, an address bar and saved sign-ins to the right of the canvas. No extensions or password manager.</span></p></div>
+      <div class="tile"><h3><span class="ru">Файлы</span><span class="en">Files</span></h3><p><span class="ru">Дерево папки проекта, Git-значки, превью. Только просмотр.</span><span class="en">The project folder tree, Git badges and previews. View only.</span></p></div>
+      <div class="tile"><h3><span class="ru">Заметки</span><span class="en">Notes</span></h3><p><span class="ru">Глобальные, workspace- и проектные заметки в текстовых файлах.</span><span class="en">Global, workspace and project notes in plain text files.</span></p></div>
+      <div class="tile"><h3><span class="ru">Тикеты</span><span class="en">Tickets</span></h3><p><span class="ru">База Notion или Jira Cloud: спринт и бэклог рядом с кодом.</span><span class="en">A Notion database or Jira Cloud: the sprint and backlog next to the code.</span></p></div>
+    </div>
+  </section>
+
+  <!-- Brand motif, repeated once mid-page before the coordinator -->
+  <div class="motif wrap" aria-hidden="true"><img class="brand-mark" src="assets/vibevizor-mark-white.png" alt=""></div>
+
+  <!-- 10. Coordinator (experimental) -->
+  <section id="coordinator" class="wrap" style="margin-top:72px">
+    <div class="split even">
+      <div>
+        <h2><span class="ru">Координатор VibeVizor: план, исполнители, независимое ревью.</span><span class="en">The VibeVizor coordinator: a plan, executors, an independent review.</span> <span class="badge"><span class="ru">Эксперимент</span><span class="en">Experimental</span></span></h2>
+        <p class="sub"><span class="ru">Опишите цель в чате VibeVizor — он предложит план из этапов. Вы подтверждаете запуск, исполнители работают в выбранном режиме, а изменения кода проходят независимое ревью точного коммита.</span><span class="en">Describe a goal in the VibeVizor chat and it proposes a plan of stages. You approve the start, executors use the chosen execution mode, and code changes receive independent review at the exact commit.</span></p>
+        <p class="note"><span class="ru">Экспериментальная возможность опубликованной версии. Включена по умолчанию; выключается в Settings → VibeVizor.</span><span class="en">An experimental capability of the published version. On by default; turn it off in Settings → VibeVizor.</span></p>
+      </div>
+      <div class="shot vis-plan" role="img" aria-label="VibeVizor panel with a proposed plan of three stages waiting for approval">
+        <div class="vv-h" style="height:34px;background:var(--app-canvas-2)">✦ VibeVizor <span class="x">⌄</span></div>
+        <div class="plan">
+          <div class="plan-h"><span>Plan v1 · Checkout flow</span><span class="st p">Proposed</span></div>
+          <div class="stage-row"><div class="t"><span>Stage 1</span><span>3 criteria</span></div><div>Extract the payment form</div><div class="w"><b style="background:var(--codex)"></b>Codex · Worktree</div></div>
+          <div class="stage-row"><div class="t"><span>Stage 2 · parallel</span><span>2 criteria</span></div><div>Validate the address step</div><div class="w"><b style="background:var(--claude)"></b>Claude Code · Worktree</div></div>
+          <div class="stage-row"><div class="t"><span>Stage 3</span><span>2 criteria</span></div><div>Remove the legacy cart page</div><div class="w"><b style="background:var(--copilot)"></b>GitHub Copilot CLI · Worktree</div></div>
+          <div class="foot"><span>Review: Claude Code</span><span class="ubtn">Review &amp; start…</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step"><h3><span class="ru">Цель</span><span class="en">Goal</span></h3><p><span class="ru">Опишите задачу в чате или командой /plan.</span><span class="en">Describe the task in the chat or with the /plan command.</span></p></div>
+      <div class="step"><h3><span class="ru">План</span><span class="en">Plan</span></h3><p><span class="ru">Этапы, критерии, роли, CLI и зависимости видны до запуска.</span><span class="en">Stages, criteria, roles, CLIs and dependencies are visible before anything starts.</span></p></div>
+      <div class="step"><h3><span class="ru">Одобрение</span><span class="en">Approval</span></h3><p><span class="ru">Ничего не запускается без вашего подтверждения; одобренный план заморожен.</span><span class="en">Nothing starts without your confirmation, and an approved plan is frozen.</span></p></div>
+      <div class="step"><h3><span class="ru">Исполнение</span><span class="en">Execution</span></h3><p><span class="ru">Исполнитель работает в одобренном месте: Auto, Worktree, Here, Task branches или No checkout.</span><span class="en">The executor uses the approved location: Auto, Worktree, Here, Task branches or No checkout.</span></p></div>
+      <div class="step"><h3><span class="ru">Ревью и Verified</span><span class="en">Review and Verified</span></h3><p><span class="ru">Отдельный ревьюер проверяет именно этот коммит. До трёх циклов исправлений, затем он зовёт вас.</span><span class="en">A separate reviewer checks exactly that commit. Up to three fix cycles, then it calls you.</span></p></div>
+    </div>
+  </section>
+
+  <!-- 11. Automation -->
+  <section id="automation" class="wrap">
+    <div class="split">
+      <div>
+        <h2><span class="ru">Локальная автоматизация для внешних AI-клиентов.</span><span class="en">Local automation for outside AI clients.</span></h2>
+        <ul class="facts">
+          <li><span class="ru">Browser MCP выключен по умолчанию. Включается в Settings → Automation → Browser MCP для одного проекта; JavaScript в страницах — отдельное разрешение.</span><span class="en">Browser MCP is off by default. Turn it on in Settings → Automation → Browser MCP for one project; JavaScript in pages is a separate permission.</span></li>
+          <li><span class="ru">Только 127.0.0.1 и свежий токен; мост <code>agentrelay-mcp</code> уже внутри приложения. Имя MCP-сервера: <code>agentrelay</code>.</span><span class="en">Local only, on 127.0.0.1 with a fresh token; the <code>agentrelay-mcp</code> bridge is bundled. MCP server name: <code>agentrelay</code>.</span></li>
+          <li><span class="ru">Клиент открывает и читает страницы, делает скриншоты, кликает и печатает; Stop в панели браузера сразу забирает управление. Сессии агентов через MCP не создаются и не читаются.</span><span class="en">A client opens and reads pages, takes screenshots, clicks and types; Stop in the browser panel takes control back at once. MCP does not create or read agent sessions.</span></li>
+        </ul>
+      </div>
+      <div class="shot vis-code" role="img" aria-label="Copied MCP client configuration for the bundled agentrelay-mcp bridge">
+        <div class="shot-h"><span class="lights"><i></i><i></i><i></i></span><strong>MCP configuration</strong><span class="sp" style="flex:1"></span><span>Settings → Automation</span></div>
+<pre><span class="d">// Paste into your client’s MCP server settings.</span>
+{
+  <span class="k">"mcpServers"</span>: {
+    <span class="k">"agentrelay"</span>: {
+      <span class="k">"command"</span>: <span class="s">"/Applications/…/Contents/MacOS/agentrelay-mcp"</span>
+    }
+  }
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. Details -->
+  <section id="details" class="wrap">
+    <h2><span class="ru">Мелочи, которые экономят время.</span><span class="en">Small things that save time.</span></h2>
+    <div class="grid g3">
+      <div class="tile"><h3><span class="ru">Имена и цвета</span><span class="en">Names and colours</span></h3><p><span class="ru">Переименование двойным щелчком и свои цвета сессий.</span><span class="en">Rename with a double-click; custom session colours.</span></p></div>
+      <div class="tile"><h3><span class="ru">Внешний вид</span><span class="en">Appearance</span></h3><p><span class="ru">Системная, светлая и тёмная темы; палитры VibeVizor, Graphite, Midnight, Forest, Ember.</span><span class="en">System, light and dark; VibeVizor, Graphite, Midnight, Forest and Ember palettes.</span></p></div>
+      <div class="tile"><h3><span class="ru">Обновления</span><span class="en">Updates</span></h3><p><span class="ru">Проверяет и предлагает подписанное обновление; тихая установка выключена.</span><span class="en">Checks for and offers signed updates; silent install is off.</span></p></div>
+    </div>
+  </section>
+
+  <!-- 13. Keyboard -->
+  <section id="keys" class="wrap">
+    <h2><span class="ru">Всё с клавиатуры.</span><span class="en">All from the keyboard.</span></h2>
+    <div class="kbd-list">
+      <div><span class="ru">Новая сессия</span><span class="en">New session</span><kbd>⌘N</kbd></div>
+      <div>Quick Open<kbd>⌘P</kbd></div>
+      <div><span class="ru">Карточка 1–9</span><span class="en">Card 1–9</span><kbd>⌘1…⌘9</kbd></div>
+      <div><span class="ru">Git-панель</span><span class="en">Git panel</span><kbd>⇧⌘G</kbd></div>
+      <div><span class="ru">Таймлайн</span><span class="en">Timeline</span><kbd>⇧⌘T</kbd></div>
+      <div><span class="ru">Раскладки</span><span class="en">Layouts</span><kbd>⌃⌥1…5</kbd></div>
+    </div>
+  </section>
+
+  <!-- 14. Install -->
+  <section id="install" class="wrap install">
+    <h2><span class="ru">Три шага до первого агента.</span><span class="en">Three steps to your first agent.</span></h2>
+    <div class="grid g3">
+      <div class="tile"><h3><span class="ru">Скачайте архив</span><span class="en">Download the archive</span></h3><p><span class="ru">Подписанный и нотаризованный ZIP для Apple Silicon.</span><span class="en">A signed, notarized ZIP for Apple Silicon.</span></p></div>
+      <div class="tile"><h3><span class="ru">Перенесите в «Программы»</span><span class="en">Move it to Applications</span></h3><p><span class="ru">Дальше VibeVizor обновляется через Sparkle.</span><span class="en">From then on VibeVizor updates through Sparkle.</span></p></div>
+      <div class="tile"><h3><span class="ru">Выберите папку и агента</span><span class="en">Pick a folder and an agent</span></h3><p><span class="ru">CLI устанавливаются отдельно; VibeVizor запускает уже установленные.</span><span class="en">CLIs are installed separately; VibeVizor runs the ones you have.</span></p></div>
+    </div>
+    <div class="cta-end">
+      <a class="btn btn-primary" href="https://github.com/setixela/agentrelay-download/releases/latest/download/AgentRelay-macOS.zip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v8m0 0L4.5 6.5M8 10l3.5-3.5M2.5 13.5h11"/></svg><span class="ru">Скачать для macOS</span><span class="en">Download for macOS</span></a>
+      <div class="meta">
+        <span class="mono">macOS · ZIP</span> · <span class="ru">macOS 14 и новее · Apple Silicon (arm64) · бесплатно</span><span class="en">macOS 14 or later · Apple Silicon (arm64) · free</span><br>
+        <span class="release" data-release-summary></span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap cols">
+    <div>
+      <img class="sq" src="assets/vibevizor-square-white.png" alt="VibeVizor">
+      <span class="ru">VibeVizor — рабочее пространство для ваших CLI-агентов.</span>
+      <span class="en">VibeVizor — a workspace for your CLI agents.</span>
+    </div>
+    <div>
+      <h4><span class="ru">На этой странице</span><span class="en">On this page</span></h4>
+      <span class="ru">Возможности опубликованной версии. Экспериментальные отмечены значком; невыпущенное и планы здесь не показываются.</span>
+      <span class="en">Capabilities of the published version. Experimental ones carry a badge; unreleased and planned work is not shown here.</span>
+    </div>
+    <div>
+      <h4>VibeVizor</h4>
+      <a href="https://github.com/setixela/agentrelay-download/releases/latest">GitHub Releases</a>
+      <a href="https://github.com/setixela/agentrelay-download/releases/latest"><span class="ru">Заметки к выпуску</span><span class="en">Release notes</span></a>
+      <a href="#install"><span class="ru">Установка</span><span class="en">Install</span></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    function setLang(l) {
+      root.dataset.lang = l; root.lang = l;
+      document.querySelector('nav.main').setAttribute('aria-label', l === 'ru' ? 'Разделы' : 'Sections');
+      document.querySelector('.lang').setAttribute('aria-label', l === 'ru' ? 'Язык' : 'Language');
+      document.querySelector('header a.btn').setAttribute('aria-label', l === 'ru' ? 'Скачать' : 'Download');
+      document.querySelectorAll('[data-set]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.set === l)); });
+      document.title = l === 'en'
+        ? 'VibeVizor — a workspace for CLI agents on macOS'
+        : 'VibeVizor — рабочее пространство для CLI-агентов на macOS';
+    }
+    document.querySelectorAll('[data-release-summary]').forEach(function (el) { el.textContent = document.querySelector('.build-meta').textContent; });
+    var q = new URLSearchParams(location.search).get('lang');
+    setLang(location.hash === '#en' || q === 'en' ? 'en' : 'ru');
+    document.querySelectorAll('.lang button').forEach(function (b) {
+      b.addEventListener('click', function () { location.href = new URL(b.dataset.set === 'en' ? 'en/' : './', new URL(root.dataset.route === 'en' ? '../' : './', location.href)).href; });
+    });
+    // Desktop: the 760-px replica is shown at 1x and only scales down when the column is narrower.
+    // Mobile: the replica is restacked to the column by CSS and is not scaled.
+    var frame = document.getElementById('replica-frame');
+    var scaler = document.getElementById('replica-scale');
+    var app = scaler.firstElementChild;
+    function fit() {
+      if (window.matchMedia('(max-width: 860px)').matches) {
+        scaler.style.transform = ''; frame.style.height = ''; return;
+      }
+      var s = Math.min(1, frame.clientWidth / 760);
+      scaler.style.transform = 'scale(' + s + ')';
+      frame.style.height = (app.offsetHeight * s) + 'px';
+    }
+    window.addEventListener('resize', fit); fit();
+  })();
+</script>
+</body>
 </html>
+
+<!-- Palette provenance: DESIGN.md#palette-source-of-truth -->
