@@ -4,16 +4,16 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VibeVizor</title>
         <item>
-            <title>1.1.37</title>
-            <pubDate>Tue, 17 Nov 2026 23:38:17 +0100</pubDate>
-            <sparkle:version>62</sparkle:version>
-            <sparkle:shortVersionString>1.1.37</sparkle:shortVersionString>
+            <title>1.1.38</title>
+            <pubDate>Wed, 18 Nov 2026 17:54:57 +0100</pubDate>
+            <sparkle:version>63</sparkle:version>
+            <sparkle:shortVersionString>1.1.38</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <enclosure url="https://github.com/setixela/agentrelay-download/releases/download/v1.1.37/AgentRelay-macOS.zip" length="55451563" type="application/octet-stream" sparkle:edSignature="rHff+RoXd09Da1WhuGTnPjQtDcplUi0tLt5bMxNSqG4PZGyRZK3U64trehlzSYQdRFa6q3D3aUBnK2O9DcGBCQ=="></enclosure>
+            <enclosure url="https://github.com/setixela/agentrelay-download/releases/download/v1.1.38/AgentRelay-macOS.zip" length="55650168" type="application/octet-stream" sparkle:edSignature="iJhUAjPFaFq+P6kcpaQwKaLltqigJATUg85YfzG9ULO+2uLKgPLqINS+sfWyr+SrijWEJIaydxX9DyQzZ7XQCQ=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: npJMWl1W1I7mKyTQMKdws+ZDDzPtk2/8WvJs5sf4BrkYp1SDQdQBVjbV4gLtkx6LOjruFX47oVLZDKNFwqNQCw==
+edSignature: Oh9k+IRYWFcuYmF/sEuOGD2IRVV8KeUhcDPTFjNcAG70TgbB77NyNT35VtxIpipeN9DaEOaXj08SZZxjThMABw==
 length: 1139
 -->
